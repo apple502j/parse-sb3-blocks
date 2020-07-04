@@ -1,0 +1,23 @@
+{
+  "name": "parse-sb3-blocks",
+  "version": "0.1.0",
+  "description": "Parse sb3 blocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apple502j/parse-sb3-blocks.git"
+  },
+  "keywords": [
+    "scratch",
+    "sb3"
+  ],
+  "author": "apple502j",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/apple502j/parse-sb3-blocks/issues"
+  },
+  "homepage": "https://github.com/apple502j/parse-sb3-blocks#readme"
+}
