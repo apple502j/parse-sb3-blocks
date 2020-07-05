@@ -1,6 +1,6 @@
 class Stack {
     constructor (blocks) {
-        this.blocks = blocks;
+        this.blocks = blocks || [];
     }
 
     toScratchblocks (locale, opts) {

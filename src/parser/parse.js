@@ -3,12 +3,13 @@ import BooleanBlock from '../block-type/boolean-block.js';
 import CBlock from '../block-type/c-block.js';
 import EBlock from '../block-type/e-block.js';
 import ReporterBlock from '../block-type/reporter-block.js';
-import SpecialBlock from '../block-type/special-block.js;'
-import Variable from '../block-type/variable.js;'
+import SpecialBlock from '../block-type/special-block.js';
+import Variable from '../block-type/variable.js';
+import Definition from '../block-type/definition.js';
 
 import Icon from '../input/icon.js';
 import Menu from '../input/menu.js';
-import {NumberInput, StringInput, ColorPickerInput, EmptyBooleanInput} from '../input/input.js';
+import {NumberInput, StringInput, ColorPickerInput, BroadcastMenuInput, EmptyBooleanInput} from '../input/input.js';
 import Stack from '../input/stack.js';
 
 import allBlocks from '../block-mapping/all-blocks.js';
@@ -30,7 +31,13 @@ const opcodeToIcon = {
     motion_turnnright: new Icon('turnRight')
 };
 
-const getInputtableForBlock = (block, blocks, asScript) => {
+const inputMap = new Map([
+    [9, ColorPickerInput],
+    [10, StringInput],
+    [11, BroadcastMenuInput]
+]);
+
+const getInputtablesForBlock = (block, blocks, asScript) => {
     const inputtables = {};
     const opcode = block.opcode;
     const blockInfo = allBlocks[opcode];
@@ -42,18 +49,95 @@ const getInputtableForBlock = (block, blocks, asScript) => {
     Object.keys(block.inputs).forEach(key => {
         const value = block.inputs[key];
         const shadowType = value[0];
-        if (key.startsWith("SUBSTACK") && asScript) {
+        if (key.startsWith('SUBSTACK') && asScript) {
+            // Blocks inside C-block
             inputtables[key] = new Stack(parseScript(value[1], blocks));
             return;
         }
         if (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT) {
+            // There's a block above it. We don't care about shadows
             inputtables[key] = parseInsertedBlock(value[1], blocks);
             return;
         }
-        // wip
-    })
+        // No block above it.
+        // The input is either num/str or menu.
+        if (typeof value[1] === 'string') {
+            // value[1] is string, so it's menu
+            const menuBlockId = value[1];
+            const menu = blocks[menuBlockId];
+            inputtables[key] = new Menu(menuBlockId, opcode, menu.fields[key][0]);
+        } else {
+            // value[1] is probably array
+            const inputDetails = value[1];
+            const inputType = inputDetails[0];
+            if (inputType === 12) {
+                // normal variable block
+                inputtabes[key] = new Variable(null, inputDetails[1]);
+                return;
+            }
+            if (inputType === 13) {
+                // normal list block
+                inputtabes[key] = new Variable(null, inputDetails[1], 'list');
+                return;
+            }
+            const inputConstructor = inputMap.get(inputType) || NumberInput;
+            inputtables[key] = new inputConstructor(inputDetails[1]);
+        }
+    });
+    if (asScript && !inputtables.hasOwnProperty('SUBSTACK')) {
+        inputtables.SUBSTACK = new Stack();
+    }
+    if (blockInfo.type === E_BLOCK && !inputtables.hasOwnProperty('SUBSTACK2')) {
+        inputtables.SUBSTACK2 = new Stack();
+    }
+    blockInfo.boolArg.forEach(boolArg => {
+        if (!inputtables.hasOwnProperty(boolArg)) {
+            inputtables[boolArg] = new EmptyBooleanInput();
+        }
+    });
     return inputtables;
-}
+};
+
+const parseInsertedBlock = (blockId, blocks) => {
+    // Handles inserted blocks. NOTE: no variable/list, no stack
+    const block = blocks[blockId];
+    const opcode = block.opcode;
+    const blockInfo = allBlocks[opcode];
+    let blockConstructor = Block;
+    switch(blockInfo.type) {
+        case BOOLEAN_BLOCK: blockConstructor = BooleanBlock; break;
+        case REPORTER_BLOCK: blockConstructor = ReporterBlock; break;
+    }
+    return new blockConstructor(blockId, opcode, getInputtablesForBlock(block, blocks));
+};
+
+const getDefinition = (block, blocks) => {
+    const definitionId = block.inputs.custom_block[1];
+    const definition = blocks[definitionId];
+    const args = {
+        s: [],
+        b: []
+    };
+    const counts = {
+        s: 0,
+        b: 0
+    };
+    JSON.parse(definition.mutation.argumentids).forEach(argId => {
+        const argBlock = blocks[argId];
+        const arg = argBlock.fields.VALUE[0];
+        if (argBlock.opcode === 'argument_reporter_string_number') {
+            args.s.push(`(${arg})`);
+        } else {
+            args.b.push(`<${arg}>`);
+        }
+    });
+    return definition.proccode.replace(
+        /%([sb])/g,
+        (_, s_b) => {
+            return args[s_b][counts[s_b]++];
+        }
+    );
+};
 
 const parseScript = (scriptStart, blocks) => {
     let blockId = scriptStart;
@@ -65,16 +149,20 @@ const parseScript = (scriptStart, blocks) => {
         const opcode = block.opcode;
         const blockInfo = allBlocks[opcode];
         if (blockInfo.isSpecialBlock) {
-            parsedBlock = new SpecialBlock(block.id, opcode, getInputtableForBlock(block, blocks));
+            parsedBlock = new SpecialBlock(block.id, opcode, getInputtablesForBlock(block, blocks));
+        } else if (opcode === 'procedures_definition') {
+            parsedBlock = new Definition(block.id, getDefinition(block, blocks));
         } else {
             const blockType = blockInfo.type || BLOCK;
             switch (blockType) {
                 case BLOCK:
-                    parsedBlock = new Block(block.id, opcode, getInputtableForBlock(block, blocks));
+                    parsedBlock = new Block(block.id, opcode, getInputtablesForBlock(block, blocks));
                     break;
                 case C_BLOCK:
+                    parsedBlock = new CBlock(block.id, opcode, getInputtablesForBlock(block, blocks, true));
+                    break;
                 case E_BLOCK:
-                    parsedBlock = new CBlock(block.id, opcode, getInputtableForBlock(block, blocks, true));
+                    parsedBlock = new EBlock(block.id, opcode, getInputtablesForBlock(block, blocks, true));
                     break;
             }
         }

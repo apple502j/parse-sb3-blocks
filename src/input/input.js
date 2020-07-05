@@ -1,6 +1,6 @@
 class Input {
     constructor (content) {
-        this.content = this.sanitize(content);
+        this.content = this.sanitize(String(content || ''));
     }
 
     sanitize (content) {
@@ -26,7 +26,13 @@ class StringInput extends Input {
 
 class ColorPickerInput extends Input {
     toScratchblocks () {
-        return `[${this.content}]`:
+        return `[${this.content}]`;
+    }
+}
+
+class BroadcastMenuInput extends Input {
+    toScratchblocks () {
+        return `[${this.content} v]`;
     }
 }
 
@@ -42,5 +48,6 @@ export {
     NumberInput,
     StringInput,
     ColorPickerInput,
+    BroadcastMenuInput,
     EmptyBooleanInput
 };
