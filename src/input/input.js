@@ -26,15 +26,10 @@ class StringInput extends Input {
 
 class ColorPickerInput extends Input {
     toScratchblocks () {
-        return `[#${this.content}]`:
+        return `[${this.content}]`:
     }
 }
 
-class DropdownInput extends Input {
-    toScratchblocks () {
-        return `[${this.content} v]`;
-    }
-}
 
 class EmptyBooleanInput extends Input {
     toScratchblocks () {
@@ -47,6 +42,5 @@ export {
     NumberInput,
     StringInput,
     ColorPickerInput,
-    DropdownInput,
     EmptyBooleanInput
 };

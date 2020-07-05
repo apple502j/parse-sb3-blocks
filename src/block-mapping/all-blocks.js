@@ -210,12 +210,14 @@ export default {
     },
     control_if: {
         defaultMessage: "if {CONDITION} then",
-        type: C_BLOCK
+        type: C_BLOCK,
+        boolArg: ["CONDITION"]
     },
     control_if_else: {
         defaultMessage: "if {CONDITION} then",
         translationKey: "CONTROL_IF",
-        type: E_BLOCK
+        type: E_BLOCK,
+        boolArg: ["CONDITION"]
     },
     control_else: {
         defaultMessage: "else"
@@ -228,12 +230,14 @@ export default {
     },
     control_wait_until: {
         defaultMessage: "wait until {CONDITION}",
-        translationKey: "CONTROL_WAITUNTIL"
+        translationKey: "CONTROL_WAITUNTIL",
+        boolArg: ["CONDITION"]
     },
     control_repeat_until: {
         defaultMessage: "repeat until {CONDITION}",
         translationKey: "CONTROL_REPEATUNTIL",
-        type: C_BLOCK
+        type: C_BLOCK,
+        boolArg: ["CONDITION"]
     },
     control_start_as_clone: {
         defaultMessage: "when I start as a clone",

@@ -22,8 +22,6 @@ const getOptsForLocale = (locale, opcode) => {
     return allBlocks[opcode].defaultOptions || {};
 };
 
-const isSpecialBlock = opcode => allBlocks[opcode].isSpecialBlock;
-
 const getSpecialMessage = (locale, key) => {
     if (specialMessageMap.hasOwnProperty(key)) return getMessageForLocale(locale, specialMessageMap[key]);
     if (specialMessages[locale] && specialMessages[locale][key]) {
@@ -44,7 +42,6 @@ const getMenuItemForLocale = (locale, opcode, value) => {
 
 export {
     getMessageForLocale,
-    isSpecialBlock,
     getSpecialMessage,
     isSpecialMenuValue,
     getMenuItemForLocale
