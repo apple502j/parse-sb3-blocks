@@ -18,4 +18,4 @@ export default class Variable {
             case BLOCK: return block;
         }
     }
-}
+};

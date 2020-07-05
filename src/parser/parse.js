@@ -6,6 +6,7 @@ import ReporterBlock from '../block-type/reporter-block.js';
 import SpecialBlock from '../block-type/special-block.js';
 import Variable from '../block-type/variable.js';
 import Definition from '../block-type/definition.js';
+import ProcedureCall from '../block-type/procedure-call.js';
 
 import Icon from '../input/icon.js';
 import Menu from '../input/menu.js';
@@ -154,25 +155,25 @@ const getProcCallArgs = (block, blocks) => {
     )).forEach(matchObj => {
         const s_b = matchObj[1];
         const id = argIDs[i++];
-        const argObj = {type: s_b};
+        let argObj = null;
         const input = block.inputs[id];
         if (s_b === 'b' && !input) {
-            argObj.arg = new EmptyBooleanInput();
+            argObj = new EmptyBooleanInput();
         } else {
             const shadowType = input[0];
             if (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT) {
-                argObj.arg = parseInsertedBlock(input[1], blocks);
+                argObj = parseInsertedBlock(input[1], blocks);
             } else {
                 const inputDetails = input[1];
                 const inputType = inputDetails[0];
                 if (inputType === 12) {
                     // normal variable block
-                    argObj.arg = new Variable(null, inputDetails[1]);
+                    argObj = new Variable(null, inputDetails[1]);
                 } else if (inputType === 13) {
                     // normal list block
-                    argObj.arg = new Variable(null, inputDetails[1], 'list');
+                    argObj = new Variable(null, inputDetails[1], 'list');
                 } else {
-                    argObj.arg = new StringInput(inputDetails[1]);
+                    argObj = new StringInput(inputDetails[1]);
                 }
             }
         }
@@ -195,7 +196,7 @@ const parseScript = (scriptStart, blocks) => {
         } else if (opcode === 'procedures_definition') {
             parsedBlock = new Definition(block.id, getDefinition(block, blocks));
         } else if (opcode === 'procedures_call') {
-            parsedBlock = new ProcedureCall(block.id, getProcCallArgs(block, blocks));
+            parsedBlock = new ProcedureCall(block.id, block.mutation.proccode, getProcCallArgs(block, blocks));
         } else {
             const blockType = blockInfo.type || BLOCK;
             switch (blockType) {
