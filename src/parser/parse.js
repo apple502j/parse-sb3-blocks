@@ -102,6 +102,12 @@ const parseInsertedBlock = (blockId, blocks) => {
     // Handles inserted blocks. NOTE: no variable/list, no stack
     const block = blocks[blockId];
     const opcode = block.opcode;
+    if (opcode === 'argument_reporter_string_number') {
+        return new Variable(blockId, block.fields.VALUE[0], 'custom', REPORTER_BLOCK);
+    }
+    if (opcode === 'argument_reporter_boolean') {
+        return new Variable(blockId, block.fields.VALUE[0], 'custom', BOOLEAN_BLOCK);
+    }
     const blockInfo = allBlocks[opcode];
     let blockConstructor = Block;
     switch(blockInfo.type) {
@@ -139,6 +145,42 @@ const getDefinition = (block, blocks) => {
     );
 };
 
+const getProcCallArgs = (block, blocks) => {
+    const argIDs = JSON.parse(block.mutation.argumentids);
+    const argObjs = [];
+    let i = 0;
+    Array.from(block.mutation.proccode.matchAll(
+        /%([sb])/g
+    )).forEach(matchObj => {
+        const s_b = matchObj[1];
+        const id = argIDs[i++];
+        const argObj = {type: s_b};
+        const input = block.inputs[id];
+        if (s_b === 'b' && !input) {
+            argObj.arg = new EmptyBooleanInput();
+        } else {
+            const shadowType = input[0];
+            if (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT) {
+                argObj.arg = parseInsertedBlock(input[1], blocks);
+            } else {
+                const inputDetails = input[1];
+                const inputType = inputDetails[0];
+                if (inputType === 12) {
+                    // normal variable block
+                    argObj.arg = new Variable(null, inputDetails[1]);
+                } else if (inputType === 13) {
+                    // normal list block
+                    argObj.arg = new Variable(null, inputDetails[1], 'list');
+                } else {
+                    argObj.arg = new StringInput(inputDetails[1]);
+                }
+            }
+        }
+        argObjs.push(argObj);
+    });
+    return argObjs;
+};
+
 const parseScript = (scriptStart, blocks) => {
     let blockId = scriptStart;
     const parsedBlocks = [];
@@ -152,6 +194,8 @@ const parseScript = (scriptStart, blocks) => {
             parsedBlock = new SpecialBlock(block.id, opcode, getInputtablesForBlock(block, blocks));
         } else if (opcode === 'procedures_definition') {
             parsedBlock = new Definition(block.id, getDefinition(block, blocks));
+        } else if (opcode === 'procedures_call') {
+            parsedBlock = new ProcedureCall(block.id, getProcCallArgs(block, blocks));
         } else {
             const blockType = blockInfo.type || BLOCK;
             switch (blockType) {
