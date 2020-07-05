@@ -3,6 +3,7 @@ import {getMenuItemForLocale, isSpecialMenuValue} from '../block-mapping/block-m
 export default class Menu {
     constructor (id, opcode, content) {
         this.id = id;
+        // note: opcode is the opcode of the PARENT block.
         this.opcode = opcode;
         this.content = content;
         this.isSpecial = isSpecialMenuValue(opcode, content);

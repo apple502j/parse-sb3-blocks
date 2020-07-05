@@ -1,4 +1,4 @@
-import {getMessageForLocale} from '../block-mapping/block-mapping.js';
+import {getMessageForLocale, getOptsForLocale} from '../block-mapping/block-mapping.js';
 
 export default class Block {
     constructor (id, opcode, inputtables) {
@@ -15,7 +15,16 @@ export default class Block {
         );
     }
 
-    toScratchblocks (locale) {
-        return this.blockSyntax(locale);
+    useOptions (locale, opts) {
+        opts = Object.assign({}, getOptsForLocale(locale, this.opcode), opts);
+        let optionArray = [];
+        if (opts.category) optionArray.push(opts.category);
+        if (opts.type) optionArray.push(opts.type);
+        if (optionArray.length) return `::${optionArray.join(' ')}`;
+        return '';
+    }
+
+    toScratchblocks (locale, opts) {
+        return `${this.blockSyntax(locale)}${this.useOptions(locale, opts)}`;
     }
 }

@@ -7,11 +7,12 @@ export default class CBlock extends Block {
         this.block_key = block_key;
     }
 
-    toScratchblocks (locale, tab) {
+    toScratchblocks (locale, opts) {
         const blockLabel = this.blockSyntax(locale);
         const blocks = this.inputtables[this.block_key].toScratchblocks(locale);
+        const tab = opts.tab || '';
         const end = getSpecialMessage(locale, 'end');
-        return `${blockLabel}
+        return `${blockLabel}${this.useOptions(locale, opts)}
 ${tab}${blocks}
 ${end}`;
     }
