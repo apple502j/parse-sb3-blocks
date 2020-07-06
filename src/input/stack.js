@@ -5,6 +5,6 @@ export default class Stack {
 
     toScratchblocks (locale, opts) {
         const tab = opts.tab || '';
-        return this.blocks.map(block => `${tab}${block.toScratchblocks(locale, {tab})}`).join('\n');
+        return this.blocks.map(block => `${tab}${block.toScratchblocks(locale, opts)}`).join('\n');
     }
 }

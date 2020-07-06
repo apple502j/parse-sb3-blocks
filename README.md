@@ -19,12 +19,16 @@ console.log(toScratchblocks('ND,(]G?KLIy(IZrd2sl.', sb3blocks, 'en', {tabs: ' '.
 ### toScratchblocks
 **toScratchblocks** is a function. This can take three to four arguments:
 
-- scriptStart: The block ID to start parsing from. **This must be a block ID of Connectable** (which includes stack block, hat block, definition block, procedure call block, C block, E block and cap block.)
+- scriptStart: The block ID to start parsing from. **This must be a block ID of Connectable** (which includes hat blocks.)
 - blocks: serialized SB3 format (project.json format) of blocks.
 - locale: Locale to use. `en` should always be available.
-- opts: Optional. It can be a object that have `tabs` key for tab characters. **Note that while parse-sb3-blocks can use non-space/tab indent, scratchblocks only accepts tab or spaces.**
+- opts: Optional. It can be a object (see below)
 
-**NOTE: We expect you to ONLY PASS ALREADY-VALIDATED BLOCKS. This package has little (if any) validation for the blocks passed, and a crafted blocks can lead to Denial of Service attacks or other security concerns. For performance reasons, we do not implement validations inside parse-sb3-blocks. VALIDATE YOURSELF.**
+#### Options
+`opts` can have these properties.
+
+- tabs: Tab characters used by C/E blocks for indenting. **Note that while parse-sb3-blocks can use non-space/tab indent, scratchblocks only accepts tab or spaces.** Pass empty string to remove indents. Defaults to four spaces.
+- variableStyle: If set to `none` (default), variables will never have `::variables` at the end. If set to `always`, it will always have `::variables`. If set to `as-needed`, it will have `::variables` if block name conflicts.
 
 ### Internal Functions and Parsers
 It also exports several classes used internally by the parsers.
@@ -68,6 +72,7 @@ all-blocks.js default-exports allBlocks, which is an object with opcode as key a
 
 The object has these keys and values:
 - isSpecialBlock: If set to `true`, it uses `SpecialBlock`, meaning it used icons and translations must be picked from special-messages.js. Also, if this is true, all other properties are optional.
+- noTranslation: If set to `true`, it will be ignored from transation generator.
 - defaultMessage: Message in default language (English).
 - type: The block type. Defaults to `BlockEnum.BLOCK`.
 - defaultOptions: The block option for the block when using defaultMessage, in case duplicates exist. It can have category key and the category as a value.
@@ -79,4 +84,4 @@ Node 14+ is preferred for building. Type `npm run build`, which generates locale
 
 ### env
 - `mode`: Unless set to `dev`, the result is minified.
-- `SPECIAL_MESSAGES_URL`: URL to extra_aliases.js
+- `SPECIAL_MESSAGES_URL`: URL to extra_aliases.js (defaults to https://raw.githubusercontent.com/scratchblocks/scratchblocks/master/locales-src/extra_aliases.js)

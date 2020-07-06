@@ -37,17 +37,17 @@ fetch(process.env.SPECIAL_MESSAGES_URL || defaultPath)
                         break;
                     case 'turn @turnLeft %1 degrees':
                         specialMessageObj[locale].motion_turnleft = key.replace('@turnLeft', '{ICON}')
-                                                                        .replace('%1', '{DEGREES}');
+                                                                       .replace('%1', '{DEGREES}');
                         break;
                     /* eslint-enable indent */
                 }
             });
         });
     })
-    .then(() => unlink('./build.temp.js'))
     .then(() => {
         const jsonMessages = JSON.stringify(specialMessageObj);
         const jsMessages = `/* GENERATED FILE DO NOT EDIT */\nexport default ${jsonMessages};`;
         const outputPath = path.join('src', 'block-mapping', 'special-messages.gen.js');
         return writeFile(outputPath, jsMessages, 'utf-8');
-    });
+    })
+    .then(() => unlink('./build.temp.js'));

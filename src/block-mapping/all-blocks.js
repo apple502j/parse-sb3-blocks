@@ -251,6 +251,75 @@ export default {
     control_delete_this_clone: {
         defaultMessage: 'delete this clone',
         translationKey: 'CONTROL_DELETETHISCLONE'
+    },
+    sensing_touchingobject: {
+        defaultMessage: 'touching {TOUCHINGOBJECTMENU} ?',
+        type: BOOLEAN_BLOCK
+    },
+    sensing_touchingcolor: {
+        defaultMessage: 'touching color {COLOR} ?',
+        type: BOOLEAN_BLOCK
+    },
+    sensing_coloristouchingcolor: {
+        defaultMessage: 'color {COLOR} is touching {COLOR2} ?',
+        type: BOOLEAN_BLOCK
+    },
+    sensing_distanceto: {
+        defaultMessage: 'distance to {DISTANCETOMENU}',
+        type: REPORTER_BLOCK
+    },
+    sensing_askandwait: {
+        defaultMessage: 'ask {QUESTION} and wait'
+    },
+    sensing_answer: {
+        defaultMessage: 'answer',
+        type: REPORTER_BLOCK
+    },
+    sensing_keypressed: {
+        defaultMessage: 'key {KEY_OPTION} pressed?',
+        type: BOOLEAN_BLOCK
+    },
+    sensing_mousedown: {
+        defaultMessage: 'mouse down?',
+        type: BOOLEAN_BLOCK
+    },
+    sensing_mousex: {
+        defaultMessage: 'mouse x',
+        type: REPORTER_BLOCK
+    },
+    sensing_mousey: {
+        defaultMessage: 'mouse y',
+        type: REPORTER_BLOCK
+    },
+    sensing_setdragmode: {
+        defaultMessage: 'set drag mode {DRAG_MODE}'
+    },
+    sensing_loudness: {
+        defaultMessage: 'loudness',
+        type: REPORTER_BLOCK
+    },
+    sensing_timer: {
+        defaultMessage: 'timer',
+        type: REPORTER_BLOCK
+    },
+    sensing_resettimer: {
+        defaultMessage: 'reset timer'
+    },
+    sensing_of: {
+        defaultMessage: '{PROPERTY} of {OBJECT}',
+        type: REPORTER_BLOCK
+    },
+    sensing_current: {
+        defaultMessage: 'current {CURRENTMENU}',
+        type: REPORTER_BLOCK
+    },
+    sensing_dayssince2000: {
+        defaultMessage: 'days since 2000',
+        type: REPORTER_BLOCK
+    },
+    sensing_username: {
+        defaultMessage: 'username',
+        type: REPORTER_BLOCK
     }
 };
 

@@ -10,9 +10,9 @@ export default class EBlock extends Block {
 
     toScratchblocks (locale, opts) {
         const blockLabel = this.blockSyntax(locale);
-        const firstBlocks = this.inputtables[this.block_key].toScratchblocks(locale, {tab: opts.tab});
+        const firstBlocks = this.inputtables[this.block_key].toScratchblocks(locale, opts);
         const elseLabel = getSpecialMessage(locale, 'else');
-        const elseBlocks = this.inputtables[this.else_key].toScratchblocks(locale, {tab: opts.tab});
+        const elseBlocks = this.inputtables[this.else_key].toScratchblocks(locale, opts);
         const end = getSpecialMessage(locale, 'end');
         return `${blockLabel}${this.useOptions(locale, opts)}
 ${firstBlocks}

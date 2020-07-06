@@ -7,11 +7,11 @@ export default class Block {
         this.inputtables = inputtables || {};
     }
 
-    blockSyntax (locale) {
+    blockSyntax (locale, opts) {
         const syntax = getMessageForLocale(locale, this.opcode);
         return syntax.replace(
             /\{([\w-]+)\}/g,
-            (_, key) => this.inputtables[key].toScratchblocks(locale)
+            (_, key) => this.inputtables[key].toScratchblocks(locale, opts)
         );
     }
 
@@ -25,6 +25,6 @@ export default class Block {
     }
 
     toScratchblocks (locale, opts) {
-        return `${this.blockSyntax(locale)}${this.useOptions(locale, opts)}`;
+        return `${this.blockSyntax(locale, opts)}${this.useOptions(locale, opts)}`;
     }
 }

@@ -5,11 +5,11 @@ export default class ProcedureCall {
         this.argObj = argObj;
     }
 
-    toScratchblocks (locale) {
+    toScratchblocks (locale, opts) {
         let i = 0;
         const procCode = this.proc.replace(
             /%([sb])/g,
-            () => this.argObj[i++].toScratchblocks(locale)
+            () => this.argObj[i++].toScratchblocks(locale, opts)
         );
         return `${procCode}::custom`;
     }

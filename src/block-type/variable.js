@@ -1,4 +1,6 @@
+import allBlocks from '../block-mapping/all-blocks.js';
 import {BLOCK, BOOLEAN_BLOCK, REPORTER_BLOCK} from '../block-mapping/block-enum.js';
+import {getTranslationKeyFromValue, getOpcodeFromTranslationKey} from '../block-mapping/block-mapping.js';
 
 export default class Variable {
     constructor (id, value, category, type) {
@@ -8,9 +10,24 @@ export default class Variable {
         this.type = type || REPORTER_BLOCK;
     }
 
-    toScratchblocks () {
+    needsOpts (locale) {
+        const translationKey = getTranslationKeyFromValue(locale, this.value);
+        if (!translationKey) return false;
+        const opcode = getOpcodeFromTranslationKey(translationKey);
+        if (!allBlocks.hasOwnProperty(opcode)) return false;
+        return allBlocks[opcode].type === REPORTER_BLOCK;
+    }
+
+    toScratchblocks (locale, opts) {
         let options = '';
-        if (this.category) options = `::${this.category}`;
+        if (this.category) {
+            options = `::${this.category}`;
+        } else if (
+            opts.variableStyle === 'always' ||
+            (opts.variableStyle === 'as-needed' && this.needsOpts(locale))
+        ) {
+            options = '::variables';
+        }
         const block = `${this.value}${options}`;
         switch (this.type) {
             case REPORTER_BLOCK: return `(${block})`;
