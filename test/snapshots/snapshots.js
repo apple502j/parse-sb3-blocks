@@ -18,6 +18,6 @@ fs.readdirSync(fixturesDir)
         if (scratchblocks === snapshotFile) {
             t.pass();
         } else {
-            t.fail(`toScratchblocks and snapshots didn't match:\n${scratchblocks}`)
+            t.fail(`toScratchblocks and snapshots didn't match:\n${scratchblocks}`);
         }
     }));

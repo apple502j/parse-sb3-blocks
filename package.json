@@ -13,7 +13,8 @@
     "rollup": "rollup -c",
     "locale": "npm run locale:build && npm run locale:special",
     "locale:build": "node --experimental-json-modules ./build-src/build-locale.js",
-    "locale:special": "node ./build-src/download-special-messages.js"
+    "locale:special": "node ./build-src/download-special-messages.js",
+    "prepublishOnly": "npm run test && npm run locale && rollup -c --environment mode:prod"
   },
   "repository": {
     "type": "git",

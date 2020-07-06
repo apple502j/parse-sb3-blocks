@@ -1,4 +1,4 @@
-import colors from 'colors';
+import colors from 'colors'; // eslint-disable-line no-unused-vars
 // click.js: a mock version of tap
 
 class Test {
