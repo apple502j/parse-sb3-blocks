@@ -6,8 +6,9 @@
   "browser": "dist/parse-sb3-blocks.browser.js",
   "module": "dist/parse-sb3-blocks.module.js",
   "scripts": {
-    "test": "npm run test:lint",
+    "test": "npm run test:lint && npm run test:snapshot",
     "test:lint": "eslint . --ext .js",
+    "test:snapshot": "node ./test/snapshots/snapshots.js",
     "build": "npm run locale && npm run rollup",
     "rollup": "rollup -c",
     "locale": "npm run locale:build && npm run locale:special",
@@ -30,6 +31,7 @@
   "homepage": "https://github.com/apple502j/parse-sb3-blocks#readme",
   "devDependencies": {
     "@rollup/plugin-babel": "^5.0.4",
+    "colors": "^1.4.0",
     "eslint": "^7.4.0",
     "node-fetch": "^2.6.0",
     "rollup": "^2.19.0",

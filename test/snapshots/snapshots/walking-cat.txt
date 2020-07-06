@@ -1,0 +1,7 @@
+when @greenFlag clicked
+set rotation style [left-right v]
+forever
+    move (10) steps
+    if on edge, bounce
+    next costume
+end

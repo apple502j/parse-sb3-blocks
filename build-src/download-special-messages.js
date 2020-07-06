@@ -20,24 +20,25 @@ fetch(process.env.SPECIAL_MESSAGES_URL || defaultPath)
     .then(rawObj => {
         const obj = rawObj.default;
         Object.keys(obj).forEach(locale => {
-            specialMessageObj[locale] = {};
+            const ps3bLocale = locale.replace('_', '-').toLowerCase();
+            specialMessageObj[ps3bLocale] = {};
             Object.keys(obj[locale]).forEach(key => {
                 const blockName = obj[locale][key];
                 switch (blockName) {
                     case 'end':
-                        specialMessageObj[locale].end = key;
+                        specialMessageObj[ps3bLocale].end = key;
                         break;
                     case 'when @greenFlag clicked':
-                        specialMessageObj[locale].event_whenflagclicked = key.replace('@greenFlag', '{ICON}');
+                        specialMessageObj[ps3bLocale].event_whenflagclicked = key.replace('@greenFlag', '{ICON}');
                         break;
                     /* eslint-disable indent */
                     case 'turn @turnRight %1 degrees':
-                        specialMessageObj[locale].motion_turnright = key.replace('@turnRight', '{ICON}')
-                                                                        .replace('%1', '{DEGREES}');
+                        specialMessageObj[ps3bLocale].motion_turnright = key.replace('@turnRight', '{ICON}')
+                                                                            .replace('%1', '{DEGREES}');
                         break;
                     case 'turn @turnLeft %1 degrees':
-                        specialMessageObj[locale].motion_turnleft = key.replace('@turnLeft', '{ICON}')
-                                                                       .replace('%1', '{DEGREES}');
+                        specialMessageObj[ps3bLocale].motion_turnleft = key.replace('@turnLeft', '{ICON}')
+                                                                           .replace('%1', '{DEGREES}');
                         break;
                     /* eslint-enable indent */
                 }

@@ -61,7 +61,7 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
             return;
         }
         // No block above it.
-        // The input is either num/str or menu.
+        // The input is variable, num/str or menu.
         if (typeof value[1] === 'string') {
             // value[1] is string, so it's menu
             const menuBlockId = value[1];

@@ -1,0 +1,37 @@
+{
+    "scriptStart": "block1",
+    "locale": "en",
+    "opts": {"variableStyle": "as-needed"},
+    "blocks": {
+        "block1": {
+            "opcode": "looks_say",
+            "next": "block2",
+            "parent": null,
+            "inputs": {
+                "MESSAGE": [
+                    1,
+                    [
+                        12,
+                        "x position"
+                    ]
+                ]
+            },
+            "fields": {}
+        },
+        "block2": {
+            "opcode": "looks_say",
+            "next": null,
+            "parent": "block1",
+            "inputs": {
+                "MESSAGE": [
+                    1,
+                    [
+                        12,
+                        "z position"
+                    ]
+                ]
+            },
+            "fields": {}
+        }
+    }
+}
