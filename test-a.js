@@ -1,4 +1,4 @@
-module.exports = {
+export default {
         "ND,(]G?KLIy(IZrd2sl.": {
           "opcode": "event_whenflagclicked",
           "next": "e#.I5;deyduAZk,j9ppo",

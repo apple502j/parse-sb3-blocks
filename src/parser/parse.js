@@ -91,11 +91,13 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
     if (blockInfo.type === E_BLOCK && !inputtables.hasOwnProperty('SUBSTACK2')) {
         inputtables.SUBSTACK2 = new Stack();
     }
-    blockInfo.boolArg.forEach(boolArg => {
-        if (!inputtables.hasOwnProperty(boolArg)) {
-            inputtables[boolArg] = new EmptyBooleanInput();
-        }
-    });
+    if (blockInfo.boolArg) {
+        blockInfo.boolArg.forEach(boolArg => {
+            if (!inputtables.hasOwnProperty(boolArg)) {
+                inputtables[boolArg] = new EmptyBooleanInput();
+            }
+        });
+    }
     return inputtables;
 };
 

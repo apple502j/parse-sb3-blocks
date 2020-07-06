@@ -7,6 +7,11 @@ import {default as allBlocks, allMenus} from '../src/block-mapping/all-blocks.js
 const writeFile = promisify(fs.writeFile);
 const localeNames = Object.keys(localeObject.default);
 
+const translateKeyToCategory = key => {
+    if (key.includes("_")) return key.split("_")[0].toLowerCase();
+    if (key.includes(".")) return key.split(".")[0];
+};
+
 const asyncFuncy = async () => {
     const rawTranslations = {};
     const blocksPromise = [];
@@ -45,28 +50,48 @@ const asyncFuncy = async () => {
     ).forEach(key => keys.add(key));
 
     const result = {};
-    localeNames.forEach(name => keys.forEach(key => {
-        let translation = rawTranslations[name][key];
-        if (translateKeyToArgMap.hasOwnProperty(key)) {
-            translation = translation.replace(
-                // scratch-blocks uses 1-indexed percent: %1, %2
-                /%([\d]+)/g,
-                (_, n) => `{${translateKeyToArgMap[key][Number(n)-1]}}`
-            ).replace(
-                // scratch-vm uses [FOO] instead of {FOO}
-                /\[([\w]+)\]/g,
-                (_, v) => `{${v}}`
-            );
-        }
-        if (!result.hasOwnProperty(name)) result[name] = {};
-        result[name][key] = translation;
-    }));
+    const localeOptions = {};
+    localeNames.forEach(name => {
+        const localeUsedName = new Map();
+        result[name] = {};
+        localeOptions[name] = {};
+        keys.forEach(key => {
+            let translation = rawTranslations[name][key];
+            if (translateKeyToArgMap.hasOwnProperty(key)) {
+                translation = translation.replace(
+                    // scratch-blocks uses 1-indexed percent: %1, %2
+                    /%([\d]+)/g,
+                    (_, n) => `{${translateKeyToArgMap[key][Number(n)-1]}}`
+                ).replace(
+                    // scratch-vm uses [FOO] instead of {FOO}
+                    /\[([\w]+)\]/g,
+                    (_, v) => `{${v}}`
+                );
+                if (localeUsedName.has(translation)) {
+                    localeUsedName.get(translation).push(key);
+                } else {
+                    localeUsedName.set(translation, [key]);
+                }
+            }
+            result[name][key] = translation;
+        });
+        Array.from(localeUsedName.values()).forEach(arrayKeys => {
+            if (arrayKeys.length < 2) return;
+            arrayKeys.forEach(dupeKey => localeOptions[name][dupeKey] = translateKeyToCategory(dupeKey))
+        });
+    });
 
-    const jsonString = JSON.stringify(result);
+
     // This is a hacky solution, and depends on JSON objects being parseable as JS.
     // It works so don't care.
+    const jsonString = JSON.stringify(result);
     const jsString = `/* GENERATED FILE DO NOT EDIT */\nexport default ${jsonString};`;
     const outputPath = path.join('src', 'block-mapping', 'translations.js');
     writeFile(outputPath, jsString, 'utf-8');
+
+    const jsonOpts = JSON.stringify(localeOptions);
+    const jsOpts = `/* GENERATED FILE DO NOT EDIT */\nexport default ${jsonOpts};`;
+    const optsOutputPath = path.join('src', 'block-mapping', 'options.js');
+    writeFile(optsOutputPath, jsOpts, 'utf-8');
 };
 asyncFuncy();

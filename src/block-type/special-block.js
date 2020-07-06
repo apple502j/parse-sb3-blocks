@@ -1,4 +1,4 @@
-import Block from '../block.js';
+import Block from './block.js';
 import {getSpecialMessage} from '../block-mapping/block-mapping.js';
 
 export default class SpecialBlock extends Block {
