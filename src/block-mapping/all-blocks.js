@@ -553,6 +553,33 @@ const soundEffects = {
     }
 };
 
+const keyOptions = {
+    space: {
+        translationKey: 'EVENT_WHENKEYPRESSED_SPACE',
+        defaultMessage: 'space'
+    },
+    'up arrow': {
+        translationKey: 'EVENT_WHENKEYPRESSED_UP',
+        defaultMessage: 'up arrow'
+    },
+    'down arrow': {
+        translationKey: 'EVENT_WHENKEYPRESSED_DOWN',
+        defaultMessage: 'down arrow'
+    },
+    'right arrow': {
+        translationKey: 'EVENT_WHENKEYPRESSED_RIGHT',
+        defaultMessage: 'right arrow'
+    },
+    'left arrow': {
+        translationKey: 'EVENT_WHENKEYPRESSED_LEFT',
+        defaultMessage: 'left arrow'
+    },
+    any: {
+        translationKey: 'EVENT_WHENKEYPRESSED_ANY',
+        defaultMessage: 'any'
+    }
+};
+
 export const allMenus = {
     motion_pointtowards: {
         _mouse_: {
@@ -636,32 +663,7 @@ export const allMenus = {
             defaultMessage: 'timer'
         }
     },
-    event_whenkeypressed: {
-        space: {
-            translationKey: 'EVENT_WHENKEYPRESSED_SPACE',
-            defaultMessage: 'space'
-        },
-        'up arrow': {
-            translationKey: 'EVENT_WHENKEYPRESSED_UP',
-            defaultMessage: 'up arrow'
-        },
-        'down arrow': {
-            translationKey: 'EVENT_WHENKEYPRESSED_DOWN',
-            defaultMessage: 'down arrow'
-        },
-        'right arrow': {
-            translationKey: 'EVENT_WHENKEYPRESSED_RIGHT',
-            defaultMessage: 'right arrow'
-        },
-        'left arrow': {
-            translationKey: 'EVENT_WHENKEYPRESSED_LEFT',
-            defaultMessage: 'left arrow'
-        },
-        any: {
-            translationKey: 'EVENT_WHENKEYPRESSED_ANY',
-            defaultMessage: 'any'
-        }
-    },
+    event_whenkeypressed: keyOptions,
     control_stop: {
         all: {
             translationKey: 'CONTROL_STOP_ALL',
@@ -680,6 +682,163 @@ export const allMenus = {
         _myself_: {
             translationKey: 'CONTROL_CREATECLONEOF_MYSELF',
             defaultMessage: 'myself'
+        }
+    },
+    sensing_touchingobject: {
+        _mouse_: {
+            translationKey: 'SENSING_TOUCHINGOBJECT_POINTER',
+            defaultMessage: 'mouse-pointer'
+        },
+        _edge_: {
+            translationKey: 'SENSING_TOUCHINGOBJECT_EDGE',
+            defaultMessage: 'edge'
+        }
+    },
+    sensing_distanceto: {
+        _mouse_: {
+            translationKey: 'SENSING_DISTANCETO_POINTER',
+            defaultMessage: 'mouse-pointer'
+        }
+    },
+    sensing_keypressed: keyOptions,
+    sensing_setdragmode: {
+        draggable: {
+            translationKey: 'SENSING_SETDRAGMODE_DRAGGABLE',
+            defaultMessage: 'draggable'
+        },
+        'not draggable': {
+            translationKey: 'SENSING_SETDRAGMODE_NOTDRAGGABLE',
+            defaultMessage: 'not draggable'
+        }
+    },
+    sensing_of: {
+        _stage_: {
+            translationKey: 'SENSING_OF_STAGE',
+            defaultMessage: 'Stage'
+        },
+        'x position': {
+            translationKey: 'SENSING_OF_XPOSITION',
+            defaultMessage: 'x position'
+        },
+        'y position': {
+            translationKey: 'SENSING_OF_YPOSITION',
+            defaultMessage: 'y position'
+        },
+        direction: {
+            translationKey: 'SENSING_OF_DIRECTION',
+            defaultMessage: 'direction'
+        },
+        'costume #': {
+            translationKey: 'SENSING_OF_COSTUMENUMBER',
+            defaultMessage: 'costume #'
+        },
+        'costume name': {
+            translationKey: 'SENSING_OF_COSTUMENAME',
+            defaultMessage: 'costume name'
+        },
+        size: {
+            translationKey: 'SENSING_OF_SIZE',
+            defaultMessage: 'size'
+        },
+        volume: {
+            translationKey: 'SENSING_OF_VOLUME',
+            defaultMessage: 'volume'
+        },
+        'backdrop #': {
+            translationKey: 'SENSING_OF_BACKDROPNUMBER',
+            defaultMessage: 'backdrop #'
+        },
+        'backdrop name': {
+            translationKey: 'SENSING_OF_BACKDROPNAME',
+            defaultMessage: 'backdrop name'
+        }
+    },
+    sensing_current: {
+        YEAR: {
+            translationKey: 'SENSING_CURRENT_YEAR',
+            defaultMessage: 'year'
+        },
+        MONTH: {
+            translationKey: 'SENSING_CURRENT_MONTH',
+            defaultMessage: 'month'
+        },
+        DATE: {
+            translationKey: 'SENSING_CURRENT_DATE',
+            defaultMessage: 'date'
+        },
+        DAYOFWEEK: {
+            translationKey: 'SENSING_CURRENT_DAYOFWEEK',
+            defaultMessage: 'day of week'
+        },
+        HOUR: {
+            translationKey: 'SENSING_CURRENT_HOUR',
+            defaultMessage: 'hour'
+        },
+        MINUTE: {
+            translationKey: 'SENSING_CURRENT_MINUTE',
+            defaultMessage: 'minute'
+        },
+        SECOND: {
+            translationKey: 'SENSING_CURRENT_SECOND',
+            defaultMessage: 'second'
+        }
+    },
+    operator_mathop: {
+        abs: {
+            translationKey: 'OPERATORS_MATHOP_ABS',
+            defaultMessage: 'abs'
+        },
+        floor: {
+            translationKey: 'OPERATORS_MATHOP_FLOOR',
+            defaultMessage: 'floor'
+        },
+        ceiling: {
+            translationKey: 'OPERATORS_MATHOP_CEILING',
+            defaultMessage: 'ceiling'
+        },
+        sqrt: {
+            translationKey: 'OPERATORS_MATHOP_SQRT',
+            defaultMessage: 'sqrt'
+        },
+        sin: {
+            translationKey: 'OPERATORS_MATHOP_SIN',
+            defaultMessage: 'sin'
+        },
+        cos: {
+            translationKey: 'OPERATORS_MATHOP_COS',
+            defaultMessage: 'cos'
+        },
+        tan: {
+            translationKey: 'OPERATORS_MATHOP_TAN',
+            defaultMessage: 'tan'
+        },
+        asin: {
+            translationKey: 'OPERATORS_MATHOP_ASIN',
+            defaultMessage: 'asin'
+        },
+        acos: {
+            translationKey: 'OPERATORS_MATHOP_ACOS',
+            defaultMessage: 'acos'
+        },
+        atan: {
+            translationKey: 'OPERATORS_MATHOP_ATAN',
+            defaultMessage: 'atan'
+        },
+        ln: {
+            translationKey: 'OPERATORS_MATHOP_LN',
+            defaultMessage: 'ln'
+        },
+        log: {
+            translationKey: 'OPERATORS_MATHOP_LOG',
+            defaultMessage: 'log'
+        },
+        'e ^': {
+            translationKey: 'OPERATORS_MATHOP_EEXP',
+            defaultMessage: 'e ^'
+        },
+        '10 ^': {
+            translationKey: 'OPERATORS_MATHOP_10EXP',
+            defaultMessage: '10 ^'
         }
     }
 };
