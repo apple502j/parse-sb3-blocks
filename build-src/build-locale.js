@@ -67,10 +67,12 @@ const asyncFuncy = async () => {
                     /\[([\w]+)\]/g,
                     (_, v) => `{${v}}`
                 );
-                if (localeUsedName.has(translation)) {
-                    localeUsedName.get(translation).push(key);
+                // scratchblocks does not care about params.
+                const translationWithoutParam = translation.replace(/\{[\w]+\}/g, '').trim();
+                if (localeUsedName.has(translationWithoutParam)) {
+                    localeUsedName.get(translationWithoutParam).push(key);
                 } else {
-                    localeUsedName.set(translation, [key]);
+                    localeUsedName.set(translationWithoutParam, [key]);
                 }
             }
             result[name][key] = translation;

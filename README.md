@@ -72,7 +72,7 @@ all-blocks.js default-exports allBlocks, which is an object with opcode as key a
 
 The object has these keys and values:
 - isSpecialBlock: If set to `true`, it uses `SpecialBlock`, meaning it used icons and translations must be picked from special-messages.js. Also, if this is true, all other properties are optional.
-- noTranslation: If set to `true`, it will be ignored from transation generator.
+- noTranslation: If set to `true`, it will be ignored from translation generator.
 - defaultMessage: Message in default language (English).
 - type: The block type. Defaults to `BlockEnum.BLOCK`.
 - defaultOptions: The block option for the block when using defaultMessage, in case duplicates exist. It can have category key and the category as a value.

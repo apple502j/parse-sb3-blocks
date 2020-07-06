@@ -320,6 +320,168 @@ export default {
     sensing_username: {
         defaultMessage: 'username',
         type: REPORTER_BLOCK
+    },
+    operator_add: {
+        defaultMessage: '{NUM1} + {NUM2}',
+        translationKey: 'OPERATORS_ADD',
+        type: REPORTER_BLOCK
+    },
+    operator_subtract: {
+        defaultMessage: '{NUM1} - {NUM2}',
+        translationKey: 'OPERATORS_SUBTRACT',
+        type: REPORTER_BLOCK
+    },
+    operator_multiply: {
+        defaultMessage: '{NUM1} * {NUM2}',
+        translationKey: 'OPERATORS_MULTIPLY',
+        type: REPORTER_BLOCK
+    },
+    operator_divide: {
+        defaultMessage: '{NUM1} / {NUM2}',
+        translationKey: 'OPERATORS_DIVIDE',
+        type: REPORTER_BLOCK
+    },
+    operator_random: {
+        defaultMessage: 'pick random {FROM} to {TO}',
+        translationKey: 'OPERATORS_RANDOM',
+        type: REPORTER_BLOCK
+    },
+    operator_lt: {
+        defaultMessage: '{OPERAND1} < {OPERAND2}',
+        translationKey: 'OPERATORS_LT',
+        type: BOOLEAN_BLOCK
+    },
+    operator_equals: {
+        defaultMessage: '{OPERAND1} = {OPERAND2}',
+        translationKey: 'OPERATORS_EQUALS',
+        type: BOOLEAN_BLOCK
+    },
+    operator_gt: {
+        defaultMessage: '{OPERAND1} > {OPERAND2}',
+        translationKey: 'OPERATORS_GT',
+        type: BOOLEAN_BLOCK
+    },
+    operator_and: {
+        defaultMessage: '{OPERAND1} and {OPERAND2}',
+        translationKey: 'OPERATORS_AND',
+        type: BOOLEAN_BLOCK,
+        boolArg: ['OPERAND1', 'OPERAND2']
+    },
+    operator_or: {
+        defaultMessage: '{OPERAND1} or {OPERAND2}',
+        translationKey: 'OPERATORS_OR',
+        type: BOOLEAN_BLOCK,
+        boolArg: ['OPERAND1', 'OPERAND2']
+    },
+    operator_not: {
+        defaultMessage: 'not {OPERAND}',
+        translationKey: 'OPERATORS_NOT',
+        type: BOOLEAN_BLOCK,
+        boolArg: ['OPERAND']
+    },
+    operator_join: {
+        defaultMessage: 'join {STRING1} {STRING2}',
+        translationKey: 'OPERATORS_JOIN',
+        type: REPORTER_BLOCK
+    },
+    operator_letter_of: {
+        defaultMessage: 'letter {LETTER} of {STRING}',
+        translationKey: 'OPERATORS_LETTEROF',
+        type: REPORTER_BLOCK
+    },
+    operator_length: {
+        defaultMessage: 'length of {STRING}',
+        translationKey: 'OPERATORS_LENGTH',
+        type: REPORTER_BLOCK
+    },
+    operator_contains: {
+        defaultMessage: '{STRING1} contains {STRING2} ?',
+        translationKey: 'OPERATORS_CONTAINS',
+        type: BOOLEAN_BLOCK
+    },
+    operator_mod: {
+        defaultMessage: '{NUM1} mod {NUM2}',
+        translationKey: 'OPERATORS_MOD',
+        type: REPORTER_BLOCK
+    },
+    operator_round: {
+        defaultMessage: 'round {NUM}',
+        translationKey: 'OPERATORS_ROUND',
+        type: REPORTER_BLOCK
+    },
+    operator_mathop: {
+        defaultMessage: '{OPERATOR} of {NUM}',
+        translationKey: 'OPERATORS_MATHOP',
+        type: REPORTER_BLOCK
+    },
+    data_variable: {
+        noTranslation: true
+    },
+    data_setvariableto: {
+        defaultMessage: 'set {VARIABLE} to {VALUE}'
+    },
+    data_changevariableby: {
+        defaultMessage: 'change {VARIABLE} by {VALUE}'
+    },
+    data_showvariable: {
+        defaultMessage: 'show variable {VARIABLE}'
+    },
+    data_hidevariable: {
+        defaultMessage: 'hide variable {VARIABLE}'
+    },
+    data_listcontents: {
+        noTranslation: true
+    },
+    data_addtolist: {
+        defaultMessage: 'add {ITEM} to {LIST}'
+    },
+    data_deleteoflist: {
+        defaultMessage: 'delete {INDEX} of {LIST}'
+    },
+    data_deletealloflist: {
+        defaultMessage: 'delete all of {LIST}'
+    },
+    data_insertatlist: {
+        defaultMessage: 'insert {ITEM} at {INDEX} of {LIST}'
+    },
+    data_replaceitemoflist: {
+        defaultMessage: 'replace item {INDEX} of {LIST} with {ITEM}'
+    },
+    data_itemoflist: {
+        defaultMessage: 'item {INDEX} of {LIST}',
+        type: REPORTER_BLOCK
+    },
+    data_itemnumoflist: {
+        defaultMessage: 'item # of {ITEM} in {LIST}',
+        type: REPORTER_BLOCK
+    },
+    data_lengthoflist: {
+        defaultMessage: 'length of {LIST}',
+        type: REPORTER_BLOCK
+    },
+    data_listcontainsitem: {
+        defaultMessage: '{LIST} contains {ITEM} ?',
+        type: BOOLEAN_BLOCK
+    },
+    data_showlist: {
+        defaultMessage: 'show list {LIST}'
+    },
+    data_hidelist: {
+        defaultMessage: 'hide list {LIST}'
+    },
+    procedures_definition: {
+        defaultMessage: 'define {PROC}'
+    },
+    procedures_call: {
+        noTranslation: true
+    },
+    argument_reporter_boolean: {
+        noTranslation: true,
+        type: BOOLEAN_BLOCK
+    },
+    argument_reporter_string_number: {
+        noTranslation: true,
+        type: REPORTER_BLOCK
     }
 };
 
