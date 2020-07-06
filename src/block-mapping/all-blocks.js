@@ -147,6 +147,7 @@ export default {
     },
     sound_seteffectto: {
         defaultMessage: 'set {EFFECT} effect to {VALUE}',
+        translationKey: 'SOUND_SETEFFECTO', // typo in scratch-blocks
         defaultOptions: {
             category: 'sound'
         }
@@ -250,5 +251,204 @@ export default {
     control_delete_this_clone: {
         defaultMessage: 'delete this clone',
         translationKey: 'CONTROL_DELETETHISCLONE'
+    }
+};
+
+const effects = {
+    COLOR: {
+        translationKey: 'LOOKS_EFFECT_COLOR',
+        defaultMessage: 'color'
+    },
+    FISHEYE: {
+        translationKey: 'LOOKS_EFFECT_FISHEYE',
+        defaultMessage: 'fisheye'
+    },
+    WHIRL: {
+        translationKey: 'LOOKS_EFFECT_WHIRL',
+        defaultMessage: 'whirl'
+    },
+    PIXELATE: {
+        translationKey: 'LOOKS_EFFECT_PIXELATE',
+        defaultMessage: 'pixelate'
+    },
+    MOSAIC: {
+        translationKey: 'LOOKS_EFFECT_MOSAIC',
+        defaultMessage: 'mosaic'
+    },
+    BRIGHTNESS: {
+        translationKey: 'LOOKS_EFFECT_BRIGHTNESS',
+        defaultMessage: 'brightness'
+    },
+    GHOST: {
+        translationKey: 'LOOKS_EFFECT_GHOST',
+        defaultMessage: 'ghost'
+    }
+};
+
+const backdrops = {
+    'next backdrop': {
+        translationKey: 'LOOKS_NEXTBACKDROP',
+        defaultMessage: 'next backdrop'
+    },
+    'previous backdrop': {
+        translationKey: 'LOOKS_PREVIOUSBACKDROP',
+        defaultMessage: 'previous backdrop'
+    },
+    'random backdrop': {
+        translationKey: 'LOOKS_RANDOMBACKDROP',
+        defaultMessage: 'random backdrop'
+    }
+};
+
+const numberName = {
+    number: {
+        translationKey: 'LOOKS_NUMBERNAME_NUMBER',
+        defaultMessage: 'number'
+    },
+    name: {
+        translationKey: 'LOOKS_NUMBERNAME_NAME',
+        defaultMessage: 'name'
+    }
+};
+
+const soundEffects = {
+    PITCH: {
+        translationKey: 'SOUND_EFFECTS_PITCH',
+        defaultMessage: 'pitch'
+    },
+    PAN: {
+        translationKey: 'SOUND_EFFECTS_PAN',
+        defaultMessage: 'pan'
+    }
+};
+
+export const allMenus = {
+    motion_pointtowards: {
+        _mouse_: {
+            translationKey: 'MOTION_POINTTOWARDS_POINTER',
+            defaultMessage: 'mouse-pointer'
+        },
+        _random_: {
+            translationKey: 'MOTION_POINTTOWARDS_RANDOM',
+            defaultMessage: 'random position'
+        }
+    },
+    motion_goto: {
+        _mouse_: {
+            translationKey: 'MOTION_GOTO_POINTER',
+            defaultMessage: 'mouse-pointer'
+        },
+        _random_: {
+            translationKey: 'MOTION_GOTO_RANDOM',
+            defaultMessage: 'random position'
+        }
+    },
+    motion_glideto: {
+        _mouse_: {
+            translationKey: 'MOTION_GLIDETO_POINTER',
+            defaultMessage: 'mouse-pointer'
+        },
+        _random_: {
+            translationKey: 'MOTION_GLIDETO_RANDOM',
+            defaultMessage: 'random position'
+        }
+    },
+    motion_setrotationstyle: {
+        'left-right': {
+            translationKey: 'MOTION_SETROTATIONSTYLE_LEFTRIGHT',
+            defaultMessage: 'left-right'
+        },
+        'don\'t rotate': {
+            translationKey: 'MOTION_SETROTATIONSTYLE_DONTROTATE',
+            defaultMessage: 'don\'t rotate'
+        },
+        'all around': {
+            translationKey: 'MOTION_SETROTATIONSTYLE_ALLAROUND',
+            defaultMessage: 'all around'
+        }
+    },
+    looks_changeeffectby: effects,
+    looks_seteffectto: effects,
+    looks_switchbackdropto: backdrops,
+    looks_gotofrontback: {
+        front: {
+            translationKey: 'LOOKS_GOTOFRONTBACK_FRONT',
+            defaultMessage: 'front'
+        },
+        back: {
+            translationKey: 'LOOKS_GOTOFRONTBACK_BACK',
+            defaultMessage: 'back'
+        }
+    },
+    looks_goforwardbackwardlayers: {
+        forward: {
+            translationKey: 'LOOKS_GOFORWARDBACKWARDLAYERS_FORWARD',
+            defaultMessage: 'forward'
+        },
+        backward: {
+            translationKey: 'LOOKS_GOFORWARDBACKWARDLAYERS_BACKWARD',
+            defaultMessage: 'backward'
+        }
+    },
+    looks_backdropnumbername: numberName,
+    looks_costumenumbername: numberName,
+    looks_switchbackdroptoandwait: backdrops,
+    sound_seteffectto: soundEffects,
+    sound_changeeffectby: soundEffects,
+    event_whengreaterthan: {
+        LOUDNESS: {
+            translationKey: 'EVENT_WHENGREATERTHAN_LOUDNESS',
+            defaultMessage: 'loudness'
+        },
+        TIMER: {
+            translationKey: 'EVENT_WHENGREATERTHAN_TIMER',
+            defaultMessage: 'timer'
+        }
+    },
+    event_whenkeypressed: {
+        space: {
+            translationKey: 'EVENT_WHENKEYPRESSED_SPACE',
+            defaultMessage: 'space'
+        },
+        'up arrow': {
+            translationKey: 'EVENT_WHENKEYPRESSED_UP',
+            defaultMessage: 'up arrow'
+        },
+        'down arrow': {
+            translationKey: 'EVENT_WHENKEYPRESSED_DOWN',
+            defaultMessage: 'down arrow'
+        },
+        'right arrow': {
+            translationKey: 'EVENT_WHENKEYPRESSED_RIGHT',
+            defaultMessage: 'right arrow'
+        },
+        'left arrow': {
+            translationKey: 'EVENT_WHENKEYPRESSED_LEFT',
+            defaultMessage: 'left arrow'
+        },
+        any: {
+            translationKey: 'EVENT_WHENKEYPRESSED_ANY',
+            defaultMessage: 'any'
+        }
+    },
+    control_stop: {
+        all: {
+            translationKey: 'CONTROL_STOP_ALL',
+            defaultMessage: 'all'
+        },
+        'this script': {
+            translationKey: 'CONTROL_STOP_THIS',
+            defaultMessage: 'this script'
+        },
+        'other scripts in sprite': {
+            translationKey: 'CONTROL_STOP_OTHER',
+            defaultMessage: 'other scripts in sprite'
+        }
+    },
+    control_create_clone_of: {
+        _myself_: {
+            translationKey: 'CONTROL_CREATECLONEOF_MYSELF',
+            defaultMessage: 'myself'
+        }
     }
 };

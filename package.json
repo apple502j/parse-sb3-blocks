@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test:lint",
     "test:lint": "eslint . --ext .js",
-    "locale": "node --experimental-repl-await ./build-src/build-locale.js"
+    "locale": "node --experimental-json-modules ./build-src/build-locale.js"
   },
   "repository": {
     "type": "git",
