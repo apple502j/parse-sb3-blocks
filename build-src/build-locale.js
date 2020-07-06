@@ -8,8 +8,8 @@ const writeFile = promisify(fs.writeFile);
 const localeNames = Object.keys(localeObject.default);
 
 const translateKeyToCategory = key => {
-    if (key.includes("_")) return key.split("_")[0].toLowerCase();
-    if (key.includes(".")) return key.split(".")[0];
+    if (key.includes('_')) return key.split('_')[0].toLowerCase();
+    if (key.includes('.')) return key.split('.')[0];
 };
 
 const asyncFuncy = async () => {
@@ -61,7 +61,7 @@ const asyncFuncy = async () => {
                 translation = translation.replace(
                     // scratch-blocks uses 1-indexed percent: %1, %2
                     /%([\d]+)/g,
-                    (_, n) => `{${translateKeyToArgMap[key][Number(n)-1]}}`
+                    (_, n) => `{${translateKeyToArgMap[key][Number(n) - 1]}}`
                 ).replace(
                     // scratch-vm uses [FOO] instead of {FOO}
                     /\[([\w]+)\]/g,
@@ -77,7 +77,7 @@ const asyncFuncy = async () => {
         });
         Array.from(localeUsedName.values()).forEach(arrayKeys => {
             if (arrayKeys.length < 2) return;
-            arrayKeys.forEach(dupeKey => localeOptions[name][dupeKey] = translateKeyToCategory(dupeKey))
+            arrayKeys.forEach(dupeKey => localeOptions[name][dupeKey] = translateKeyToCategory(dupeKey));
         });
     });
 

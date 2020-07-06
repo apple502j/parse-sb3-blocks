@@ -2,11 +2,17 @@
   "name": "parse-sb3-blocks",
   "version": "0.1.0",
   "description": "Parse sb3 blocks",
-  "main": "index.js",
+  "main": "dist/parse-sb3-blocks.cjs",
+  "browser": "dist/parse-sb3-blocks.browser.js",
+  "module": "dist/parse-sb3-blocks.module.js",
   "scripts": {
     "test": "npm run test:lint",
     "test:lint": "eslint . --ext .js",
-    "locale": "node --experimental-json-modules ./build-src/build-locale.js"
+    "build": "npm run locale && npm run rollup",
+    "rollup": "rollup -c",
+    "locale": "npm run locale:build && npm run locale:special",
+    "locale:build": "node --experimental-json-modules ./build-src/build-locale.js",
+    "locale:special": "node ./build-src/download-special-messages.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +29,15 @@
   },
   "homepage": "https://github.com/apple502j/parse-sb3-blocks#readme",
   "devDependencies": {
+    "@rollup/plugin-babel": "^5.0.4",
     "eslint": "^7.4.0",
+    "node-fetch": "^2.6.0",
+    "rollup": "^2.19.0",
+    "rollup-plugin-terser": "^6.1.0",
     "scratch-l10n": "^3.10.20200624030914"
   },
-  "type": "module"
+  "type": "module",
+  "files": [
+    "dist"
+  ]
 }

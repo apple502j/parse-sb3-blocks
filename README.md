@@ -4,7 +4,7 @@
 ## Usage
 ### Example
 ```js
-import toScratchblocks from 'parse-sb3-blocks';
+import {toScratchblocks} from 'parse-sb3-blocks';
 
 const sb3blocks = {
     'ND,(]G?KLIy(IZrd2sl.': {
@@ -17,7 +17,7 @@ console.log(toScratchblocks('ND,(]G?KLIy(IZrd2sl.', sb3blocks, 'en', {tabs: ' '.
 ```
 
 ### toScratchblocks
-**toScratchblocks** is a default-exported function. This can take three to four arguments:
+**toScratchblocks** is a function. This can take three to four arguments:
 
 - scriptStart: The block ID to start parsing from. **This must be a block ID of Connectable** (which includes stack block, hat block, definition block, procedure call block, C block, E block and cap block.)
 - blocks: serialized SB3 format (project.json format) of blocks.
@@ -47,7 +47,7 @@ Inputtable can be used as an argument. Note that `Icon` is not technically an ar
 - ReporterBlock
 - Input and its subclasses NumberInput, StringInput, ColorPickerInput, BroadcastMenuInput, EmptyBooleanInput
 
-Both Connectable and Inputtable implement `toScratchblocks` method. It accepts `locale` and `opts`, similar to the default-exported `toScratchblocks`.
+Both Connectable and Inputtable implement `toScratchblocks` method. It accepts `locale` and `opts`, similar to the exported `toScratchblocks`.
 
 Instances with class name ending with "Block" have these attributes:
 - `id` for block ID
@@ -59,7 +59,7 @@ Instances with class name ending with "Block" have these attributes:
 
 `translations.js` is an auto-generated file which includes all translations. `options.js` is also auto-generated, and contains which block needs options (because of conflicting names).
 
-`special-messages.js` is basically the same as [extra_aliases.js](https://github.com/scratchblocks/scratchblocks/blob/master/locales-src/extra_aliases.js) used in scratchblocks.
+`special-messages.js` is automatically generated from [extra_aliases.js](https://github.com/scratchblocks/scratchblocks/blob/master/locales-src/extra_aliases.js).
 
 **Only blocks and menu items in all-blocks.js is supported.**
 
@@ -73,3 +73,10 @@ The object has these keys and values:
 - defaultOptions: The block option for the block when using defaultMessage, in case duplicates exist. It can have category key and the category as a value.
 - translationKey: Translation key for scratch-l10n. Defaults to the block opcode, upper-cased.
 - boolArg: Array of arguments which must be boolean. Used to fill empty arguments with `EmptyBooleanInput`. If omitted, empty array is used.
+
+## Building
+Node 14+ is preferred for building. Type `npm run build`, which generates locale files.
+
+### env
+- `mode`: Unless set to `dev`, the result is minified.
+- `SPECIAL_MESSAGES_URL`: URL to extra_aliases.js

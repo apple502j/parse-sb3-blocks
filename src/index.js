@@ -33,7 +33,7 @@ import {
 } from './block-mapping/block-enum.js';
 
 export {
-    toScratchblocks as default,
+    toScratchblocks,
     parseScript,
 
     Block,

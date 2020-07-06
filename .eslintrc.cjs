@@ -14,7 +14,7 @@ module.exports = {
         "no-prototype-builtins": "off",
         "no-template-curly-in-string": "error",
         "default-case-last": "error",
-        "dot-location": "error",
+        "dot-location": ["error", "property"],
         "dot-notation": "error",
         "eqeqeq": "error",
         "no-else-return": "error",
