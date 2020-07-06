@@ -1,5 +1,5 @@
 import Block from './block.js';
-import {getMessageForLocale, getSpecialMessage} from '../block-mapping/block-mapping.js';
+import {getSpecialMessage} from '../block-mapping/block-mapping.js';
 
 export default class EBlock extends Block {
     constructor (id, opcode, inputtables, block_key, else_key) {
@@ -14,7 +14,6 @@ export default class EBlock extends Block {
         const elseLabel = getSpecialMessage(locale, 'else');
         const elseBlocks = this.inputtables[this.else_key].toScratchblocks(locale, {tab: opts.tab});
         const end = getSpecialMessage(locale, 'end');
-        const tab = opts.tab || '';
         return `${blockLabel}${this.useOptions(locale, opts)}
 ${firstBlocks}
 ${elseLabel}

@@ -8,16 +8,16 @@ export default class Block {
     }
 
     blockSyntax (locale) {
-        let syntax = getMessageForLocale(locale, this.opcode);
+        const syntax = getMessageForLocale(locale, this.opcode);
         return syntax.replace(
-            /\({[\w-]\)}/g,
+            /\{([\w-]+)\}/g,
             (_, key) => this.inputtables[key].toScratchblocks(locale)
         );
     }
 
     useOptions (locale, opts) {
         opts = Object.assign({}, getOptsForLocale(locale, this.opcode), opts);
-        let optionArray = [];
+        const optionArray = [];
         if (opts.category) optionArray.push(opts.category);
         if (opts.type) optionArray.push(opts.type);
         if (optionArray.length) return `::${optionArray.join(' ')}`;

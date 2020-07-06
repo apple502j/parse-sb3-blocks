@@ -1,0 +1,10 @@
+node_modules/*
+static/*
+build/*
+dist/*
+intl/*
+locales/*
+**/*.min.js
+**/node_modules/*
+**/translations.js
+test-*.js

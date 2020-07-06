@@ -1,5 +1,5 @@
 import {
-    BOOLEAN_BLOCK,
+    BOOLEAN_BLOCK, // eslint-disable-line no-unused-vars
     C_BLOCK,
     E_BLOCK,
     REPORTER_BLOCK
@@ -7,7 +7,7 @@ import {
 
 export default {
     motion_movesteps: {
-        defaultMessage: "move {STEPS} steps"
+        defaultMessage: 'move {STEPS} steps'
     },
     motion_turnright: {
         isSpecialBlock: true
@@ -16,239 +16,239 @@ export default {
         isSpecialBlock: true
     },
     motion_pointindirection: {
-        defaultMessage: "point in direction {DIRECTION}"
+        defaultMessage: 'point in direction {DIRECTION}'
     },
     motion_pointtowards: {
-        defaultMessage: "point towards {TOWARDS}"
+        defaultMessage: 'point towards {TOWARDS}'
     },
     motion_gotoxy: {
-        defaultMessage: "go to x:{X} y:{Y}"
+        defaultMessage: 'go to x:{X} y:{Y}'
     },
     motion_goto: {
-        defaultMessage: "go to {TO}"
+        defaultMessage: 'go to {TO}'
     },
     motion_glidesecstoxy: {
-        defaultMessage: "glide {SECS} secs to x:{X} y:{Y}"
+        defaultMessage: 'glide {SECS} secs to x:{X} y:{Y}'
     },
     motion_glideto: {
-        defaultMessage: "glide {SECS} secs to {TO}"
+        defaultMessage: 'glide {SECS} secs to {TO}'
     },
     motion_changexby: {
-        defaultMessage: "change x by {DX}"
+        defaultMessage: 'change x by {DX}'
     },
     motion_setx: {
-        defaultMessage: "set x to {X}"
+        defaultMessage: 'set x to {X}'
     },
     motion_changeyby: {
-        defaultMessage: "change y by {DY}"
+        defaultMessage: 'change y by {DY}'
     },
     motion_sety: {
-        defaultMessage: "set y to {Y}"
+        defaultMessage: 'set y to {Y}'
     },
     motion_ifonedgebounce: {
-        defaultMessage: "if on edge, bounce"
+        defaultMessage: 'if on edge, bounce'
     },
     motion_setrotationstyle: {
-        defaultMessage: "set rotation style {STYLE}"
+        defaultMessage: 'set rotation style {STYLE}'
     },
     motion_xposition: {
-        defaultMessage: "x position",
+        defaultMessage: 'x position',
         type: REPORTER_BLOCK
     },
     motion_yposition: {
-        defaultMessage: "y position",
+        defaultMessage: 'y position',
         type: REPORTER_BLOCK
     },
     motion_direction: {
-        defaultMessage: "direction",
+        defaultMessage: 'direction',
         type: REPORTER_BLOCK
     },
     looks_sayforsecs: {
-        defaultMessage: "say {MESSAGE} for {SECS} seconds"
+        defaultMessage: 'say {MESSAGE} for {SECS} seconds'
     },
     looks_say: {
-        defaultMessage: "say {MESSAGE}"
+        defaultMessage: 'say {MESSAGE}'
     },
     looks_thinkforsecs: {
-        defaultMessage: "think {MESSAGE} for {SECS} seconds"
+        defaultMessage: 'think {MESSAGE} for {SECS} seconds'
     },
     looks_think: {
-        defaultMessage: "think {MESSAGE}"
+        defaultMessage: 'think {MESSAGE}'
     },
     looks_show: {
-        defaultMessage: "show"
+        defaultMessage: 'show'
     },
     looks_hide: {
-        defaultMessage: "hide"
+        defaultMessage: 'hide'
     },
     looks_changeeffectby: {
-        defaultMessage: "change {EFFECT} effect by {CHANGE}",
+        defaultMessage: 'change {EFFECT} effect by {CHANGE}',
         defaultOptions: {
-            category: "looks"
+            category: 'looks'
         }
     },
     looks_seteffectto: {
-        defaultMessage: "set {EFFECT} effect to {VALUE}",
+        defaultMessage: 'set {EFFECT} effect to {VALUE}',
         defaultOptions: {
-            category: "looks"
+            category: 'looks'
         }
     },
     looks_cleargraphiceffects: {
-        defaultMessage: "clear graphic effects"
+        defaultMessage: 'clear graphic effects'
     },
     looks_changesizeby: {
-        defaultMessage: "change size by {CHANGE}"
+        defaultMessage: 'change size by {CHANGE}'
     },
     looks_setsizeto: {
-        defaultMessage: "set size to {SIZE} %"
+        defaultMessage: 'set size to {SIZE} %'
     },
     looks_size: {
-        defaultMessage: "size",
+        defaultMessage: 'size',
         type: REPORTER_BLOCK
     },
     looks_switchcostumeto: {
-        defaultMessage: "switch costume to {COSTUME}"
+        defaultMessage: 'switch costume to {COSTUME}'
     },
     looks_nextcostume: {
-        defaultMessage: "next costume"
+        defaultMessage: 'next costume'
     },
     looks_switchbackdropto: {
-        defaultMessage: "switch backdrop to {BACKDROP}"
+        defaultMessage: 'switch backdrop to {BACKDROP}'
     },
     looks_gotofrontback: {
-        defaultMessage: "go to {FRONT_BACK} layer"
+        defaultMessage: 'go to {FRONT_BACK} layer'
     },
     looks_goforwardbackwardlayers: {
-        defaultMessage: "go {FORWARD_BACKWARD} {NUM} layers"
+        defaultMessage: 'go {FORWARD_BACKWARD} {NUM} layers'
     },
     looks_backdropnumbername: {
-        defaultMessage: "backdrop {NUMBER_NAME}",
+        defaultMessage: 'backdrop {NUMBER_NAME}',
         type: REPORTER_BLOCK
     },
     looks_costumenumbername: {
-        defaultMessage: "costume {NUMBER_NAME}",
+        defaultMessage: 'costume {NUMBER_NAME}',
         type: REPORTER_BLOCK
     },
     looks_switchbackdroptoandwait: {
-        defaultMessage: "switch backdrop to {BACKDROP} and wait"
+        defaultMessage: 'switch backdrop to {BACKDROP} and wait'
     },
     looks_nextbackdrop: {
-        defaultMessage: "next backdrop",
-        translationKey: "LOOKS_NEXTBACKDROP_BLOCK"
+        defaultMessage: 'next backdrop',
+        translationKey: 'LOOKS_NEXTBACKDROP_BLOCK'
     },
     sound_play: {
-        defaultMessage: "start sound {SOUND_MENU}",
+        defaultMessage: 'start sound {SOUND_MENU}',
     },
     sound_playuntildone: {
-        defaultMessage: "play sound {SOUND_MENU} until done"
+        defaultMessage: 'play sound {SOUND_MENU} until done'
     },
     sound_stopallsounds: {
-        defaultMessage: "stop all sounds"
+        defaultMessage: 'stop all sounds'
     },
     sound_seteffectto: {
-        defaultMessage: "set {EFFECT} effect to {VALUE}",
+        defaultMessage: 'set {EFFECT} effect to {VALUE}',
         defaultOptions: {
-            category: "sound"
+            category: 'sound'
         }
     },
     sound_changeeffectby: {
-        defaultMessage: "change {EFFECT} effect by {VALUE}",
+        defaultMessage: 'change {EFFECT} effect by {VALUE}',
         defaultOptions: {
-            category: "sound"
+            category: 'sound'
         }
     },
     sound_cleareffects: {
-        defaultMessage: "clear sound effects"
+        defaultMessage: 'clear sound effects'
     },
     sound_changevolumeby: {
-        defaultMessage: "change volume by {VOLUME}"
+        defaultMessage: 'change volume by {VOLUME}'
     },
     sound_setvolumeto: {
-        defaultMessage: "set volume to {VOLUME} %"
+        defaultMessage: 'set volume to {VOLUME} %'
     },
     sound_volume: {
-        defaultMessage: "volume",
+        defaultMessage: 'volume',
         type: REPORTER_BLOCK
     },
     event_whenflagclicked: {
         isSpecialBlock: true
     },
     event_whenthisspriteclicked: {
-        defaultMessage: "when this sprite clicked"
+        defaultMessage: 'when this sprite clicked'
     },
     event_whenstageclicked: {
-        defaultMessage: "when stage clicked"
+        defaultMessage: 'when stage clicked'
     },
     event_whenbroadcastreceived: {
-        defaultMessage: "when I receive {BROADCAST_OPTION}"
+        defaultMessage: 'when I receive {BROADCAST_OPTION}'
     },
     event_whenbackdropswitchesto: {
-        defaultMessage: "when backdrop switches to {BACKDROP}"
+        defaultMessage: 'when backdrop switches to {BACKDROP}'
     },
     event_whengreaterthan: {
-        defaultMessage: "when {WHENGREATERTHANMENU} > {VALUE}"
+        defaultMessage: 'when {WHENGREATERTHANMENU} > {VALUE}'
     },
     event_broadcast: {
-        defaultMessage: "broadcast {BROADCAST_INPUT}"
+        defaultMessage: 'broadcast {BROADCAST_INPUT}'
     },
     event_broadcastandwait: {
-        defaultMessage: "broadcast {BROADCAST_INPUT} and wait"
+        defaultMessage: 'broadcast {BROADCAST_INPUT} and wait'
     },
     event_whenkeypressed: {
-        defaultMessage: "when {KEY_OPTION} key pressed",
+        defaultMessage: 'when {KEY_OPTION} key pressed',
         defaultOptions: {
-            category: "events"
+            category: 'events'
         }
     },
     control_forever: {
-        defaultMessage: "forever",
+        defaultMessage: 'forever',
         type: C_BLOCK
     },
     control_repeat: {
-        defaultMessage: "repeat {TIMES}",
+        defaultMessage: 'repeat {TIMES}',
         type: C_BLOCK
     },
     control_if: {
-        defaultMessage: "if {CONDITION} then",
+        defaultMessage: 'if {CONDITION} then',
         type: C_BLOCK,
-        boolArg: ["CONDITION"]
+        boolArg: ['CONDITION']
     },
     control_if_else: {
-        defaultMessage: "if {CONDITION} then",
-        translationKey: "CONTROL_IF",
+        defaultMessage: 'if {CONDITION} then',
+        translationKey: 'CONTROL_IF',
         type: E_BLOCK,
-        boolArg: ["CONDITION"]
+        boolArg: ['CONDITION']
     },
     control_else: {
-        defaultMessage: "else"
+        defaultMessage: 'else'
     },
     control_stop: {
-        defaultMessage: "stop {STOP_OPTION}"
+        defaultMessage: 'stop {STOP_OPTION}'
     },
     control_wait: {
-        defaultMessage: "wait for {DURATION} seconds"
+        defaultMessage: 'wait for {DURATION} seconds'
     },
     control_wait_until: {
-        defaultMessage: "wait until {CONDITION}",
-        translationKey: "CONTROL_WAITUNTIL",
-        boolArg: ["CONDITION"]
+        defaultMessage: 'wait until {CONDITION}',
+        translationKey: 'CONTROL_WAITUNTIL',
+        boolArg: ['CONDITION']
     },
     control_repeat_until: {
-        defaultMessage: "repeat until {CONDITION}",
-        translationKey: "CONTROL_REPEATUNTIL",
+        defaultMessage: 'repeat until {CONDITION}',
+        translationKey: 'CONTROL_REPEATUNTIL',
         type: C_BLOCK,
-        boolArg: ["CONDITION"]
+        boolArg: ['CONDITION']
     },
     control_start_as_clone: {
-        defaultMessage: "when I start as a clone",
-        translationKey: "CONTROL_STARTASCLONE"
+        defaultMessage: 'when I start as a clone',
+        translationKey: 'CONTROL_STARTASCLONE'
     },
     control_create_clone_of: {
-        defaultMessage: "create clone of {CLONE_OPTION}",
-        translationKey: "CONTROL_CREATECLONEOF"
+        defaultMessage: 'create clone of {CLONE_OPTION}',
+        translationKey: 'CONTROL_CREATECLONEOF'
     },
     control_delete_this_clone: {
-        defaultMessage: "delete this clone",
-        translationKey: "CONTROL_DELETETHISCLONE"
+        defaultMessage: 'delete this clone',
+        translationKey: 'CONTROL_DELETETHISCLONE'
     }
 };

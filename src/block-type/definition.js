@@ -9,4 +9,4 @@ export default class Definition {
     toScratchblocks (locale) {
         return getMessageForLocale(locale, 'procedures_definition').replace('{PROC}', this.proc);
     }
-};
+}

@@ -13,4 +13,4 @@ export default class ProcedureCall {
         );
         return `${procCode}::custom`;
     }
-};
+}

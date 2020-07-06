@@ -22,14 +22,14 @@ import {
     REPORTER_BLOCK
 } from '../block-mapping/block-enum.js';
 
-const BLOCK_NOT_INSERTED = 1;
+const BLOCK_NOT_INSERTED = 1; // eslint-disable-line no-unused-vars
 const BLOCK_INSERTED_NO_DEFAULT = 2;
 const BLOCK_INSERTED_DEFAULT = 3;
 
 const opcodeToIcon = {
     event_whenflagclicked: new Icon('greenFlag'),
-    motion_turnnleft: new Icon('turnLeft'),
-    motion_turnnright: new Icon('turnRight')
+    motion_turnleft: new Icon('turnLeft'),
+    motion_turnright: new Icon('turnRight')
 };
 
 const inputMap = new Map([
@@ -73,12 +73,12 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
             const inputType = inputDetails[0];
             if (inputType === 12) {
                 // normal variable block
-                inputtabes[key] = new Variable(null, inputDetails[1]);
+                inputtables[key] = new Variable(null, inputDetails[1]);
                 return;
             }
             if (inputType === 13) {
                 // normal list block
-                inputtabes[key] = new Variable(null, inputDetails[1], 'list');
+                inputtables[key] = new Variable(null, inputDetails[1], 'list');
                 return;
             }
             const inputConstructor = inputMap.get(inputType) || NumberInput;
@@ -186,7 +186,7 @@ const parseScript = (scriptStart, blocks) => {
     let blockId = scriptStart;
     const parsedBlocks = [];
     do {
-        let block = blocks[blockId];
+        const block = blocks[blockId];
         block.id = blockId;
         let parsedBlock;
         const opcode = block.opcode;
@@ -216,3 +216,5 @@ const parseScript = (scriptStart, blocks) => {
     } while (blockId);
     return parsedBlocks;
 };
+
+export default parseScript;

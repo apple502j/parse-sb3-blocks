@@ -42,6 +42,7 @@ const getMenuItemForLocale = (locale, opcode, value) => {
 
 export {
     getMessageForLocale,
+    getOptsForLocale,
     getSpecialMessage,
     isSpecialMenuValue,
     getMenuItemForLocale
