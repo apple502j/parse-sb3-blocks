@@ -11,3 +11,4 @@ test-*.js
 **/special-messages.gen.js
 **/options.js
 build.temp.js
+docs/*

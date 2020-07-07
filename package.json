@@ -1,7 +1,7 @@
 {
   "name": "parse-sb3-blocks",
   "version": "0.1.0",
-  "description": "Parse sb3 blocks",
+  "description": "Parse sb3 blocks, and generate scratchblocks formatted code.",
   "main": "dist/parse-sb3-blocks.cjs",
   "browser": "dist/parse-sb3-blocks.browser.js",
   "module": "dist/parse-sb3-blocks.module.js",
@@ -9,9 +9,12 @@
     "test": "npm run test:lint && npm run test:snapshot",
     "test:lint": "eslint . --ext .js",
     "test:snapshot": "node ./test/snapshots/snapshots.js",
-    "build": "npm run locale && npm run rollup",
+    "docs": "node ./build-src/docs.js",
+    "build": "npm run locale && npm run rollup && npm run docs",
+    "build:nolocale": "npm run nolocale && npm run rollup",
     "rollup": "rollup -c",
     "locale": "npm run locale:build && npm run locale:special",
+    "nolocale": "node ./build-src/build-nolocale.js",
     "locale:build": "node --experimental-json-modules ./build-src/build-locale.js",
     "locale:special": "node ./build-src/download-special-messages.js",
     "prepublishOnly": "npm run test && npm run locale && rollup -c --environment mode:prod"
