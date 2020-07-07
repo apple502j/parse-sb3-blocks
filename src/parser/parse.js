@@ -55,7 +55,8 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
             inputtables[key] = new Stack(parseScript(value[1], blocks));
             return;
         }
-        if (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT) {
+        const isInputVariable = Array.isArray(value[1]) && value[1][0] > 11;
+        if (!isInputVariable && (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT)) {
             // There's a block above it. We don't care about shadows
             inputtables[key] = parseInsertedBlock(value[1], blocks);
             return;
@@ -132,6 +133,8 @@ const getDefinition = (block, blocks) => {
         b: 0
     };
     JSON.parse(definition.mutation.argumentids).forEach(argId => {
+        // For Scratch 2.0-ish definitions
+        argId = definition.inputs[argId][1];
         const argBlock = blocks[argId];
         const arg = argBlock.fields.VALUE[0];
         if (argBlock.opcode === 'argument_reporter_string_number') {
@@ -140,7 +143,7 @@ const getDefinition = (block, blocks) => {
             args.b.push(`<${arg}>`);
         }
     });
-    return definition.proccode.replace(
+    return definition.mutation.proccode.replace(
         /%([sb])/g,
         (_, s_b) => {
             return args[s_b][counts[s_b]++];
@@ -163,7 +166,8 @@ const getProcCallArgs = (block, blocks) => {
             argObj = new EmptyBooleanInput();
         } else {
             const shadowType = input[0];
-            if (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT) {
+            const isInputVariable = Array.isArray(input[1]) && input[1][0] > 11;
+            if (!isInputVariable && (shadowType === BLOCK_INSERTED_DEFAULT || shadowType === BLOCK_INSERTED_NO_DEFAULT)) {
                 argObj = parseInsertedBlock(input[1], blocks);
             } else {
                 const inputDetails = input[1];

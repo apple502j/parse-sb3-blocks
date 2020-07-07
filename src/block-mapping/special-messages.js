@@ -2,7 +2,6 @@ import specialMessages from './special-messages.gen.js';
 
 export default Object.assign({
     default: {
-        end: 'end',
         event_whenflagclicked: 'when {ICON} clicked',
         motion_turnleft: 'turn {ICON} {DEGREES} degrees',
         motion_turnright: 'turn {ICON} {DEGREES} degrees'
@@ -10,5 +9,5 @@ export default Object.assign({
 }, specialMessages);
 
 export const specialMessageMap = {
-    else: 'CONTROL_ELSE'
+    else: 'control_else'
 };

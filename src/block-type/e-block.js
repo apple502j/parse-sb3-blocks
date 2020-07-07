@@ -9,15 +9,16 @@ export default class EBlock extends Block {
     }
 
     toScratchblocks (locale, opts) {
-        const blockLabel = this.blockSyntax(locale);
+        const blockLabel = this.blockSyntax(locale, opts);
         const firstBlocks = this.inputtables[this.block_key].toScratchblocks(locale, opts);
         const elseLabel = getSpecialMessage(locale, 'else');
         const elseBlocks = this.inputtables[this.else_key].toScratchblocks(locale, opts);
-        const end = getSpecialMessage(locale, 'end');
+        const end = 'end';
+        const tab = (opts.tab || '').repeat((opts._stackNum || 1) - 1);
         return `${blockLabel}${this.useOptions(locale, opts)}
 ${firstBlocks}
-${elseLabel}
+${tab}${elseLabel}
 ${elseBlocks}
-${end}`;
+${tab}${end}`;
     }
 }

@@ -25,9 +25,6 @@ fetch(process.env.SPECIAL_MESSAGES_URL || defaultPath)
             Object.keys(obj[locale]).forEach(key => {
                 const blockName = obj[locale][key];
                 switch (blockName) {
-                    case 'end':
-                        specialMessageObj[ps3bLocale].end = key;
-                        break;
                     case 'when @greenFlag clicked':
                         specialMessageObj[ps3bLocale].event_whenflagclicked = key.replace('@greenFlag', '{ICON}');
                         break;

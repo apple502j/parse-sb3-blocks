@@ -54,7 +54,7 @@ const getSpecialMessage = (locale, key) => {
     return specialMessages.default[key];
 };
 
-const isSpecialMenuValue = (opcode, value) => allMenus[opcode].hasOwnProperty(value);
+const isSpecialMenuValue = (opcode, value) => (allMenus[opcode] || []).hasOwnProperty(value);
 
 const getMenuItemForLocale = (locale, opcode, value) => {
     const translationKey = allMenus[opcode][value].translationKey;
