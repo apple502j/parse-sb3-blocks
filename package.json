@@ -13,10 +13,9 @@
     "build": "npm run locale && npm run rollup && npm run docs",
     "build:nolocale": "npm run nolocale && npm run rollup",
     "rollup": "rollup -c",
-    "locale": "npm run locale:build && npm run locale:special",
+    "locale": "npm run locale:build",
     "nolocale": "node ./build-src/build-nolocale.js",
     "locale:build": "node --experimental-json-modules ./build-src/build-locale.js",
-    "locale:special": "node ./build-src/download-special-messages.js",
     "prepublishOnly": "npm run test && npm run locale && rollup -c --environment mode:prod"
   },
   "repository": {

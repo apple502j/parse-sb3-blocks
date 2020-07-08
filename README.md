@@ -40,7 +40,6 @@ Connectable is an instance that can be connected to a stack block via next-paren
 - EBlock (if-else)
 - Definition
 - ProcedureCall
-- SpecialBlock (block that uses special translation map)
 
 Inputtable can be used as an argument. Note that `Icon` is not technically an argument, but is Inputtable.
 - Stack (for arguments to C/E blocks)
@@ -63,15 +62,12 @@ Instances with class name ending with "Block" have these attributes:
 
 `translations.js` is an auto-generated file which includes all translations. `options.js` is also auto-generated, and contains which block needs options (because of conflicting names).
 
-`special-messages.js` is automatically generated from [extra_aliases.js](https://github.com/scratchblocks/scratchblocks/blob/master/locales-src/extra_aliases.js).
-
 **Only blocks and menu items in all-blocks.js is supported.**
 
 #### all-blocks.js
 all-blocks.js default-exports allBlocks, which is an object with opcode as key and the object (see below) as value.
 
 The object has these keys and values:
-- isSpecialBlock: If set to `true`, it uses `SpecialBlock`, meaning it used icons and translations must be picked from special-messages.js. Also, if this is true, all other properties are optional.
 - noTranslation: If set to `true`, it will be ignored from translation generator.
 - defaultMessage: Message in default language (English).
 - type: The block type. Defaults to `BlockEnum.BLOCK`.
@@ -84,4 +80,3 @@ Node 14+ is preferred for building. Type `npm run build`, which generates locale
 
 ### env
 - `mode`: Unless set to `dev`, the result is minified.
-- `SPECIAL_MESSAGES_URL`: URL to extra_aliases.js (defaults to https://raw.githubusercontent.com/scratchblocks/scratchblocks/master/locales-src/extra_aliases.js)

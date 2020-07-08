@@ -9,6 +9,5 @@ const writeNolocale = filename => writeFile(path.resolve('src', 'block-mapping',
 
 Promise.all([
     writeNolocale('translations.js'),
-    writeNolocale('special-messages.gen.js'),
     writeNolocale('options.js')
 ]);

@@ -8,7 +8,6 @@ locales/*
 **/node_modules/*
 **/translations.js
 test-*.js
-**/special-messages.gen.js
 **/options.js
 build.temp.js
 docs/*

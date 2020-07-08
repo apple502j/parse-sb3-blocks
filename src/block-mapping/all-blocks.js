@@ -10,10 +10,10 @@ export default {
         defaultMessage: 'move {STEPS} steps'
     },
     motion_turnright: {
-        isSpecialBlock: true
+        defaultMessage: 'turn {ICON} {DEGREES} degrees'
     },
     motion_turnleft: {
-        isSpecialBlock: true
+        defaultMessage: 'turn {ICON} {DEGREES} degrees'
     },
     motion_pointindirection: {
         defaultMessage: 'point in direction {DIRECTION}'
@@ -172,7 +172,7 @@ export default {
         type: REPORTER_BLOCK
     },
     event_whenflagclicked: {
-        isSpecialBlock: true
+        defaultMessage: 'when {ICON} clicked'
     },
     event_whenthisspriteclicked: {
         defaultMessage: 'when this sprite clicked'

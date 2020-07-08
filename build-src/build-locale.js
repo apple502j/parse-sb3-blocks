@@ -34,7 +34,7 @@ const asyncFuncy = async () => {
     const translateKeyToArgMap = {};
     Object.keys(allBlocks).forEach(key => {
         const entry = allBlocks[key];
-        if (entry.isSpecialBlock || entry.noTranslation) return;
+        if (entry.noTranslation) return;
         const translationKey = entry.translationKey || key.toUpperCase();
         keys.add(translationKey);
         if (translateKeyToArgMap.hasOwnProperty(translationKey)) return;

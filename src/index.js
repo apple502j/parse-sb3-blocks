@@ -6,7 +6,6 @@ import BooleanBlock from './block-type/boolean-block.js';
 import CBlock from './block-type/c-block.js';
 import EBlock from './block-type/e-block.js';
 import ReporterBlock from './block-type/reporter-block.js';
-import SpecialBlock from './block-type/special-block.js';
 import Variable from './block-type/variable.js';
 import Definition from './block-type/definition.js';
 import ProcedureCall from './block-type/procedure-call.js';
@@ -43,7 +42,6 @@ export {
     EBlock,
     ProcedureCall,
     ReporterBlock,
-    SpecialBlock,
     Variable,
 
     Icon,

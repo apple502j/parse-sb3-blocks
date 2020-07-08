@@ -1,12 +1,12 @@
 import {default as allBlocks, allMenus} from './all-blocks.js';
 import translations from './translations.js';
 import localeOptions from './options.js';
-import {default as specialMessages, specialMessageMap} from './special-messages.js';
+import {specialMessageMap} from './special-messages.js';
 
 const _translationKeyToOpcode = {};
 Object.keys(allBlocks).forEach(opcode => {
     const entry = allBlocks[opcode];
-    if (entry.isSpecialBlock || entry.noTranslation) return;
+    if (entry.noTranslation) return;
     const translationKey = entry.translationKey || opcode.toUpperCase();
     if (_translationKeyToOpcode.hasOwnProperty(translationKey)) return;
     _translationKeyToOpcode[translationKey] = opcode;
@@ -48,10 +48,6 @@ const getOptsForLocale = (locale, opcode) => {
 
 const getSpecialMessage = (locale, key) => {
     if (specialMessageMap.hasOwnProperty(key)) return getMessageForLocale(locale, specialMessageMap[key]);
-    if (specialMessages[locale] && specialMessages[locale][key]) {
-        return specialMessages[locale][key];
-    }
-    return specialMessages.default[key];
 };
 
 const isSpecialMenuValue = (opcode, value) => (allMenus[opcode] || []).hasOwnProperty(value);
