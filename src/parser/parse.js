@@ -197,6 +197,11 @@ const parseScript = (scriptStart, blocks) => {
         let parsedBlock;
         const opcode = block.opcode;
         const blockInfo = allBlocks[opcode];
+        if (!blockInfo) {
+            console.warn('Unknown opcode: ', opcode);
+            blockId = block.next;
+            continue;
+        }
         if (blockInfo.isSpecialBlock) {
             parsedBlock = new SpecialBlock(block.id, opcode, getInputtablesForBlock(block, blocks));
         } else if (opcode === 'procedures_definition') {

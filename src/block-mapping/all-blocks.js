@@ -12,7 +12,7 @@ export default {
     motion_turnright: {
         isSpecialBlock: true
     },
-    motion_turnnleft: {
+    motion_turnleft: {
         isSpecialBlock: true
     },
     motion_pointindirection: {
@@ -482,6 +482,42 @@ export default {
     argument_reporter_string_number: {
         noTranslation: true,
         type: REPORTER_BLOCK
+    },
+    pen_clear: {
+        defaultMessage: 'erase all',
+        translationKey: 'pen.clear'
+    },
+    pen_stamp: {
+        defaultMessage: 'stamp',
+        translationKey: 'pen.stamp'
+    },
+    pen_penDown: {
+        defaultMessage: 'pen down',
+        translationKey: 'pen.penDown'
+    },
+    pen_penUp: {
+        defaultMessage: 'pen up',
+        translationKey: 'pen.penUp'
+    },
+    pen_setPenColorToColor: {
+        defaultMessage: 'set pen color to {COLOR}',
+        translationKey: 'pen.setColor'
+    },
+    pen_changePenColorParamBy: {
+        defaultMessage: 'change pen {COLOR_PARAM} by {VALUE}',
+        translationKey: 'pen.changeColorParam'
+    },
+    pen_setPenColorParamTo: {
+        defaultMessage: 'set pen {COLOR_PARAM} to {VALUE}',
+        translationKey: 'pen.setColorParam'
+    },
+    pen_changePenSizeBy: {
+        defaultMessage: 'change pen size by {SIZE}',
+        translationKey: 'pen.changeSize'
+    },
+    pen_setPenSizeTo: {
+        defaultMessage: 'set pen size to {SIZE}',
+        translationKey: 'pen.setSize'
     }
 };
 
@@ -577,6 +613,25 @@ const keyOptions = {
     any: {
         translationKey: 'EVENT_WHENKEYPRESSED_ANY',
         defaultMessage: 'any'
+    }
+};
+
+const colorParam = {
+    color: {
+        translationKey: 'pen.colorMenu.color',
+        defaultMessage: 'color'
+    },
+    saturation: {
+        translationKey: 'pen.colorMenu.saturation',
+        defaultMessage: 'saturation'
+    },
+    brightness: {
+        translationKey: 'pen.colorMenu.brightness',
+        defaultMessage: 'brightness'
+    },
+    transparency: {
+        translationKey: 'pen.colorMenu.transparency',
+        defaultMessage: 'transparency'
     }
 };
 
@@ -840,5 +895,7 @@ export const allMenus = {
             translationKey: 'OPERATORS_MATHOP_10EXP',
             defaultMessage: '10 ^'
         }
-    }
+    },
+    pen_changePenColorParamBy: colorParam,
+    pen_setPenColorParamTo: colorParam
 };
