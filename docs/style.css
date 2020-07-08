@@ -19,12 +19,11 @@ body, div, p, textarea, pre {
 body {
   font-size: 1em;
   padding: 1em;
+  padding-bottom: 0;
   max-width: 80em;
 
   background: #fffcdd;
   color: black;
-
-  margin-bottom: 3rem;
 }
 
 .useFull {
@@ -306,15 +305,15 @@ header {
 /* Header stuff */
 
 header {
-  height: 14rem;
+  max-height: 14rem;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   z-index: 202;
-  padding: 1em 2em;
+  padding: 0 2em;
 }
 
 main {
-  padding: 1em 2em;
+  padding: 0 2em;
 }
 
 
@@ -444,13 +443,13 @@ img .hidden {
 }
 
 .svgArea, .sbContainer {
-    height: 25rem;
+    height: 23rem;
 }
 
 .sbCopyBtn {
     width: 40%;
     min-height: 2rem;
-    margin: 1.5rem 25%;
+    margin: 1.5rem 25% 0 25%;
     font-size: 1.5rem;
     font-weight: 400;
     background: #eeffee;
