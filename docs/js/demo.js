@@ -15,14 +15,21 @@ const HAT_BLOCKS = [
 new ClipboardJS('.sbCopyBtn');
 
 const errorElem = document.getElementById('error');
+const urlInput = document.getElementById('urlInput');
 const spriteChooser = document.getElementById('spriteChooser');
 const spriteChooserSelect = document.getElementById('sprite');
 const flexContainer = document.getElementById('flexContainer');
 const scratchblocksAreaInner = document.getElementById('scratchblocksAreaInner');
 const svgArea = document.getElementById('svgArea');
+const bookmarkLink = document.getElementById('bookmark');
+const sbCopyBtn = document.getElementById('sbCopyBtn');
+const sbDownloadBtn = document.getElementById('downloadText');
 
 let projectData = {};
 let localeSetting = 'en';
+let scratchblocksCode = '';
+
+const usedOpts = Object.create(null);
 
 const localeSelect = document.getElementById('locale');
 Object.keys(window.scratchLocales).forEach(localeCode => {
@@ -32,6 +39,32 @@ Object.keys(window.scratchLocales).forEach(localeCode => {
     elem.innerText = `${window.scratchLocales[localeCode].name} (${localeCode})`;
     localeSelect.appendChild(elem);
 });
+
+const downloadTextAsBlob = (filename, text) => {
+    const blob = new Blob([text], {
+        type: 'text/plain'
+    });
+    if (navigator.msSaveOrOpenBlob) return navigator.msSaveOrOpenBlob(blob, filename);
+    const objectURL = URL.createObjectURL(blob);
+    const tempElem = document.createElement('a');
+    tempElem.href = objectURL;
+    tempElem.download = filename;
+    tempElem.type = 'text/plain';
+    document.body.appendChild(tempElem);
+    tempElem.click();
+    setTimeout(() => {
+        document.body.removeChild(tempElem);
+        URL.revokeObjectURL(objectURL);
+    }, 500);
+};
+
+const canDownload = HTMLAnchorElement.prototype.hasOwnProperty('download');
+if (canDownload) {
+    sbDownloadBtn.addEventListener('click', () => downloadTextAsBlob('scratchblocks.txt', scratchblocksCode));
+} else {
+    sbDownloadBtn.hidden = true;
+    sbCopyBtn.classList.add('forceOnly');
+}
 
 const loadProject = async projectId => {
     try {
@@ -49,6 +82,7 @@ const loadProject = async projectId => {
         errorElem.hidden = false;
         return;
     }
+    usedOpts.pid = encodeURIComponent(projectId);
     spriteChooser.hidden = false;
     Array.from(spriteChooserSelect.children).filter(e => e.value !== '_stage_').forEach(elem => {
         spriteChooserSelect.removeChild(elem);
@@ -65,7 +99,8 @@ document.getElementById('loadBtn').addEventListener('click', e => {
     errorElem.hidden = true;
     spriteChooser.hidden = true;
     flexContainer.hidden = true;
-    const maybeURL = document.getElementById('urlInput').value;
+    bookmarkLink.hidden=true;
+    const maybeURL = urlInput.value;
     const matches = Array.from(maybeURL.matchAll(PROJECT_URL_REGEX));
     if (!matches || !matches.length) {
         errorElem.innerText = 'URL is incorrect';
@@ -78,7 +113,12 @@ document.getElementById('loadBtn').addEventListener('click', e => {
 
 document.getElementById('generateBtn').addEventListener('click', e => {
     e.preventDefault();
+    generateScratchblocks();
+});
+
+const generateScratchblocks = () => {
     flexContainer.hidden = true;
+    bookmarkLink.hidden = true;
     if (!projectData || projectData === {}) {
         console.error('projectData is missing');
         return;
@@ -100,7 +140,9 @@ document.getElementById('generateBtn').addEventListener('click', e => {
     if (hatBlocks.length === 0) {
         return;
     }
-    const scratchblocksCode = hatBlocks.map(
+    usedOpts.locale = encodeURIComponent(localeSetting);
+    usedOpts.sprite = target.isStage ? '_stage_' : encodeURIComponent(target.name);
+    scratchblocksCode = hatBlocks.map(
         hatKey => toScratchblocks(hatKey, target.blocks, localeSetting, {
             tab: ' '.repeat(4),
             variableStyle: 'as-needed'
@@ -118,4 +160,29 @@ document.getElementById('generateBtn').addEventListener('click', e => {
     container.className = 'sbContainer';
     container.appendChild(svgObj);
     svgArea.appendChild(container);
-});
+
+    bookmarkLink.href = `./demo?pid=${usedOpts.pid}&locale=${usedOpts.locale}&sprite=${usedOpts.sprite}`;
+    bookmarkLink.hidden = false;
+};
+
+const searchParams = new URL(location).searchParams;
+const searchPID = searchParams.get('pid');
+if (searchPID && /^[\d]+$/g.test(searchPID)) {
+    urlInput.value = `https://scratch.mit.edu/projects/${searchPID}/`;
+    localeSelect.value = searchParams.get('locale') || 'en';
+    let spriteName = searchParams.get('sprite') || '_stage_';
+    loadProject(searchPID).then(() => {
+        let hasSelected = false;
+        Array.from(spriteChooserSelect.children).forEach(elem => {
+            const isCorrect = elem.value === spriteName;
+            hasSelected = hasSelected || isCorrect;
+            elem.selected = isCorrect;
+        });
+        if (!hasSelected) {
+            spriteName = '_stage_';
+            Array.from(spriteChooserSelect.children).find(e => e.value === '_stage_').selected = true;
+        }
+        spriteChooserSelect.value = spriteName;
+        generateScratchblocks();
+    });
+}

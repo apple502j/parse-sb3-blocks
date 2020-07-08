@@ -14,7 +14,14 @@
     <body class="useFull">
         <header>
             <h1><a href="./index.html">parse-sb3-blocks</a> demo</h1>
-            <h2>Generate scratchblocks from a Scratch 3.0 project.</h2>
+            <h2>
+                Generate scratchblocks from a Scratch 3.0 project.
+                <a
+                    href=""
+                    id="bookmark"
+                    hidden
+                >URL for bookmarks</a>
+            </h2>
         </header>
         <div>
             <input
@@ -53,7 +60,14 @@
                 <div class="scratchblocksArea" id="scratchblocksArea">
                     <pre id="scratchblocksAreaInner"></pre>
                 </div>
-                <button data-clipboard-target="#scratchblocksAreaInner" class="sbCopyBtn">Copy Scratchblocks</button>
+                <button
+                    data-clipboard-target="#scratchblocksAreaInner"
+                    class="sbBtn sbCopyBtn"
+                    id="sbCopyBtn"
+                >Copy Scratchblocks</button><button
+                    id="downloadText"
+                    class="sbBtn"
+                >Download</button>
             </div>
             <div class="svgArea" id="svgArea"></div>
         </div>

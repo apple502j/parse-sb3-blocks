@@ -446,14 +446,19 @@ img .hidden {
     height: 23rem;
 }
 
-.sbCopyBtn {
-    width: 40%;
+.sbBtn {
+    width: 35%;
     min-height: 2rem;
-    margin: 1.5rem 25% 0 25%;
+    margin: 1.5rem 5% 0 5%;
     font-size: 1.5rem;
     font-weight: 400;
     background: #eeffee;
     border: 2px solid #ccc;
+}
+
+.sbCopyBtn.forceOnly {
+    margin: 1.5rem 25% 0 25% !important;
+    width: 40% !important;
 }
 
 .sbContainer, #scratchblocksAreaInner {
