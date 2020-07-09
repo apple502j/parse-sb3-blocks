@@ -518,6 +518,52 @@ export default {
     pen_setPenSizeTo: {
         defaultMessage: 'set pen size to {SIZE}',
         translationKey: 'pen.setSize'
+    },
+    music_playDrumForBeats: {
+        defaultMessage: 'play drum {DRUM} for {BEATS} beats',
+        translationKey: 'music.playDrumForBeats'
+    },
+    music_restForBeats: {
+        defaultMessage: 'rest for {BEATS} beats',
+        translationKey: 'music.restForBeats'
+    },
+    music_playNoteForBeats: {
+        defaultMessage: 'play note {NOTE} for {BEATS} beats',
+        translationKey: 'music.playNoteForBeats'
+    },
+    music_setInstrument: {
+        defaultMessage: 'set instrument to {INSTRUMENT}',
+        translationKey: 'music.setInstrument'
+    },
+    music_setTempo: {
+        defaultMessage: 'set tempo to {TEMPO}',
+        translationKey: 'music.setTempo'
+    },
+    music_changeTempo: {
+        defaultMessage: 'change tempo by {TEMPO}',
+        translationKey: 'music.changeTempo'
+    },
+    music_getTempo: {
+        defaultMessage: 'tempo',
+        translationKey: 'music.getTempo',
+        type: REPORTER_BLOCK
+    },
+    videoSensing_whenMotionGreaterThan: {
+        defaultMessage: 'when video motion > {REFERENCE}',
+        translationKey: 'videoSensing.whenMotionGreaterThan'
+    },
+    videoSensing_videoOn: {
+        defaultMessage: 'video {ATTRIBUTE} on {SUBJECT}',
+        translationKey: 'videoSensing.videoOn',
+        type: REPORTER_BLOCK
+    },
+    videoSensing_videoToggle: {
+        defaultMessage: 'turn video {VIDEO_STATE}',
+        translationKey: 'videoSensing.videoToggle'
+    },
+    videoSensing_setVideoTransparency: {
+        defaultMessage: 'set video transparency to {TRANSPARENCY}',
+        translationKey: 'videoSensing.setVideoTransparency'
     }
 };
 
@@ -897,5 +943,197 @@ export const allMenus = {
         }
     },
     pen_changePenColorParamBy: colorParam,
-    pen_setPenColorParamTo: colorParam
+    pen_setPenColorParamTo: colorParam,
+    music_playDrumForBeats: {
+        '1': {
+            translationKey: 'music.drumSnare',
+            defaultMessage: '(1) Snare Drum'
+        },
+        '2': {
+            translationKey: 'music.drumBass',
+            defaultMessage: '(2) Bass Drum'
+        },
+        '3': {
+            translationKey: 'music.drumSideStick',
+            defaultMessage: '(3) Side Stick'
+        },
+        '4': {
+            translationKey: 'music.drumCrashCymbal',
+            defaultMessage: '(4) Crash Cymbal'
+        },
+        '5': {
+            translationKey: 'music.drumOpenHiHat',
+            defaultMessage: '(5) Open Hi-Hat'
+        },
+        '6': {
+            translationKey: 'music.drumClosedHiHat',
+            defaultMessage: '(6) Closed Hi-Hat'
+        },
+        '7': {
+            translationKey: 'music.drumTambourine',
+            defaultMessage: '(7) Tambourine'
+        },
+        '8': {
+            translationKey: 'music.drumHandClap',
+            defaultMessage: '(8) Hand Clap'
+        },
+        '9': {
+            translationKey: 'music.drumClaves',
+            defaultMessage: '(9) Claves'
+        },
+        '10': {
+            translationKey: 'music.drumWoodBlock',
+            defaultMessage: '(10) Wood Block'
+        },
+        '11': {
+            translationKey: 'music.drumCowbell',
+            defaultMessage: '(11) Cowbell'
+        },
+        '12': {
+            translationKey: 'music.drumTriangle',
+            defaultMessage: '(12) Triangle'
+        },
+        '13': {
+            translationKey: 'music.drumBongo',
+            defaultMessage: '(13) Bongo'
+        },
+        '14': {
+            translationKey: 'music.drumConga',
+            defaultMessage: '(14) Conga'
+        },
+        '15': {
+            translationKey: 'music.drumCabasa',
+            defaultMessage: '(15) Cabasa'
+        },
+        '16': {
+            translationKey: 'music.drumGuiro',
+            defaultMessage: '(16) Guiro'
+        },
+        '17': {
+            translationKey: 'music.drumVibraslap',
+            defaultMessage: '(17) Vibraslap'
+        },
+        '18': {
+            translationKey: 'music.drumCuica',
+            defaultMessage: '(18) Cuica'
+        }
+    },
+    music_setInstrument: {
+        '1': {
+            translationKey: 'music.instrumentPiano',
+            defaultMessage: '(1) Piano'
+        },
+        '2': {
+            translationKey: 'music.instrumentElectricPiano',
+            defaultMessage: '(2) Electric Piano'
+        },
+        '3': {
+            translationKey: 'music.instrumentOrgan',
+            defaultMessage: '(3) Organ'
+        },
+        '4': {
+            translationKey: 'music.instrumentGuitar',
+            defaultMessage: '(4) Guitar'
+        },
+        '5': {
+            translationKey: 'music.instrumentElectricGuitar',
+            defaultMessage: '(5) Electric Guitar'
+        },
+        '6': {
+            translationKey: 'music.instrumentBass',
+            defaultMessage: '(6) Bass'
+        },
+        '7': {
+            translationKey: 'music.instrumentPizzicato',
+            defaultMessage: '(7) Pizzicato'
+        },
+        '8': {
+            translationKey: 'music.instrumentCello',
+            defaultMessage: '(8) Cello'
+        },
+        '9': {
+            translationKey: 'music.instrumentTrombone',
+            defaultMessage: '(9) Trombone'
+        },
+        '10': {
+            translationKey: 'music.instrumentClarinet',
+            defaultMessage: '(10) Clarinet'
+        },
+        '11': {
+            translationKey: 'music.instrumentSaxophone',
+            defaultMessage: '(11) Saxophone'
+        },
+        '12': {
+            translationKey: 'music.instrumentFlute',
+            defaultMessage: '(12) Flute'
+        },
+        '13': {
+            translationKey: 'music.instrumentWoodenFlute',
+            defaultMessage: '(13) Wooden Flute'
+        },
+        '14': {
+            translationKey: 'music.instrumentBassoon',
+            defaultMessage: '(14) Bassoon'
+        },
+        '15': {
+            translationKey: 'music.instrumentChoir',
+            defaultMessage: '(15) Choir'
+        },
+        '16': {
+            translationKey: 'music.instrumentVibraphone',
+            defaultMessage: '(16) Vibraphone'
+        },
+        '17': {
+            translationKey: 'music.instrumentMusicBox',
+            defaultMessage: '(17) Music Box'
+        },
+        '18': {
+            translationKey: 'music.instrumentSteelDrum',
+            defaultMessage: '(18) Steel Drum'
+        },
+        '19': {
+            translationKey: 'music.instrumentMarimba',
+            defaultMessage: '(19) Marimba'
+        },
+        '20': {
+            translationKey: 'music.instrumentSynthLead',
+            defaultMessage: '(20) Synth Lead'
+        },
+        '21': {
+            translationKey: 'music.instrumentSynthPad',
+            defaultMessage: '(21) Synth Pad'
+        }
+    },
+    videoSensing_videoOn: {
+        motion: {
+            translationKey: 'videoSensing.motion',
+            defaultMessage: 'motion'
+        },
+        direction: {
+            translationKey: 'videoSensing.direction',
+            defaultMessage: 'direction'
+        },
+        Stage: {
+            translationKey: 'videoSensing.stage',
+            defaultMessage: 'stage'
+        },
+        'this sprite': {
+            translationKey: 'videoSensing.sprite',
+            defaultMessage: 'sprite'
+        }
+    },
+    videoSensing_videoToggle: {
+        off: {
+            translationKey: 'videoSensing.off',
+            defaultMessage: 'off'
+        },
+        on: {
+            translationKey: 'videoSensing.on',
+            defaultMessage: 'on'
+        },
+        'on-flipped': {
+            translationKey: 'videoSensing.onFlipped',
+            defaultMessage: 'on flipped'
+        }
+    }
 };

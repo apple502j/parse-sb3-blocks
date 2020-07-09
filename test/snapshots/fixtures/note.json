@@ -1,0 +1,35 @@
+{
+    "scriptStart": "playNoteBlock",
+    "locale": "en",
+    "opts": {},
+    "blocks": {
+        "playNoteBlock": {
+            "opcode": "music_playNoteForBeats",
+            "next": null,
+            "parent": null,
+            "inputs": {
+                "NOTE": [
+                    1,
+                    "noteInput"
+                ],
+                "BEATS": [
+                    1,
+                    [
+                        4,
+                        "0.25"
+                    ]
+                ]
+            },
+            "fields": {}
+        },
+        "noteInput": {
+            "opcode": "note",
+            "next": null,
+            "parent": "playNoteBlock",
+            "inputs": {},
+            "fields": {
+                "NOTE": ["72"]
+            }
+        }
+    }
+}

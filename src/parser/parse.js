@@ -66,7 +66,12 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
             // value[1] is string, so it's menu
             const menuBlockId = value[1];
             const menu = blocks[menuBlockId];
-            inputtables[key] = new Menu(menuBlockId, opcode, menu.fields[key][0]);
+            if (menu.opcode === 'note') {
+                // Note is not a menu.
+                inputtables[key] = new NumberInput(menu.fields.NOTE[0]);
+            } else {
+                inputtables[key] = new Menu(menuBlockId, opcode, menu.fields[key][0]);
+            }
         } else {
             // value[1] is probably array
             const inputDetails = value[1];
