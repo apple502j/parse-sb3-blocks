@@ -1,3 +1,4 @@
+import Sanitizer from '../sanitizer.js';
 import {getMenuItemForLocale, isSpecialMenuValue} from '../block-mapping/block-mapping.js';
 
 export default class Menu {
@@ -14,7 +15,7 @@ export default class Menu {
     }
 
     toScratchblocks (locale) {
-        if (!this.isSpecial) return `[${this.content} v]`;
-        return `[${this.blockSyntax(locale)} v]`;
+        if (!this.isSpecial) return `[${Sanitizer.sanitize(this.content)} v]`;
+        return `[${Sanitizer.sanitize(this.blockSyntax(locale))} v]`;
     }
 }

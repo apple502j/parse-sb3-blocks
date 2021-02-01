@@ -1,6 +1,6 @@
 {
   "name": "parse-sb3-blocks",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Parse sb3 blocks, and generate scratchblocks formatted code.",
   "main": "dist/parse-sb3-blocks.cjs",
   "browser": "dist/parse-sb3-blocks.browser.js",
@@ -33,12 +33,12 @@
   },
   "homepage": "https://github.com/apple502j/parse-sb3-blocks#readme",
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.0.4",
+    "@rollup/plugin-babel": "^5.2.3",
     "colors": "^1.4.0",
-    "eslint": "^7.4.0",
-    "rollup": "^2.19.0",
-    "rollup-plugin-terser": "^6.1.0",
-    "scratch-l10n": "^3.10.20200624030914"
+    "eslint": "^7.19.0",
+    "rollup": "^2.38.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "scratch-l10n": "^3.11.20210201031532"
   },
   "type": "module",
   "files": [

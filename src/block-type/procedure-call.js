@@ -1,3 +1,4 @@
+import Sanitizer from '../sanitizer.js';
 export default class ProcedureCall {
     constructor (id, proc, argObj) {
         this.id = id;
@@ -11,6 +12,6 @@ export default class ProcedureCall {
             /%([sb])/g,
             () => this.argObj[i++].toScratchblocks(locale, opts)
         );
-        return `${procCode}::custom`;
+        return `${Sanitizer.sanitize(procCode)}::custom`;
     }
 }

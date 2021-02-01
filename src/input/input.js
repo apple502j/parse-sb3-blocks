@@ -1,10 +1,8 @@
+import Sanitizer from '../sanitizer.js';
+
 class Input {
     constructor (content) {
-        this.content = this.sanitize(String(content || ''));
-    }
-
-    sanitize (content) {
-        return content.replace(/[\u0001-\u001f]/g, ''); // eslint-disable-line no-control-regex
+        this.content = Sanitizer.sanitize(String(content || ''));
     }
 
     toScratchblocks () {

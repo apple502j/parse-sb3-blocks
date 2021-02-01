@@ -1,0 +1,52 @@
+{
+  "scriptStart": "block1",
+  "locale": "en",
+  "opts": {},
+  "blocks": {
+    "block1": {
+        "opcode": "looks_say",
+        "next": "block2",
+        "parent": null,
+        "inputs": {
+            "MESSAGE": [
+                1,
+                [
+                    10,
+                    "Line break here:\n"
+                ]
+            ]
+        },
+        "fields": {}
+    },
+    "block2": {
+        "opcode": "looks_say",
+        "next": "block3",
+        "parent": null,
+        "inputs": {
+            "MESSAGE": [
+                1,
+                [
+                    10,
+                    "say []"
+                ]
+            ]
+        },
+        "fields": {}
+    },
+    "block3": {
+        "opcode": "looks_say",
+        "next": null,
+        "parent": null,
+        "inputs": {
+            "MESSAGE": [
+                1,
+                [
+                    12,
+                    "@hello"
+                ]
+            ]
+        },
+        "fields": {}
+    }
+  }
+}

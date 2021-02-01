@@ -1,4 +1,5 @@
 import allBlocks from '../block-mapping/all-blocks.js';
+import Sanitizer from '../sanitizer.js';
 import {BLOCK, BOOLEAN_BLOCK, REPORTER_BLOCK} from '../block-mapping/block-enum.js';
 import {getTranslationKeyFromValue, getOpcodeFromTranslationKey} from '../block-mapping/block-mapping.js';
 
@@ -28,7 +29,7 @@ export default class Variable {
         ) {
             options = '::variables';
         }
-        const block = `${this.value}${options}`;
+        const block = `${Sanitizer.sanitize(this.value)}${options}`;
         switch (this.type) {
             case REPORTER_BLOCK: return `(${block})`;
             case BOOLEAN_BLOCK: return `<${block}>`;

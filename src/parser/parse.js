@@ -21,7 +21,6 @@ import {
     REPORTER_BLOCK
 } from '../block-mapping/block-enum.js';
 
-const BLOCK_NOT_INSERTED = 1; // eslint-disable-line no-unused-vars
 const BLOCK_INSERTED_NO_DEFAULT = 2;
 const BLOCK_INSERTED_DEFAULT = 3;
 
