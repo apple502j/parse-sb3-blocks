@@ -17,8 +17,8 @@ const asyncFuncy = async () => {
     const blocksPromise = [];
     const extensionsPromise = [];
     localeNames.forEach(name => {
-        blocksPromise.push(import(`scratch-l10n/editor/blocks/${name}.json`));
-        extensionsPromise.push(import(`scratch-l10n/editor/extensions/${name}.json`));
+        blocksPromise.push(import(`scratch-l10n/editor/blocks/${name}.json`, { assert: { type: 'json' } }));
+        extensionsPromise.push(import(`scratch-l10n/editor/extensions/${name}.json`, { assert: { type: 'json' } }));
     });
     const blocksPromiseReturned = await Promise.all(blocksPromise);
     const extensionsPromiseReturned = await Promise.all(extensionsPromise);

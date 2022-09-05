@@ -32,7 +32,9 @@ export default [
             }
         ],
         plugins: [
-            babel(),
+            babel({
+                babelHelpers: 'bundled'
+            }),
             !isDev && terser()
         ]
     }
