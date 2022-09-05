@@ -781,6 +781,14 @@ export default {
         remap: {
             DIRECTION: 'axisOptions'
         }
+    },
+    makeymakey_whenMakeyKeyPressed: {
+        defaultMessage: 'when {KEY} key pressed',
+        translationKey: 'makeymakey.whenKeyPressed'
+    },
+    makeymakey_whenCodePressed: {
+        defaultMessage: 'when {SEQUENCE} pressed in order',
+        translationKey: 'makeymakey.whenKeysPressedInOrder',
     }
 };
 
@@ -1315,6 +1323,26 @@ const gdxforAxis = {
         defaultMessage: 'z'
     }
 };
+
+const makeMakeymakeyCombs = (keyPrefix, ...combinations) => Object.fromEntries(combinations.map(
+    c => [c.toUpperCase(), {
+        defaultMessage: c,
+        translationKey: `${keyPrefix}.${c.replace(/ /g, '.')}`
+    }]
+));
+
+const makeymakeySequences = makeMakeymakeyCombs(
+    'special.makeymakey',
+    'left up right',
+    'right up left',
+    'left right',
+    'right left',
+    'up down',
+    'down up',
+    'up right down left',
+    'up left down right',
+    'up up down down left right left right'
+);
 
 export const allMenus = {
     motion_pointtowards: {
@@ -1875,5 +1903,46 @@ export const allMenus = {
     gdxfor_isTilted: gdxforTiltAny,
     gdxfor_getTilt: gdxforTilt,
     gdxfor_getSpinSpeed: gdxforAxis,
-    gdxfor_getAcceleration: gdxforAxis
+    gdxfor_getAcceleration: gdxforAxis,
+    makeymakey_whenMakeyKeyPressed: {
+        SPACE: {
+            translationKey: 'makeymakey.spaceKey',
+            defaultMessage: 'space'
+        },
+        UP: {
+            translationKey: 'makeymakey.upArrow',
+            defaultMessage: 'up arrow'
+        },
+        DOWN: {
+            translationKey: 'makeymakey.downArrow',
+            defaultMessage: 'down arrow'
+        },
+        RIGHT: {
+            translationKey: 'makeymakey.rightArrow',
+            defaultMessage: 'right arrow'
+        },
+        LEFT: {
+            translationKey: 'makeymakey.leftArrow',
+            defaultMessage: 'left arrow'
+        },
+        w: {
+            defaultMessage: 'w'
+        },
+        a: {
+            defaultMessage: 'a'
+        },
+        s: {
+            defaultMessage: 's'
+        },
+        d: {
+            defaultMessage: 'd'
+        },
+        f: {
+            defaultMessage: 'f'
+        },
+        g: {
+            defaultMessage: 'g'
+        }
+    },
+    makeymakey_whenCodePressed: makeymakeySequences
 };

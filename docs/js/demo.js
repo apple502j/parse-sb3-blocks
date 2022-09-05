@@ -17,7 +17,9 @@ const HAT_BLOCKS = [
     'ev3_whenBrightnessLessThan',
     'gdxfor_whenGesture',
     'gdxfor_whenForcePushedOrPulled',
-    'gdxfor_whenTilted'
+    'gdxfor_whenTilted',
+    'makeymakey_whenMakeyKeyPressed',
+    'makeymakey_whenCodePressed'
 ];
 
 new ClipboardJS('.sbCopyBtn');
@@ -169,7 +171,8 @@ const generateScratchblocks = () => {
     scratchblocksAreaInner.innerText = scratchblocksCode;
     const renderOpts = {
         style: 'scratch3',
-        languages: localeSetting === 'en' ? ['en'] : [localeSetting.replace('-', '_'), 'en']
+        languages: localeSetting === 'en' ? ['en'] : [localeSetting.replace('-', '_'), 'en'],
+        scale: 0.8
     };
     const parsedObj = scratchblocks.parse(scratchblocksCode, renderOpts);
     flexContainer.hidden = false;

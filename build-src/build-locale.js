@@ -46,7 +46,7 @@ const translateKeyToCategory = key => {
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-const getExtMessages = locale => {
+const getExtMessages = (locale, extMessages) => {
     locale = locale.toLowerCase();
     if (!Object.prototype.hasOwnProperty.call(extLocales.menuMap, locale)) {
         locale = 'en';
@@ -75,7 +75,20 @@ const getExtMessages = locale => {
         name = name.charAt(0).toUpperCase() + name.slice(1);
         return [`special.tts.${key}`, name];
     }));
-    return Object.assign({}, translate, tts);
+
+    const makeyKeys = {
+        space: extMessages['makeymakey.spaceKey'],
+        left: extMessages['makeymakey.leftArrowShort'],
+        up: extMessages['makeymakey.upArrowShort'],
+        right: extMessages['makeymakey.rightArrowShort'],
+        down: extMessages['makeymakey.downArrowShort'],
+    };
+
+    const makeymakey = Object.fromEntries(Object.values(allMenus.makeymakey_whenCodePressed).map(v => {
+        const keys = v.translationKey.replace('special.makeymakey.', '').split('.');
+        return [v.translationKey, keys.map(k => makeyKeys[k] || k).join(' ')];
+    }));
+    return Object.assign({}, translate, tts, makeymakey);
 };
 
 // End of copied and modified code
@@ -95,7 +108,7 @@ const asyncFuncy = async () => {
             {},
             extensionsPromiseReturned[i].default,
             blocksPromiseReturned[i].default,
-            getExtMessages(name)
+            getExtMessages(name, extensionsPromiseReturned[i].default)
         )
     );
 
