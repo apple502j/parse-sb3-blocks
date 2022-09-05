@@ -718,6 +718,69 @@ export default {
     ev3_beep: {
         defaultMessage: 'beep note {NOTE} for {TIME} secs',
         translationKey: 'ev3.beepNote'
+    },
+    gdxfor_whenGesture: {
+        defaultMessage: 'when {GESTURE}',
+        translationKey: 'gdxfor.whenGesture',
+        remap: {
+            GESTURE: 'gestureOptions'
+        }
+    },
+    gdxfor_whenForcePushedOrPulled: {
+        defaultMessage: 'when force sensor {PUSH_PULL}',
+        translationKey: 'gdxfor.whenForcePushedOrPulled',
+        remap: {
+            PUSH_PULL: 'pushPullOptions'
+        }
+    },
+    gdxfor_getForce: {
+        defaultMessage: 'force',
+        translationKey: 'gdxfor.getForce',
+        type: REPORTER_BLOCK
+    },
+    gdxfor_whenTilted: {
+        defaultMessage: 'when tilted {TILT}',
+        translationKey: 'gdxfor.whenTilted',
+        remap: {
+            TILT: 'tiltAnyOptions'
+        }
+    },
+    gdxfor_isTilted: {
+        defaultMessage: 'tilted {TILT}?',
+        translationKey: 'gdxfor.isTilted',
+        type: BOOLEAN_BLOCK,
+        remap: {
+            TILT: 'tiltAnyOptions'
+        }
+    },
+    gdxfor_getTilt: {
+        defaultMessage: 'tilt angle {TILT}',
+        translationKey: 'gdxfor.getTilt',
+        type: REPORTER_BLOCK,
+        remap: {
+            TILT: 'tiltOptions'
+        }
+    },
+    gdxfor_isFreeFalling: {
+        defaultMessage: 'falling?',
+        translationKey: 'gdxfor.isFreeFalling',
+        type: BOOLEAN_BLOCK
+    },
+    gdxfor_getSpinSpeed: {
+        defaultMessage: 'spin speed {DIRECTION}',
+        translationKey: 'gdxfor.getSpin',
+        type: REPORTER_BLOCK,
+        remap: {
+            DIRECTION: 'axisOptions'
+        }
+    },
+    gdxfor_getAcceleration: {
+        defaultMessage: 'acceleration {DIRECTION}',
+        translationKey: 'gdxfor.getAcceleration',
+        type: REPORTER_BLOCK,
+        remap: {
+            DIRECTION: 'axisOptions'
+        }
     }
 };
 
@@ -1212,6 +1275,44 @@ const ev3SensorPorts = {
     },
     '3': {
         defaultMessage: '4'
+    }
+};
+
+const gdxforTilt = {
+    front: {
+        translationKey: 'gdxfor.tiltDirectionMenu.front',
+        defaultMessage: 'front'
+    },
+    back: {
+        translationKey: 'gdxfor.tiltDirectionMenu.back',
+        defaultMessage: 'back'
+    },
+    left: {
+        translationKey: 'gdxfor.tiltDirectionMenu.left',
+        defaultMessage: 'left'
+    },
+    right: {
+        translationKey: 'gdxfor.tiltDirectionMenu.right',
+        defaultMessage: 'right'
+    }
+};
+
+const gdxforTiltAny = Object.assign({}, gdxforTilt, {
+    any: {
+        translationKey: 'gdxfor.tiltDirectionMenu.any',
+        defaultMessage: 'any'
+    }
+});
+
+const gdxforAxis = {
+    x: {
+        defaultMessage: 'x'
+    },
+    y: {
+        defaultMessage: 'y'
+    },
+    z: {
+        defaultMessage: 'z'
     }
 };
 
@@ -1741,5 +1842,38 @@ export const allMenus = {
     ev3_motorSetPower: ev3MotorPorts,
     ev3_getMotorPosition: ev3MotorPorts,
     ev3_whenButtonPressed: ev3SensorPorts,
-    ev3_buttonPressed: ev3SensorPorts
+    ev3_buttonPressed: ev3SensorPorts,
+    gdxfor_whenGesture: {
+        shaken: {
+            translationKey: 'gdxfor.shaken',
+            defaultMessage: 'shaken'
+        },
+        'started falling': {
+            translationKey: 'gdxfor.startedFalling',
+            defaultMessage: 'started falling'
+        },
+        'turned face up': {
+            translationKey: 'gdxfor.turnedFaceUp',
+            defaultMessage: 'turned face up'
+        },
+        'turned face down': {
+            translationKey: 'gdxfor.turnedFaceDown',
+            defaultMessage: 'turned face down'
+        }
+    },
+    gdxfor_whenForcePushedOrPulled: {
+        pushed: {
+            translationKey: 'gdxfor.pushed',
+            defaultMessage: 'pushed'
+        },
+        pulled: {
+            translationKey: 'gdxfor.pulled',
+            defaultMessage: 'pulled'
+        }
+    },
+    gdxfor_whenTilted: gdxforTiltAny,
+    gdxfor_isTilted: gdxforTiltAny,
+    gdxfor_getTilt: gdxforTilt,
+    gdxfor_getSpinSpeed: gdxforAxis,
+    gdxfor_getAcceleration: gdxforAxis
 };

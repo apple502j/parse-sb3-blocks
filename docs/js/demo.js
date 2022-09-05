@@ -14,7 +14,10 @@ const HAT_BLOCKS = [
     'boost_whenTilted',
     'ev3_whenButtonPressed',
     'ev3_whenDistanceLessThan',
-    'ev3_whenBrightnessLessThan'
+    'ev3_whenBrightnessLessThan',
+    'gdxfor_whenGesture',
+    'gdxfor_whenForcePushedOrPulled',
+    'gdxfor_whenTilted'
 ];
 
 new ClipboardJS('.sbCopyBtn');
