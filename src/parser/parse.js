@@ -69,7 +69,14 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
                 // Note is not a menu.
                 inputtables[key] = new NumberInput(menu.fields.NOTE[0]);
             } else {
-                inputtables[key] = new Menu(menuBlockId, opcode, menu.fields[key][0]);
+                const fieldKey = Object.prototype.hasOwnProperty.call(blockInfo.remap || {}, key) ? blockInfo.remap[key] : key;
+                if (!Object.prototype.hasOwnProperty.call(menu.fields, fieldKey)) {
+                    // Note to whoever is reading this:
+                    // go to all-blocks.js and add "remap" object, from key to field key
+                    throw new Error(`Non-existent key ${fieldKey}/${key} for menu opcode ${opcode}, known: ${Object.keys(menu.fields)}. This is probably a bug and you should report this!`);
+                }
+                inputtables[key] = new Menu(menuBlockId, opcode, menu.fields[fieldKey][0]);
+
             }
         } else {
             // value[1] is probably array
@@ -116,6 +123,10 @@ const parseInsertedBlock = (blockId, blocks) => {
         return new Variable(blockId, block.fields.VALUE[0], 'custom', BOOLEAN_BLOCK);
     }
     const blockInfo = allBlocks[opcode];
+    if (!blockInfo) {
+        // If you reached this line: please add entry to all-blocks.js.
+        throw new Error(`Unknown block info for opcode ${opcode}. This is probably a bug and you should report this!`);
+    }
     let blockConstructor = Block;
     switch (blockInfo.type) {
         case BOOLEAN_BLOCK: blockConstructor = BooleanBlock; break;
