@@ -67,8 +67,16 @@ if (canDownload) {
 }
 
 const loadProject = async projectId => {
+    let token = '';
     try {
-        const resp = await fetch(`https://projects.scratch.mit.edu/${projectId}/`);
+        const tokenResp = await fetch(`https://trampoline.turbowarp.org/proxy/projects/${projectId}`);
+        const tokenData = await tokenResp.json();
+        token = `&token=${tokenData.project_token}`;
+    } catch (e) {
+        console.error(e);
+    }
+    try {
+        const resp = await fetch(`https://projects.scratch.mit.edu/${projectId}/?${Date.now()}${token}`);
         projectData = await resp.json();
     } catch (e) {
         console.error(e);
