@@ -22,7 +22,7 @@ import {
 } from './input/input.js';
 import Stack from './input/stack.js';
 
-import allBlocks from './block-mapping/all-blocks.js';
+import allBlocks, { allMenus } from './block-mapping/all-blocks.js';
 import {
     BLOCK,
     BOOLEAN_BLOCK,
@@ -55,6 +55,7 @@ export {
     Stack,
 
     allBlocks,
+    allMenus,
 
     BLOCK,
     BOOLEAN_BLOCK,
