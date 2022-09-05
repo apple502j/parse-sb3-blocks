@@ -2,6 +2,7 @@ import { default as allBlocks, allMenus } from './all-blocks.js';
 import translations from './translations.js';
 import localeOptions from './options.js';
 import { specialMessageMap } from './special-messages.js';
+import Sanitizer from '../sanitizer.js';
 
 const _translationKeyToOpcode = {};
 Object.keys(allBlocks).forEach(opcode => {
@@ -28,9 +29,9 @@ const getTranslationKeyFromValue = (locale, value) => {
 const getMessageForLocale = (locale, opcode) => {
     const translationKey = allBlocks[opcode].translationKey || opcode.toUpperCase();
     if (translations[locale] && translations[locale][translationKey]) {
-        return translations[locale][translationKey];
+        return Sanitizer.labelSanitize(translations[locale][translationKey]);
     }
-    return allBlocks[opcode].defaultMessage;
+    return Sanitizer.labelSanitize(allBlocks[opcode].defaultMessage);
 };
 
 const getOptsForLocale = (locale, opcode) => {
@@ -55,9 +56,9 @@ const isSpecialMenuValue = (opcode, value) => Object.prototype.hasOwnProperty.ca
 const getMenuItemForLocale = (locale, opcode, value) => {
     const translationKey = allMenus[opcode][value].translationKey;
     if (translations[locale] && translations[locale][translationKey]) {
-        return translations[locale][translationKey];
+        return Sanitizer.sanitize(translations[locale][translationKey]);
     }
-    return allMenus[opcode][value].defaultMessage;
+    return Sanitizer.sanitize(allMenus[opcode][value].defaultMessage);
 };
 
 export {
