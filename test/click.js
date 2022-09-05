@@ -2,19 +2,19 @@ import colors from 'colors'; // eslint-disable-line no-unused-vars
 // click.js: a mock version of tap
 
 class Test {
-    constructor (testName) {
+    constructor(testName) {
         this.testName = testName;
     }
 
-    comment (content) {
+    comment(content) {
         console.log('COMMENT:', content);
     }
 
-    pass (content) {
+    pass(content) {
         console.log('PASS:'.cyan, this.testName, content || '');
     }
 
-    fail (content) {
+    fail(content) {
         console.error('FAIL:'.red, this.testName, content);
         process.exitCode = 1;
     }

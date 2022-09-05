@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import {promisify} from 'util';
+import { promisify } from 'util';
 import localeObject from 'scratch-l10n';
-import {default as allBlocks, allMenus} from '../src/block-mapping/all-blocks.js';
+import { default as allBlocks, allMenus } from '../src/block-mapping/all-blocks.js';
 
 const writeFile = promisify(fs.writeFile);
 const localeNames = Object.keys(localeObject.default);
@@ -37,7 +37,7 @@ const asyncFuncy = async () => {
         if (entry.noTranslation) return;
         const translationKey = entry.translationKey || key.toUpperCase();
         keys.add(translationKey);
-        if (translateKeyToArgMap.hasOwnProperty(translationKey)) return;
+        if (Object.prototype.hasOwnProperty.call(translateKeyToArgMap, translationKey)) return;
         translateKeyToArgMap[translationKey] = Array.from(entry.defaultMessage.matchAll(
             // This library uses react-intl-like embed value format: {FOO}
             /\{([\w-]+)\}/g
@@ -57,7 +57,7 @@ const asyncFuncy = async () => {
         localeOptions[name] = {};
         keys.forEach(key => {
             let translation = rawTranslations[name][key];
-            if (translateKeyToArgMap.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(translateKeyToArgMap, key)) {
                 translation = translation.replace(
                     // scratch-blocks uses 1-indexed percent: %1, %2
                     /%([\d]+)/g,

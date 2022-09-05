@@ -28,7 +28,9 @@
             "parent": "playNoteBlock",
             "inputs": {},
             "fields": {
-                "NOTE": ["72"]
+                "NOTE": [
+                    "72"
+                ]
             }
         }
     }

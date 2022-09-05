@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import {promisify} from 'util';
+import { promisify } from 'util';
 import localeObject from 'scratch-l10n';
 
 const copyFile = promisify(fs.copyFile);

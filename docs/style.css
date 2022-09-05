@@ -6,130 +6,148 @@ http://opensource.org/licenses/MIT
 */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-body, div, p, textarea, pre {
-  margin: 0;
-  padding: 0;
-  line-height: 1.5em;
-  font: inherit;
+body,
+div,
+p,
+textarea,
+pre {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+    font: inherit;
 }
 
 body {
-  font-size: 1em;
-  padding: 1em;
-  padding-bottom: 0;
-  max-width: 80em;
+    font-size: 1em;
+    padding: 1em;
+    padding-bottom: 0;
+    max-width: 80em;
 
-  background: #fffcdd;
-  color: black;
+    background: #fffcdd;
+    color: black;
 }
 
 .useFull {
-  max-width: inherit;
+    max-width: inherit;
 }
 
 [hidden] {
     display: none !important;
 }
 
-body, .CodeMirror {
-  font-family: Noto Sans, sans-serif;
+body,
+.CodeMirror {
+    font-family: Noto Sans, sans-serif;
 }
 
-pre, .usage p {
+pre,
+.usage p {
     margin-bottom: 1rem;
 }
 
-select, input, .exec-button {
-  font: inherit;
-  font-size: 1em;
+select,
+input,
+.exec-button {
+    font: inherit;
+    font-size: 1em;
 }
 
 li:not(:last-child) {
     margin-bottom: 0.5rem;
 }
 
-.copyInput, .generalInput {
-  border: 2px solid #ccc;
-  min-width: calc(10rem + 15px);
-  height: 3rem;
-  border-radius: 0.5rem 0 0 0.5rem;
-  padding: 0.5rem;
-  margin-right: 0;
-  background: inherit;
+.copyInput,
+.generalInput {
+    border: 2px solid #ccc;
+    min-width: calc(10rem + 15px);
+    height: 3rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    padding: 0.5rem;
+    margin-right: 0;
+    background: inherit;
 }
 
 .longInput {
     min-width: 30rem;
 }
 
-.copyBtn, .generalBtn {
-  height: 3rem;
-  margin-left: 0;
-  width: 6rem;
-  font-size: 1.2rem;
-  background: #eeffee;
-  border: 2px solid #ccc;
-  border-left: 0;
-  border-radius: 0 0.5rem 0.5rem 0;
-  position:relative;
-  top:1px;
+.copyBtn,
+.generalBtn {
+    height: 3rem;
+    margin-left: 0;
+    width: 6rem;
+    font-size: 1.2rem;
+    background: #eeffee;
+    border: 2px solid #ccc;
+    border-left: 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+    position: relative;
+    top: 1px;
 }
 
 #generateBtn {
-  top: 1.5px;
+    top: 1.5px;
 }
 
 select.locale {
-  height: 3rem;
-  width: 12rem;
-  font-size: 1.2rem;
-  background: #eeeeff;
-  border: 2px solid #ccc;
-  border-left: 0;
-  border-right: 0;
-  position:relative;
-  top:1px;
+    height: 3rem;
+    width: 12rem;
+    font-size: 1.2rem;
+    background: #eeeeff;
+    border: 2px solid #ccc;
+    border-left: 0;
+    border-right: 0;
+    position: relative;
+    top: 1px;
 }
 
 select.spriteChooserSelect {
-  height: 3rem;
-  width: 12rem;
-  font-size: 1.2rem;
-  background: #eeeeff;
-  border: 2px solid #ccc;
-  border-right: 0;
-  position:relative;
-  top:1px;
-  border-radius: 0.5rem 0 0 0.5rem;
+    height: 3rem;
+    width: 12rem;
+    font-size: 1.2rem;
+    background: #eeeeff;
+    border: 2px solid #ccc;
+    border-right: 0;
+    position: relative;
+    top: 1px;
+    border-radius: 0.5rem 0 0 0.5rem;
 }
 
-h1, h2, h3, code, input[type=url], #num-chosen-scripts, .description {
-  font-family: Noto Sans, sans-serif;
+h1,
+h2,
+h3,
+code,
+input[type=url],
+#num-chosen-scripts,
+.description {
+    font-family: Noto Sans, sans-serif;
 }
 
 h1 {
-  font-weight: 700;
-  font-size: 2.5rem;
+    font-weight: 700;
+    font-size: 2.5rem;
 }
 
-h1 > span {
-  font-weight: 400;
-  font-size: 1.125rem;
-  letter-spacing: 0;
+h1>span {
+    font-weight: 400;
+    font-size: 1.125rem;
+    letter-spacing: 0;
 }
-h1 > span a {
-  margin-right: 0.5em;
+
+h1>span a {
+    margin-right: 0.5em;
 }
-h1 > span a b {
-  font-weight: 600;
+
+h1>span a b {
+    font-weight: 600;
 }
 
 h2 {
-  font-weight: 400;
-  font-size: 2rem;
+    font-weight: 400;
+    font-size: 2rem;
 }
 
 h3 {
@@ -138,17 +156,17 @@ h3 {
 }
 
 .description {
-  font-size: 1.5rem;
-  font-weight: 300;
+    font-size: 1.5rem;
+    font-weight: 300;
 }
 
 .links {
-  margin-top: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .links * {
-  font-size: 1.5rem;
-  font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .links span:not(:last-child):after {
@@ -157,109 +175,119 @@ h3 {
 }
 
 .error {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 #title a {
-  background: none;
-  margin-right: 0.5em;
+    background: none;
+    margin-right: 0.5em;
 }
 
 a {
-  color: black;
-  text-decoration: none;
-  background: #ffcccc;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    background: #ffcccc;
+    cursor: pointer;
 }
+
 a:hover {
-  border-bottom: 0.1em solid;
-  cursor: pointer;
-  background: #ffcc7d;
+    border-bottom: 0.1em solid;
+    cursor: pointer;
+    background: #ffcc7d;
 }
+
 a:active {
-  opacity: 0.4;
+    opacity: 0.4;
 }
 
 p {
-  margin: 0 0 1.5rem;
-  font-size: 1.2rem;
-  line-height: 1.5em;
+    margin: 0 0 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5em;
 }
 
 small {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 p a {
-  background: none;
-  border-bottom: 0.08em #aaa solid;
-  border-radius: 0;
-  padding: 0;
-  top: 0;
-  -webkit-transition: top 200ms ease-in;
-  position: relative;
+    background: none;
+    border-bottom: 0.08em #aaa solid;
+    border-radius: 0;
+    padding: 0;
+    top: 0;
+    -webkit-transition: top 200ms ease-in;
+    position: relative;
 }
 
-p a:hover, p a:visited:hover {
-  background: none;
-  color: #006ed8;
-  border-bottom-color: #006ed8;
-  -webkit-transition: color 100ms linear, border-bottom-color 100ms linear;
+p a:hover,
+p a:visited:hover {
+    background: none;
+    color: #006ed8;
+    border-bottom-color: #006ed8;
+    -webkit-transition: color 100ms linear, border-bottom-color 100ms linear;
 }
+
 p a:active {
-  top: 0.05em;
-  -webkit-transition: none;
-  opacity: 1;
+    top: 0.05em;
+    -webkit-transition: none;
+    opacity: 1;
 }
 
 label {
-  font-weight: bold;
-  cursor: pointer;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .exec-button {
-  display: inline-block;
-  font-size: 1.25em;
-  margin-bottom: 1em;
-  padding: 2px 4px;
-  color: black;
+    display: inline-block;
+    font-size: 1.25em;
+    margin-bottom: 1em;
+    padding: 2px 4px;
+    color: black;
 
-  font-weight: 500;
-  position: relative;
-  top: -2px;
-  left: -2px;
-  vertical-align: middle;
-  /*-webkit-appearance: none;
+    font-weight: 500;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    vertical-align: middle;
+    /*-webkit-appearance: none;
   outline: none;*/
-  -webkit-transition: none;
+    -webkit-transition: none;
 }
+
 .exec-button {
-  background: #f0f0f0;
-  border: 1px solid #aaa;
-  border-bottom-width: 3px;
-  cursor: default;
-  color: black;
-  -webkit-transition: none;
+    background: #f0f0f0;
+    border: 1px solid #aaa;
+    border-bottom-width: 3px;
+    cursor: default;
+    color: black;
+    -webkit-transition: none;
 }
-.exec-button:active, .exec-button.pressed, .exec-button:active, .exec-button.pressed {
-  border-bottom-width: 1px;
-  border-top-width: 2px;
-  background: #e0e0e0;
-  baseline: 2px;
-  color: black;
-  opacity: 1;
+
+.exec-button:active,
+.exec-button.pressed,
+.exec-button:active,
+.exec-button.pressed {
+    border-bottom-width: 1px;
+    border-top-width: 2px;
+    background: #e0e0e0;
+    baseline: 2px;
+    color: black;
+    opacity: 1;
 }
 
 /* for generator */
 
 .script-wrap {
-  position: relative;
-  margin: 1.5em 0;
+    position: relative;
+    margin: 1.5em 0;
 }
+
 .script-wrap input {
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* Row */
@@ -279,149 +307,164 @@ header {
 
 /* Column */
 
-#left-pane, #sprite-detail, #intro {
-  position: absolute;
-  overflow: hidden;
-  overflow-y: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  padding: 2em;
+#left-pane,
+#sprite-detail,
+#intro {
+    position: absolute;
+    overflow: hidden;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2em;
 }
 
 
 /* Intro pane */
 
 #intro {
-  z-index: 201;
-  background: #fff;
-  padding: 1em 2em;
+    z-index: 201;
+    background: #fff;
+    padding: 1em 2em;
 }
+
 .hidden {
-  display: none;
+    display: none;
 }
 
 
 /* Header stuff */
 
 header {
-  max-height: 14rem;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  z-index: 202;
-  padding: 0 2em;
+    max-height: 14rem;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    z-index: 202;
+    padding: 0 2em;
 }
 
 main {
-  padding: 0 2em;
+    padding: 0 2em;
 }
 
 
 #project-url {
-  font-size: 1.25em;
-  font-weight: 100;
-  color: rgba(0, 0, 0, 0.75);
-  width: 24em;
-  margin: 1em 0;
+    font-size: 1.25em;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.75);
+    width: 24em;
+    margin: 1em 0;
 }
+
 #fetch {
-  margin: 0;
+    margin: 0;
 }
+
 #status {
-  display: inline-block;
-  margin-left: 0.5em;
+    display: inline-block;
+    margin-left: 0.5em;
 }
+
 #bookmarklet {
-  background: #888;
-  color: #fff;
-  border-radius: 1em;
-  text-decoration: none;
-  padding: 0.125em 0.25em;
-  font-size: 0.9em;
+    background: #888;
+    color: #fff;
+    border-radius: 1em;
+    text-decoration: none;
+    padding: 0.125em 0.25em;
+    font-size: 0.9em;
 }
 
 
 #wrap {
-  top: 11em;
-  bottom: 0;
+    top: 11em;
+    bottom: 0;
 }
 
 
 /* Left pane */
 
 #left-pane {
-  width: 14rem;
-  left: 0;
+    width: 14rem;
+    left: 0;
 }
+
 #sprites-list-wrap {
-  overflow-y: auto;
-  top: 9.5em;
-  bottom: 2em;
-  margin: 0 2em;
-  padding: 0;
-  border: 1px solid #888;
+    overflow-y: auto;
+    top: 9.5em;
+    bottom: 2em;
+    margin: 0 2em;
+    padding: 0;
+    border: 1px solid #888;
 }
+
 #sprites-list {
-  border-right: 0.5em solid #4ca6fb;
-  min-height: 2em;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  cursor: default;
-  min-height: 100%;
+    border-right: 0.5em solid #4ca6fb;
+    min-height: 2em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    cursor: default;
+    min-height: 100%;
 }
-#sprites-list > li {
-  padding: 0.125em 0.5em;
-  border-bottom: 1px solid #eee;
+
+#sprites-list>li {
+    padding: 0.125em 0.5em;
+    border-bottom: 1px solid #eee;
 }
-#sprites-list > li.selected {
-  background: #4ca6fb;
+
+#sprites-list>li.selected {
+    background: #4ca6fb;
 }
 
 
-#chosen-scripts-info {
-}
+#chosen-scripts-info {}
+
 #num-chosen-scripts {
-  font-size: 2em;
-  float: left;
-  margin-right: 0.25em;
-  min-width: 1.125em;
-  text-align: right;
+    font-size: 2em;
+    float: left;
+    margin-right: 0.25em;
+    min-width: 1.125em;
+    text-align: right;
 }
+
 #export {
-  clear: both;
+    clear: both;
 }
 
 
 /* Right pane */
 
 #sprite-detail {
-  left: 12rem;
-  right: 0;
+    left: 12rem;
+    right: 0;
 }
+
 #sprite-info {
-  overflow: hidden; /* clearfix */
+    overflow: hidden;
+    /* clearfix */
 }
 
 
 #sprite-name {
-  float: left;
-  font-size: 1.5em;
-  margin: 0 1.2222222em;
+    float: left;
+    font-size: 1.5em;
+    margin: 0 1.2222222em;
 }
+
 #costume-preview {
-  float: left;
-  width: 6em;
-  height: 6em;
-  border: 1px solid #888;
+    float: left;
+    width: 6em;
+    height: 6em;
+    border: 1px solid #888;
 }
+
 #costume-preview img {
-  width: 100%;
+    width: 100%;
 }
 
 img .hidden {
-  position: absolute;
-  opacity: 0;
+    position: absolute;
+    opacity: 0;
 }
 
 .flexContainer {
@@ -429,7 +472,8 @@ img .hidden {
     margin-top: 3rem;
 }
 
-.scratchblocksAreaOuter, .svgArea {
+.scratchblocksAreaOuter,
+.svgArea {
     flex: auto;
     max-width: calc(50% - 2rem);
 }
@@ -438,11 +482,13 @@ img .hidden {
     margin-right: 3rem !important;
 }
 
-.scratchblocksArea, #scratchblocksAreaInner {
+.scratchblocksArea,
+#scratchblocksAreaInner {
     height: 20rem;
 }
 
-.svgArea, .sbContainer {
+.svgArea,
+.sbContainer {
     height: 23rem;
 }
 
@@ -461,6 +507,7 @@ img .hidden {
     width: 40% !important;
 }
 
-.sbContainer, #scratchblocksAreaInner {
+.sbContainer,
+#scratchblocksAreaInner {
     overflow: scroll;
 }

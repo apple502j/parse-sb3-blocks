@@ -1,8 +1,8 @@
 import Sanitizer from '../sanitizer.js';
-import {getMenuItemForLocale, isSpecialMenuValue} from '../block-mapping/block-mapping.js';
+import { getMenuItemForLocale, isSpecialMenuValue } from '../block-mapping/block-mapping.js';
 
 export default class Menu {
-    constructor (id, opcode, content) {
+    constructor(id, opcode, content) {
         this.id = id;
         // note: opcode is the opcode of the PARENT block.
         this.opcode = opcode;
@@ -10,11 +10,11 @@ export default class Menu {
         this.isSpecial = isSpecialMenuValue(opcode, content);
     }
 
-    blockSyntax (locale) {
+    blockSyntax(locale) {
         return getMenuItemForLocale(locale, this.opcode, this.content);
     }
 
-    toScratchblocks (locale) {
+    toScratchblocks(locale) {
         if (!this.isSpecial) return `[${Sanitizer.sanitize(this.content)} v]`;
         return `[${Sanitizer.sanitize(this.blockSyntax(locale))} v]`;
     }

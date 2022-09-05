@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import {test} from '../click.js';
-import {toScratchblocks} from '../../src/index.js';
+import { test } from '../click.js';
+import { toScratchblocks } from '../../src/index.js';
 
 const dirname = path.resolve('test', 'snapshots');
 const fixturesDir = path.resolve(dirname, 'fixtures');

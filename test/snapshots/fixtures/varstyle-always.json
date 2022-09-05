@@ -1,7 +1,9 @@
 {
     "scriptStart": "block1",
     "locale": "en",
-    "opts": {"variableStyle": "always"},
+    "opts": {
+        "variableStyle": "always"
+    },
     "blocks": {
         "block1": {
             "opcode": "looks_say",

@@ -9,7 +9,7 @@ import ProcedureCall from '../block-type/procedure-call.js';
 
 import Icon from '../input/icon.js';
 import Menu from '../input/menu.js';
-import {NumberInput, StringInput, ColorPickerInput, BroadcastMenuInput, EmptyBooleanInput} from '../input/input.js';
+import { NumberInput, StringInput, ColorPickerInput, BroadcastMenuInput, EmptyBooleanInput } from '../input/input.js';
 import Stack from '../input/stack.js';
 
 import allBlocks from '../block-mapping/all-blocks.js';
@@ -89,15 +89,15 @@ const getInputtablesForBlock = (block, blocks, asScript) => {
             inputtables[key] = new inputConstructor(inputDetails[1]);
         }
     });
-    if (asScript && !inputtables.hasOwnProperty('SUBSTACK')) {
+    if (asScript && !Object.prototype.hasOwnProperty.call(inputtables, 'SUBSTACK')) {
         inputtables.SUBSTACK = new Stack();
     }
-    if (blockInfo.type === E_BLOCK && !inputtables.hasOwnProperty('SUBSTACK2')) {
+    if (blockInfo.type === E_BLOCK && !Object.prototype.hasOwnProperty.call(inputtables, 'SUBSTACK2')) {
         inputtables.SUBSTACK2 = new Stack();
     }
     if (blockInfo.boolArg) {
         blockInfo.boolArg.forEach(boolArg => {
-            if (!inputtables.hasOwnProperty(boolArg)) {
+            if (!Object.prototype.hasOwnProperty.call(inputtables, boolArg)) {
                 inputtables[boolArg] = new EmptyBooleanInput();
             }
         });
@@ -117,7 +117,7 @@ const parseInsertedBlock = (blockId, blocks) => {
     }
     const blockInfo = allBlocks[opcode];
     let blockConstructor = Block;
-    switch(blockInfo.type) {
+    switch (blockInfo.type) {
         case BOOLEAN_BLOCK: blockConstructor = BooleanBlock; break;
         case REPORTER_BLOCK: blockConstructor = ReporterBlock; break;
     }

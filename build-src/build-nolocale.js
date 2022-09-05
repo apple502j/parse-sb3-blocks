@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import {promisify} from 'util';
+import { promisify } from 'util';
 
 const writeFile = promisify(fs.writeFile);
 const content = '/* Translations omitted */\nexport default ({});';

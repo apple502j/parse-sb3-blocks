@@ -1,14 +1,14 @@
-import {default as allBlocks, allMenus} from './all-blocks.js';
+import { default as allBlocks, allMenus } from './all-blocks.js';
 import translations from './translations.js';
 import localeOptions from './options.js';
-import {specialMessageMap} from './special-messages.js';
+import { specialMessageMap } from './special-messages.js';
 
 const _translationKeyToOpcode = {};
 Object.keys(allBlocks).forEach(opcode => {
     const entry = allBlocks[opcode];
     if (entry.noTranslation) return;
     const translationKey = entry.translationKey || opcode.toUpperCase();
-    if (_translationKeyToOpcode.hasOwnProperty(translationKey)) return;
+    if (Object.prototype.hasOwnProperty.call(_translationKeyToOpcode, translationKey)) return;
     _translationKeyToOpcode[translationKey] = opcode;
 });
 
@@ -47,10 +47,10 @@ const getOptsForLocale = (locale, opcode) => {
 };
 
 const getSpecialMessage = (locale, key) => {
-    if (specialMessageMap.hasOwnProperty(key)) return getMessageForLocale(locale, specialMessageMap[key]);
+    if (Object.prototype.hasOwnProperty.call(specialMessageMap, key)) return getMessageForLocale(locale, specialMessageMap[key]);
 };
 
-const isSpecialMenuValue = (opcode, value) => (allMenus[opcode] || []).hasOwnProperty(value);
+const isSpecialMenuValue = (opcode, value) => Object.prototype.hasOwnProperty.call(allMenus[opcode] || {}, value);
 
 const getMenuItemForLocale = (locale, opcode, value) => {
     const translationKey = allMenus[opcode][value].translationKey;

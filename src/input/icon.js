@@ -1,9 +1,9 @@
 export default class Icon {
-    constructor (name) {
+    constructor(name) {
         this.name = name;
     }
 
-    toScratchblocks () {
+    toScratchblocks() {
         return `@${this.name}`;
     }
 }

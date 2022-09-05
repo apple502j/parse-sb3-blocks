@@ -1,4 +1,4 @@
-const {toScratchblocks} = window.parseSB3Blocks;
+const { toScratchblocks } = window.parseSB3Blocks;
 const PROJECT_URL_REGEX = /^https?:\/\/scratch\.mit\.edu\/projects\/([\d]+)(?:\/(?:(?:fullscreen|editor)\/?)?)?$/g;
 const HAT_BLOCKS = [
     'event_whenflagclicked',
@@ -58,7 +58,7 @@ const downloadTextAsBlob = (filename, text) => {
     }, 500);
 };
 
-const canDownload = HTMLAnchorElement.prototype.hasOwnProperty('download');
+const canDownload = Object.prototype.hasOwnProperty.call(HTMLAnchorElement.prototype, 'download');
 if (canDownload) {
     sbDownloadBtn.addEventListener('click', () => downloadTextAsBlob('scratchblocks.txt', scratchblocksCode));
 } else {
@@ -99,7 +99,7 @@ document.getElementById('loadBtn').addEventListener('click', e => {
     errorElem.hidden = true;
     spriteChooser.hidden = true;
     flexContainer.hidden = true;
-    bookmarkLink.hidden=true;
+    bookmarkLink.hidden = true;
     const maybeURL = urlInput.value;
     const matches = Array.from(maybeURL.matchAll(PROJECT_URL_REGEX));
     if (!matches || !matches.length) {
@@ -124,7 +124,7 @@ const generateScratchblocks = () => {
         return;
     }
     localeSetting = localeSelect.value;
-    if (!window.scratchLocales.hasOwnProperty(localeSetting)) {
+    if (!Object.prototype.hasOwnProperty.call(window.scratchLocales, localeSetting)) {
         localeSetting = 'en';
     }
     const spriteName = spriteChooserSelect.value;
