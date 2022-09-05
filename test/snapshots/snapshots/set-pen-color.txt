@@ -1,0 +1,1 @@
+set pen [color v] to (var)

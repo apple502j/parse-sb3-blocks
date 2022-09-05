@@ -1,0 +1,43 @@
+{
+    "scriptStart": "setPenColorBlock",
+    "locale": "en",
+    "opts": {},
+    "blocks": {
+        "setPenColorBlock": {
+            "opcode": "pen_setPenColorParamTo",
+            "next": null,
+            "parent": null,
+            "inputs": {
+                "COLOR_PARAM": [
+                    1,
+                    "colorInput"
+                ],
+                "VALUE": [
+                    3,
+                    [
+                        12,
+                        "var",
+                        "varId"
+                    ],
+                    [
+                        4,
+                        "50"
+                    ]
+                ]
+            },
+            "fields": {}
+        },
+        "colorInput": {
+            "opcode": "pen_menu_colorParam",
+            "next": null,
+            "parent": "setPenColorBlock",
+            "inputs": {},
+            "fields": {
+                "colorParam": [
+                    "color",
+                    null
+                ]
+            }
+        }
+    }
+}
