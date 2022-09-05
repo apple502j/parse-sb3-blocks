@@ -789,6 +789,70 @@ export default {
     makeymakey_whenCodePressed: {
         defaultMessage: 'when {SEQUENCE} pressed in order',
         translationKey: 'makeymakey.whenKeysPressedInOrder',
+    },
+    microbit_whenButtonPressed: {
+        defaultMessage: 'when {BTN} button pressed',
+        translationKey: 'microbit.whenButtonPressed',
+        remap: {
+            BTN: 'buttons'
+        }
+    },
+    microbit_isButtonPressed: {
+        defaultMessage: '{BTN} button pressed?',
+        translationKey: 'microbit.isButtonPressed',
+        type: BOOLEAN_BLOCK,
+        remap: {
+            BTN: 'buttons'
+        }
+    },
+    microbit_whenGesture: {
+        defaultMessage: 'when {GESTURE}',
+        translationKey: 'microbit.whenGesture',
+        remap: {
+            GESTURE: 'gestures'
+        }
+    },
+    microbit_displaySymbol: {
+        defaultMessage: 'display {MATRIX}',
+        translationKey: 'microbit.displaySymbol'
+    },
+    microbit_displayText: {
+        defaultMessage: 'display text {TEXT}',
+        translationKey: 'microbit.displayText'
+    },
+    microbit_displayClear: {
+        defaultMessage: 'clear display',
+        translationKey: 'microbit.clearDisplay'
+    },
+    microbit_whenTilted: {
+        defaultMessage: 'when tilted {DIRECTION}',
+        translationKey: 'microbit.whenTilted',
+        remap: {
+            DIRECTION: 'tiltDirectionAny'
+        }
+    },
+    microbit_isTilted: {
+        defaultMessage: 'tilted {DIRECTION}?',
+        translationKey: 'microbit.isTilted',
+        type: BOOLEAN_BLOCK,
+        remap: {
+            DIRECTION: 'tiltDirectionAny'
+        }
+    },
+    microbit_getTiltAngle: {
+        defaultMessage: 'tilt angle {DIRECTION}',
+        translationKey: 'microbit.tiltAngle',
+        type: REPORTER_BLOCK,
+        remap: {
+            DIRECTION: 'tiltDirection'
+        }
+    },
+    microbit_whenPinConnected: {
+        defaultMessage: 'when pin {PIN} connected',
+        translationKey: 'microbit.whenPinConnected',
+        remap: {
+            PIN: 'touchPins'
+        }
     }
 };
 
@@ -1343,6 +1407,45 @@ const makeymakeySequences = makeMakeymakeyCombs(
     'up left down right',
     'up up down down left right left right'
 );
+
+const microbitButtons = {
+    A: {
+        defaultMessage: 'A'
+    },
+    B: {
+        defaultMessage: 'B'
+    },
+    any: {
+        translationKey: 'microbit.buttonsMenu.any',
+        defaultMessage: 'any'
+    }
+};
+
+const microbitTilt = {
+    front: {
+        translationKey: 'microbit.tiltDirectionMenu.front',
+        defaultMessage: 'front'
+    },
+    back: {
+        translationKey: 'microbit.tiltDirectionMenu.back',
+        defaultMessage: 'back'
+    },
+    left: {
+        translationKey: 'microbit.tiltDirectionMenu.left',
+        defaultMessage: 'left'
+    },
+    right: {
+        translationKey: 'microbit.tiltDirectionMenu.right',
+        defaultMessage: 'right'
+    }
+};
+
+const microbitTiltAny = Object.assign({}, microbitTilt, {
+    any: {
+        translationKey: 'microbit.tiltDirectionMenu.any',
+        defaultMessage: 'any'
+    }
+});
 
 export const allMenus = {
     motion_pointtowards: {
@@ -1944,5 +2047,35 @@ export const allMenus = {
             defaultMessage: 'g'
         }
     },
-    makeymakey_whenCodePressed: makeymakeySequences
+    makeymakey_whenCodePressed: makeymakeySequences,
+    microbit_whenButtonPressed: microbitButtons,
+    microbit_isButtonPressed: microbitButtons,
+    microbit_whenGesture: {
+        moved: {
+            translationKey: 'microbit.gesturesMenu.moved',
+            defaultMessage: 'moved'
+        },
+        shaken: {
+            translationKey: 'microbit.gesturesMenu.shaken',
+            defaultMessage: 'shaken'
+        },
+        jumped: {
+            translationKey: 'microbit.gesturesMenu.jumped',
+            defaultMessage: 'jumped'
+        }
+    },
+    microbit_whenTilted: microbitTiltAny,
+    microbit_isTilted: microbitTiltAny,
+    microbit_getTiltAngle: microbitTilt,
+    microbit_whenPinConnected: {
+        '0': {
+            defaultMessage: '0'
+        },
+        '1': {
+            defaultMessage: '1'
+        },
+        '2': {
+            defaultMessage: '2'
+        }
+    }
 };

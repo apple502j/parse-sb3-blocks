@@ -19,7 +19,11 @@ const HAT_BLOCKS = [
     'gdxfor_whenForcePushedOrPulled',
     'gdxfor_whenTilted',
     'makeymakey_whenMakeyKeyPressed',
-    'makeymakey_whenCodePressed'
+    'makeymakey_whenCodePressed',
+    'microbit_whenButtonPressed',
+    'microbit_whenGesture',
+    'microbit_whenTilted',
+    'microbit_whenPinConnected'
 ];
 
 new ClipboardJS('.sbCopyBtn');
