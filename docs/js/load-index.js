@@ -1,2 +1,2 @@
 new ClipboardJS('.copyBtn');
-hljs.initHighlightingOnLoad();
+hljs.highlightAll();
