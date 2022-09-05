@@ -70,8 +70,10 @@ const loadProject = async projectId => {
     let token = '';
     try {
         const tokenResp = await fetch(`https://trampoline.turbowarp.org/proxy/projects/${projectId}`);
-        const tokenData = await tokenResp.json();
-        token = `&token=${tokenData.project_token}`;
+        if (tokenResp.ok) {
+            const tokenData = await tokenResp.json();
+            token = `&token=${tokenData.project_token}`;
+        }
     } catch (e) {
         console.error(e);
     }
