@@ -652,6 +652,72 @@ export default {
     boost_setLightHue: {
         defaultMessage: 'set light color to {HUE}',
         translationKey: 'boost.setLightHue'
+    },
+    ev3_motorTurnClockwise: {
+        defaultMessage: 'motor {PORT} turn this way for {TIME} seconds',
+        translationKey: 'ev3.motorTurnClockwise',
+        remap: {
+            PORT: 'motorPorts'
+        }
+    },
+    ev3_motorTurnCounterClockwise: {
+        defaultMessage: 'motor {PORT} turn that way for {TIME} seconds',
+        translationKey: 'ev3.motorTurnCounterClockwise',
+        remap: {
+            PORT: 'motorPorts'
+        }
+    },
+    ev3_motorSetPower: {
+        defaultMessage: 'motor {PORT} set power {POWER} %',
+        translationKey: 'ev3.motorSetPower',
+        remap: {
+            PORT: 'motorPorts'
+        }
+    },
+    ev3_getMotorPosition: {
+        defaultMessage: 'motor {PORT} position',
+        translationKey: 'ev3.getMotorPosition',
+        type: REPORTER_BLOCK,
+        remap: {
+            PORT: 'motorPorts'
+        }
+    },
+    ev3_whenButtonPressed: {
+        defaultMessage: 'when button {PORT} pressed',
+        translationKey: 'ev3.whenButtonPressed',
+        remap: {
+            PORT: 'sensorPorts'
+        }
+    },
+    ev3_whenDistanceLessThan: {
+        defaultMessage: 'when distance < {DISTANCE}',
+        translationKey: 'ev3.whenDistanceLessThan'
+    },
+    ev3_whenBrightnessLessThan: {
+        defaultMessage: 'when brightness < {DISTANCE}',
+        translationKey: 'ev3.whenBrightnessLessThan',
+    },
+    ev3_buttonPressed: {
+        defaultMessage: 'button {PORT} pressed?',
+        translationKey: 'ev3.buttonPressed',
+        type: BOOLEAN_BLOCK,
+        remap: {
+            PORT: 'sensorPorts'
+        }
+    },
+    ev3_getDistance: {
+        defaultMessage: 'distance',
+        translationKey: 'ev3.getDistance',
+        type: REPORTER_BLOCK
+    },
+    ev3_getBrightness: {
+        defaultMessage: 'brightness',
+        translationKey: 'ev3.getBrightness',
+        type: REPORTER_BLOCK
+    },
+    ev3_beep: {
+        defaultMessage: 'beep note {NOTE} for {TIME} secs',
+        translationKey: 'ev3.beepNote'
     }
 };
 
@@ -1116,6 +1182,36 @@ const boostTilt = {
     right: {
         translationKey: 'boost.tiltDirection.right',
         defaultMessage: 'right'
+    }
+};
+
+const ev3MotorPorts = {
+    '0': {
+        defaultMessage: 'A'
+    },
+    '1': {
+        defaultMessage: 'B'
+    },
+    '2': {
+        defaultMessage: 'C'
+    },
+    '3': {
+        defaultMessage: 'D'
+    }
+};
+
+const ev3SensorPorts = {
+    '0': {
+        defaultMessage: '1'
+    },
+    '1': {
+        defaultMessage: '2'
+    },
+    '2': {
+        defaultMessage: '3'
+    },
+    '3': {
+        defaultMessage: '4'
     }
 };
 
@@ -1639,5 +1735,11 @@ export const allMenus = {
             defaultMessage: 'any'
         }
     }),
-    boost_getTiltAngle: boostTilt
+    boost_getTiltAngle: boostTilt,
+    ev3_motorTurnClockwise: ev3MotorPorts,
+    ev3_motorTurnCounterClockwise: ev3MotorPorts,
+    ev3_motorSetPower: ev3MotorPorts,
+    ev3_getMotorPosition: ev3MotorPorts,
+    ev3_whenButtonPressed: ev3SensorPorts,
+    ev3_buttonPressed: ev3SensorPorts
 };

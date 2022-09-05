@@ -11,7 +11,10 @@ const HAT_BLOCKS = [
     'control_start_as_clone',
     'procedures_definition',
     'boost_whenColor',
-    'boost_whenTilted'
+    'boost_whenTilted',
+    'ev3_whenButtonPressed',
+    'ev3_whenDistanceLessThan',
+    'ev3_whenBrightnessLessThan'
 ];
 
 new ClipboardJS('.sbCopyBtn');
