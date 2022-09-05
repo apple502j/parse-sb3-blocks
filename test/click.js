@@ -1,4 +1,4 @@
-import colors from 'colors'; // eslint-disable-line no-unused-vars
+import chalk from 'chalk';
 // click.js: a mock version of tap
 
 class Test {
@@ -11,11 +11,11 @@ class Test {
     }
 
     pass(content) {
-        console.log('PASS:'.cyan, this.testName, content || '');
+        console.log(chalk.cyan('PASS:'), this.testName, content || '');
     }
 
     fail(content) {
-        console.error('FAIL:'.red, this.testName, content);
+        console.error(chalk.red('FAIL:'), this.testName, content);
         process.exitCode = 1;
     }
 }
