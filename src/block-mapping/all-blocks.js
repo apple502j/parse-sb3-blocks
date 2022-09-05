@@ -1,5 +1,5 @@
 import {
-    BOOLEAN_BLOCK, // eslint-disable-line no-unused-vars
+    BOOLEAN_BLOCK,
     C_BLOCK,
     E_BLOCK,
     REPORTER_BLOCK
@@ -601,6 +601,57 @@ export default {
         defaultMessage: 'language',
         translationKey: 'translate.viewerLanguage',
         type: REPORTER_BLOCK
+    },
+    boost_motorOnFor: {
+        defaultMessage: 'turn motor {MOTOR_ID} for {DURATION} seconds',
+        translationKey: 'boost.motorOnFor'
+    },
+    boost_motorOnForRotation: {
+        defaultMessage: 'turn motor {MOTOR_ID} for {ROTATION} rotations',
+        translationKey: 'boost.motorOnForRotation'
+    },
+    boost_motorOn: {
+        defaultMessage: 'turn motor {MOTOR_ID} on',
+        translationKey: 'boost.motorOn'
+    },
+    boost_motorOff: {
+        defaultMessage: 'turn motor {MOTOR_ID} off',
+        translationKey: 'boost.motorOff'
+    },
+    boost_setMotorPower: {
+        defaultMessage: 'set motor {MOTOR_ID} speed to {POWER} %',
+        translationKey: 'boost.setMotorPower'
+    },
+    boost_setMotorDirection: {
+        defaultMessage: 'set motor {MOTOR_ID} direction {MOTOR_DIRECTION}',
+        translationKey: 'boost.setMotorDirection'
+    },
+    boost_getMotorPosition: {
+        defaultMessage: 'motor {MOTOR_REPORTER_ID} position',
+        translationKey: 'boost.getMotorPosition',
+        type: REPORTER_BLOCK
+    },
+    boost_whenColor: {
+        defaultMessage: 'when {COLOR} brick seen',
+        translationKey: 'boost.whenColor'
+    },
+    boost_seeingColor: {
+        defaultMessage: 'seeing {COLOR} brick?',
+        translationKey: 'boost.seeingColor',
+        type: BOOLEAN_BLOCK
+    },
+    boost_whenTilted: {
+        defaultMessage: 'when tilted {TILT_DIRECTION_ANY}',
+        translationKey: 'boost.whenTilted'
+    },
+    boost_getTiltAngle: {
+        defaultMessage: 'tilt angle {TILT_DIRECTION}',
+        translationKey: 'boost.getTiltAngle',
+        type: REPORTER_BLOCK
+    },
+    boost_setLightHue: {
+        defaultMessage: 'set light color to {HUE}',
+        translationKey: 'boost.setLightHue'
     }
 };
 
@@ -996,6 +1047,77 @@ export const _unkeyedTextToSpeechLanguages = {
     }
 };
 const ttsLanguages = assignKey(_unkeyedTextToSpeechLanguages, 'special.tts');
+
+const boostMotorId = {
+    A: {
+        defaultMessage: 'A'
+    },
+    B: {
+        defaultMessage: 'B'
+    },
+    C: {
+        defaultMessage: 'C'
+    },
+    D: {
+        defaultMessage: 'D'
+    },
+    AB: {
+        defaultMessage: 'AB'
+    },
+    ALL: {
+        defaultMessage: 'ABCD'
+    }
+};
+
+const boostColor = {
+    red: {
+        translationKey: 'boost.color.red',
+        defaultMessage: 'red'
+    },
+    blue: {
+        translationKey: 'boost.color.blue',
+        defaultMessage: 'blue'
+    },
+    green: {
+        translationKey: 'boost.color.green',
+        defaultMessage: 'green'
+    },
+    yellow: {
+        translationKey: 'boost.color.yellow',
+        defaultMessage: 'yellow'
+    },
+    white: {
+        translationKey: 'boost.color.white',
+        defaultMessage: 'white'
+    },
+    black: {
+        translationKey: 'boost.color.black',
+        defaultMessage: 'black'
+    },
+    any: {
+        translationKey: 'boost.color.any',
+        defaultMessage: 'any color'
+    }
+};
+
+const boostTilt = {
+    up: {
+        translationKey: 'boost.tiltDirection.up',
+        defaultMessage: 'up'
+    },
+    down: {
+        translationKey: 'boost.tiltDirection.down',
+        defaultMessage: 'down'
+    },
+    left: {
+        translationKey: 'boost.tiltDirection.left',
+        defaultMessage: 'left'
+    },
+    right: {
+        translationKey: 'boost.tiltDirection.right',
+        defaultMessage: 'right'
+    }
+};
 
 export const allMenus = {
     motion_pointtowards: {
@@ -1475,5 +1597,47 @@ export const allMenus = {
             translationKey: 'text2speech.kitten',
             defaultMessage: 'kitten'
         }
-    }
+    },
+    boost_motorOnFor: boostMotorId,
+    boost_motorOnForRotation: boostMotorId,
+    boost_motorOn: boostMotorId,
+    boost_motorOff: boostMotorId,
+    boost_setMotorPower: boostMotorId,
+    boost_setMotorDirection: Object.assign({
+        'this way': {
+            translationKey: 'boost.motorDirection.forward',
+            defaultMessage: 'this way'
+        },
+        'that way': {
+            translationKey: 'boost.motorDirection.backward',
+            defaultMessage: 'that way'
+        },
+        reverse: {
+            translationKey: 'boost.motorDirection.reverse',
+            defaultMessage: 'reverse'
+        }
+    }, boostMotorId),
+    boost_getMotorPosition: {
+        A: {
+            defaultMessage: 'A'
+        },
+        B: {
+            defaultMessage: 'B'
+        },
+        C: {
+            defaultMessage: 'C'
+        },
+        D: {
+            defaultMessage: 'D'
+        }
+    },
+    boost_whenColor: boostColor,
+    boost_seeingColor: boostColor,
+    boost_whenTilted: Object.assign({}, boostTilt, {
+        any: {
+            translationKey: 'boost.tiltDirection.any',
+            defaultMessage: 'any'
+        }
+    }),
+    boost_getTiltAngle: boostTilt
 };

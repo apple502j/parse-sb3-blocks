@@ -9,7 +9,9 @@ const HAT_BLOCKS = [
     'event_whenbackdropswitchesto',
     'event_whenbroadcastreceived',
     'control_start_as_clone',
-    'procedures_definition'
+    'procedures_definition',
+    'boost_whenColor',
+    'boost_whenTilted'
 ];
 
 new ClipboardJS('.sbCopyBtn');
