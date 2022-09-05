@@ -6,7 +6,7 @@ const isDev = String(process.env.mode).includes('dev');
 if (isDev) {
     console.log('Building dev version...');
 } else {
-    console.log('Buiding production...');
+    console.log('Building production...');
 }
 
 const mainFile = './src/index.js';
