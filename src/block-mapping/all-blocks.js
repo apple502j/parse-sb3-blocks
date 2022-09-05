@@ -505,11 +505,17 @@ export default {
     },
     pen_changePenColorParamBy: {
         defaultMessage: 'change pen {COLOR_PARAM} by {VALUE}',
-        translationKey: 'pen.changeColorParam'
+        translationKey: 'pen.changeColorParam',
+        remap: {
+            COLOR_PARAM: 'colorParam'
+        }
     },
     pen_setPenColorParamTo: {
         defaultMessage: 'set pen {COLOR_PARAM} to {VALUE}',
-        translationKey: 'pen.setColorParam'
+        translationKey: 'pen.setColorParam',
+        remap: {
+            COLOR_PARAM: 'colorParam'
+        }
     },
     pen_changePenSizeBy: {
         defaultMessage: 'change pen size by {SIZE}',
@@ -564,6 +570,37 @@ export default {
     videoSensing_setVideoTransparency: {
         defaultMessage: 'set video transparency to {TRANSPARENCY}',
         translationKey: 'videoSensing.setVideoTransparency'
+    },
+    text2speech_speakAndWait: {
+        defaultMessage: 'speak {WORDS}',
+        translationKey: 'text2speech.speakAndWaitBlock'
+    },
+    text2speech_setVoice: {
+        defaultMessage: 'set voice to {VOICE}',
+        translationKey: 'text2speech.setVoiceBlock',
+        remap: {
+            VOICE: 'voices'
+        }
+    },
+    text2speech_setLanguage: {
+        defaultMessage: 'set language to {LANGUAGE}',
+        translationKey: 'text2speech.setLanguageBlock',
+        remap: {
+            LANGUAGE: 'languages'
+        }
+    },
+    translate_getTranslate: {
+        defaultMessage: 'translate {WORDS} to {LANGAUGE}',
+        translationKey: 'translate.translateBlock',
+        type: REPORTER_BLOCK,
+        remap: {
+            LANGUAGE: 'languages'
+        }
+    },
+    translate_getViewerLanguage: {
+        defaultMessage: 'language',
+        translationKey: 'translate.viewerLanguage',
+        type: REPORTER_BLOCK
     }
 };
 
@@ -680,6 +717,285 @@ const colorParam = {
         defaultMessage: 'transparency'
     }
 };
+
+
+const assignKey = (o, keyPrefix) => {
+    for (const k of Object.keys(o)) o[k].translationKey = `${keyPrefix}.${k}`;
+    return o;
+};
+
+
+const translateLanguages = assignKey({
+    sq: {
+        defaultMessage: 'Albanian'
+    },
+    am: {
+        defaultMessage: 'Amharic'
+    },
+    ar: {
+        defaultMessage: 'Arabic'
+    },
+    hy: {
+        defaultMessage: 'Armenian'
+    },
+    az: {
+        defaultMessage: 'Azerbaijani'
+    },
+    eu: {
+        defaultMessage: 'Basque'
+    },
+    be: {
+        defaultMessage: 'Belarusian'
+    },
+    bg: {
+        defaultMessage: 'Bulgarian'
+    },
+    ca: {
+        defaultMessage: 'Catalan'
+    },
+    'zh-tw': {
+        defaultMessage: 'Chinese (Traditional)'
+    },
+    hr: {
+        defaultMessage: 'Croatian'
+    },
+    cs: {
+        defaultMessage: 'Czech'
+    },
+    da: {
+        defaultMessage: 'Danish'
+    },
+    nl: {
+        defaultMessage: 'Dutch'
+    },
+    en: {
+        defaultMessage: 'English'
+    },
+    eo: {
+        defaultMessage: 'Esperanto'
+    },
+    et: {
+        defaultMessage: 'Estonian'
+    },
+    fi: {
+        defaultMessage: 'Finnish'
+    },
+    fr: {
+        defaultMessage: 'French'
+    },
+    gl: {
+        defaultMessage: 'Galician'
+    },
+    de: {
+        defaultMessage: 'German'
+    },
+    el: {
+        defaultMessage: 'Greek'
+    },
+    ht: {
+        defaultMessage: 'Haitian Creole'
+    },
+    hi: {
+        defaultMessage: 'Hindi'
+    },
+    hu: {
+        defaultMessage: 'Hungarian'
+    },
+    is: {
+        defaultMessage: 'Icelandic'
+    },
+    id: {
+        defaultMessage: 'Indonesian'
+    },
+    ga: {
+        defaultMessage: 'Irish'
+    },
+    it: {
+        defaultMessage: 'Italian'
+    },
+    ja: {
+        defaultMessage: 'Japanese'
+    },
+    kn: {
+        defaultMessage: 'Kannada'
+    },
+    ko: {
+        defaultMessage: 'Korean'
+    },
+    ku: {
+        defaultMessage: 'Kurdish (Kurmanji)'
+    },
+    la: {
+        defaultMessage: 'Latin'
+    },
+    lv: {
+        defaultMessage: 'Latvian'
+    },
+    lt: {
+        defaultMessage: 'Lithuanian'
+    },
+    mk: {
+        defaultMessage: 'Macedonian'
+    },
+    ms: {
+        defaultMessage: 'Malay'
+    },
+    ml: {
+        defaultMessage: 'Malayalam'
+    },
+    mt: {
+        defaultMessage: 'Maltese'
+    },
+    mi: {
+        defaultMessage: 'Maori'
+    },
+    mr: {
+        defaultMessage: 'Marathi'
+    },
+    mn: {
+        defaultMessage: 'Mongolian'
+    },
+    my: {
+        defaultMessage: 'Myanmar (Burmese)'
+    },
+    fa: {
+        defaultMessage: 'Persian'
+    },
+    pl: {
+        defaultMessage: 'Polish'
+    },
+    pt: {
+        defaultMessage: 'Portuguese'
+    },
+    ro: {
+        defaultMessage: 'Romanian'
+    },
+    ru: {
+        defaultMessage: 'Russian'
+    },
+    gd: {
+        defaultMessage: 'Scots Gaelic'
+    },
+    sr: {
+        defaultMessage: 'Serbian'
+    },
+    sk: {
+        defaultMessage: 'Slovak'
+    },
+    sl: {
+        defaultMessage: 'Slovenian'
+    },
+    es: {
+        defaultMessage: 'Spanish'
+    },
+    sv: {
+        defaultMessage: 'Swedish'
+    },
+    te: {
+        defaultMessage: 'Telugu'
+    },
+    th: {
+        defaultMessage: 'Thai'
+    },
+    tr: {
+        defaultMessage: 'Turkish'
+    },
+    uk: {
+        defaultMessage: 'Ukrainian'
+    },
+    uz: {
+        defaultMessage: 'Uzbek'
+    },
+    vi: {
+        defaultMessage: 'Vietnamese'
+    },
+    cy: {
+        defaultMessage: 'Welsh'
+    },
+    zu: {
+        defaultMessage: 'Zulu'
+    },
+    he: {
+        defaultMessage: 'Hebrew'
+    },
+    'zh-cn': {
+        defaultMessage: 'Chinese (Simplified)'
+    }
+}, 'special.translate');
+
+// Used by buildscript
+export const _unkeyedTextToSpeechLanguages = {
+    ar: {
+        defaultMessage: 'Arabic'
+    },
+    'zh-cn': {
+        defaultMessage: 'Chinese (Mandarin)'
+    },
+    da: {
+        defaultMessage: 'Danish'
+    },
+    nl: {
+        defaultMessage: 'Dutch'
+    },
+    en: {
+        defaultMessage: 'English'
+    },
+    fr: {
+        defaultMessage: 'French'
+    },
+    de: {
+        defaultMessage: 'German'
+    },
+    hi: {
+        defaultMessage: 'Hindi'
+    },
+    is: {
+        defaultMessage: 'Icelandic'
+    },
+    it: {
+        defaultMessage: 'Italian'
+    },
+    ja: {
+        defaultMessage: 'Japanese'
+    },
+    ko: {
+        defaultMessage: 'Korean'
+    },
+    nb: {
+        defaultMessage: 'Norwegian'
+    },
+    pl: {
+        defaultMessage: 'Polish'
+    },
+    'pt-br': {
+        defaultMessage: 'Portuguese (Brazilian)'
+    },
+    pt: {
+        defaultMessage: 'Portuguese (European)'
+    },
+    ro: {
+        defaultMessage: 'Romanian'
+    },
+    ru: {
+        defaultMessage: 'Russian'
+    },
+    es: {
+        defaultMessage: 'Spanish (European)'
+    },
+    'es-419': {
+        defaultMessage: 'Spanish (Latin American)'
+    },
+    sv: {
+        defaultMessage: 'Swedish'
+    },
+    tr: {
+        defaultMessage: 'Turkish'
+    },
+    cy: {
+        defaultMessage: 'Welsh'
+    }
+};
+const ttsLanguages = assignKey(_unkeyedTextToSpeechLanguages, 'special.tts');
 
 export const allMenus = {
     motion_pointtowards: {
@@ -1134,6 +1450,30 @@ export const allMenus = {
         'on-flipped': {
             translationKey: 'videoSensing.onFlipped',
             defaultMessage: 'on flipped'
+        }
+    },
+    translate_getTranslate: translateLanguages,
+    text2speech_setLanguage: ttsLanguages,
+    text2speech_setVoice: {
+        ALTO: {
+            translationKey: 'text2speech.alto',
+            defaultMessage: 'alto'
+        },
+        TENOR: {
+            translationKey: 'text2speech.tenor',
+            defaultMessage: 'tenor'
+        },
+        SQUEAK: {
+            translationKey: 'text2speech.squeak',
+            defaultMessage: 'squeak'
+        },
+        GIANT: {
+            translationKey: 'text2speech.giant',
+            defaultMessage: 'giant'
+        },
+        KITTEN: {
+            translationKey: 'text2speech.kitten',
+            defaultMessage: 'kitten'
         }
     }
 };
