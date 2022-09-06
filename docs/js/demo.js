@@ -144,7 +144,7 @@ document.getElementById('generateBtn').addEventListener('click', e => {
 const generateScratchblocks = () => {
     flexContainer.hidden = true;
     bookmarkLink.hidden = true;
-    if (!projectData || projectData === {}) {
+    if (!projectData || Object.keys(projectData).length === 0) {
         console.error('projectData is missing');
         return;
     }
