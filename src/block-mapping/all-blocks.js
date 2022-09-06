@@ -853,6 +853,57 @@ export default {
         remap: {
             PIN: 'touchPins'
         }
+    },
+    wedo2_motorOnFor: {
+        defaultMessage: 'turn {MOTOR_ID} on for {DURATION} seconds',
+        translationKey: 'wedo2.motorOnFor'
+    },
+    wedo2_motorOn: {
+        defaultMessage: 'turn {MOTOR_ID} on',
+        translationKey: 'wedo2.motorOn'
+    },
+    wedo2_motorOff: {
+        defaultMessage: 'turn {MOTOR_ID} off',
+        translationKey: 'wedo2.motorOff'
+    },
+    wedo2_startMotorPower: {
+        defaultMessage: 'set {MOTOR_ID} power to {POWER}',
+        translationKey: 'wedo2.startMotorPower'
+    },
+    wedo2_setMotorDirection: {
+        defaultMessage: 'set {MOTOR_ID} direction to {MOTOR_DIRECTION}',
+        translationKey: 'wedo2.setMotorDirection'
+    },
+    wedo2_setLightHue: {
+        defaultMessage: 'set light color to {HUE}',
+        translationKey: 'wedo2.setLightHue'
+    },
+    wedo2_playNoteFor: {
+        defaultMessage: 'play note {NOTE} for {DURATION} seconds',
+        translationKey: 'wedo2.playNoteFor'
+    },
+    wedo2_whenDistance: {
+        defaultMessage: 'when distance {OP} {REFERENCE}',
+        translationKey: 'wedo2.whenDistance'
+    },
+    wedo2_whenTilted: {
+        defaultMessage: 'when tilted {TILT_DIRECTION_ANY}',
+        translationKey: 'wedo2.whenTilted'
+    },
+    wedo2_getDistance: {
+        defaultMessage: 'distance',
+        translationKey: 'wedo2.getDistance',
+        type: REPORTER_BLOCK
+    },
+    wedo2_isTilted: {
+        defaultMessage: 'tilted {TILT_DIRECTION_ANY}?',
+        translationKey: 'wedo2.isTilted',
+        type: BOOLEAN_BLOCK
+    },
+    wedo2_getTiltAngle: {
+        defaultMessage: 'tilt angle {TILT_DIRECTION}',
+        translationKey: 'wedo2.getTiltAngle',
+        type: REPORTER_BLOCK
     }
 };
 
@@ -1443,6 +1494,51 @@ const microbitTilt = {
 const microbitTiltAny = Object.assign({}, microbitTilt, {
     any: {
         translationKey: 'microbit.tiltDirectionMenu.any',
+        defaultMessage: 'any'
+    }
+});
+
+const wedo2Motors = {
+    motor: {
+        translationKey: 'wedo2.motorId.default',
+        defaultMessage: 'motor'
+    },
+    'motor A': {
+        translationKey: 'wedo2.motorId.a',
+        defaultMessage: 'motor A'
+    },
+    'motor B': {
+        translationKey: 'wedo2.motorId.b',
+        defaultMessage: 'motor B'
+    },
+    'all motors': {
+        translationKey: 'wedo2.motorId.all',
+        defaultMessage: 'all motors'
+    }
+};
+
+const wedo2Tilt = {
+    up: {
+        translationKey: 'wedo2.tiltDirection.up',
+        defaultMessage: 'up'
+    },
+    down: {
+        translationKey: 'wedo2.tiltDirection.down',
+        defaultMessage: 'down'
+    },
+    left: {
+        translationKey: 'wedo2.tiltDirection.left',
+        defaultMessage: 'left'
+    },
+    right: {
+        translationKey: 'wedo2.tiltDirection.right',
+        defaultMessage: 'right'
+    }
+};
+
+const wedo2TiltAny = Object.assign({}, wedo2Tilt, {
+    any: {
+        translationKey: 'wedo2.tiltDirection.any',
         defaultMessage: 'any'
     }
 });
@@ -2077,5 +2173,34 @@ export const allMenus = {
         '2': {
             defaultMessage: '2'
         }
-    }
+    },
+    wedo2_motorOnFor: wedo2Motors,
+    wedo2_motorOn: wedo2Motors,
+    wedo2_motorOff: wedo2Motors,
+    wedo2_startMotorPower: wedo2Motors,
+    wedo2_setMotorDirection: Object.assign({}, wedo2Motors, {
+        'this way': {
+            translationKey: 'wedo2.motorDirection.forward',
+            defaultMessage: 'this way'
+        },
+        'that way': {
+            translationKey: 'wedo2.motorDirection.backward',
+            defaultMessage: 'that way'
+        },
+        reverse: {
+            translationKey: 'wedo2.motorDirection.reverse',
+            defaultMessage: 'reverse'
+        }
+    }),
+    wedo2_whenDistance: {
+        '<': {
+            defaultMessage: '<'
+        },
+        '>': {
+            defaultMessage: '>'
+        }
+    },
+    wedo2_whenTilted: wedo2TiltAny,
+    wedo2_isTilted: wedo2TiltAny,
+    wedo2_getTiltAngle: wedo2Tilt
 };

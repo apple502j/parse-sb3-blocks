@@ -23,7 +23,9 @@ const HAT_BLOCKS = [
     'microbit_whenButtonPressed',
     'microbit_whenGesture',
     'microbit_whenTilted',
-    'microbit_whenPinConnected'
+    'microbit_whenPinConnected',
+    'wedo2_whenDistance',
+    'wedo2_whenTilted'
 ];
 
 new ClipboardJS('.sbCopyBtn');
