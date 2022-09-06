@@ -1,10 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { promisify } from 'util';
+import { copyFile, writeFile } from 'fs/promises';
 import localeObject from 'scratch-l10n';
 
-const copyFile = promisify(fs.copyFile);
-const writeFile = promisify(fs.writeFile);
 const locales = localeObject.default;
 
 if (String(process.env.mode).includes('docs')) {

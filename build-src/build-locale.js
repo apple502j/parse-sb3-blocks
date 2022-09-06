@@ -1,11 +1,9 @@
-import fs from 'fs';
 import path from 'path';
-import { promisify } from 'util';
+import { writeFile } from 'fs/promises';
 import localeObject from 'scratch-l10n';
 import extLocales from 'scratch-translate-extension-languages/languages.json' assert { type: 'json' };
 import { default as allBlocks, allMenus, _unkeyedTextToSpeechLanguages as TTS_LANGUAGE_INFO } from '../src/block-mapping/all-blocks.js';
 
-const writeFile = promisify(fs.writeFile);
 const localeNames = Object.keys(localeObject.default);
 
 const translateKeyToCategory = key => {
