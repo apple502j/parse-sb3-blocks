@@ -40,8 +40,8 @@
     <main>
         <h2>What is parse-sb3-blocks?</h2>
         <p>Parsing Scratch 3.0 file was a nightmare. Things are compressed and we needed to handle constants or special
-            cases (variables inserted on input, empty slots, custom blocks...) ourselves - until parse-sb3-blocks came.
-            This library comes with an easy-to-use parser, and as a by-product, a <a
+            cases (variables inserted on input, empty slots, custom blocks...) ourselves - until parse-sb3-blocks comes.
+            This library comes with an easy-to-use parser, and as a by-product (?), a <a
                 href="https://scratchblocks.github.io/" rel="noreferrer noopener" target="_blank">scratchblocks</a>
             generator.</p>
         <p>parse-sb3-blocks parses one script of your choice from the blocks object serialized in sb3 format. A simple
@@ -58,7 +58,7 @@
         <div class="install">
             <h3>Install via CDN</h3>
             <input id="cdnscript" class="copyInput"
-                value="<script src='https://cdn.jsdelivr.net/npm/parse-sb3-blocks@0.1.0/dist/parse-sb3-blocks.browser.js' defer></script>"><button
+                value="<script src='https://cdn.jsdelivr.net/npm/parse-sb3-blocks@0.5.0/dist/parse-sb3-blocks.browser.js' defer></script>"><button
                 id="cdnscriptBtn" class="copyBtn" data-clipboard-target="#cdnscript">Copy</button>
             <p>
                 Or, you can
@@ -91,11 +91,11 @@ console.log(toScratchblocks(whenGreenflag, stage.blocks, "en", {tab: "  "}));
                 <li>opts - the options for generator</li>
             </ul>
 
-            <p>opts is a object, and can have these properties:</p>
+            <p>opts is an object, and can have these properties:</p>
             <ul>
-                <li>tab - characters used for indenting C blocks. defaults to four spaces. scratchblocks will not render
-                    C blocks unless the tab is space/tab, so be careful.</li>
-                <li>variableStyle - whether we add ::variables or not. defaults to "none" (never add), and can be set to
+                <li>tab - characters used for indenting C blocks. defaults to four spaces. Note, scratchblocks will not
+                    render C blocks unless the tab is space/tab.</li>
+                <li>variableStyle - whether to add ::variables or not. defaults to "none" (never add), and can be set to
                     "always" (always add) or "as-needed" (add if there's a name conflict).</li>
             </ul>
         </div>
@@ -104,7 +104,7 @@ console.log(toScratchblocks(whenGreenflag, stage.blocks, "en", {tab: "  "}));
         <p>If you want to build, clone the GitHub repository and run:</p>
         <pre><code class="plaintext">npm i
 npm run build</code></pre>
-        <p>Note that Node.js 14+ will be required.</p>
+        <p>Note that Node.js 16+ is required for building.</p>
 
         <h2>Credits</h2>
         <p>Huge thanks to Tim Radvan (
