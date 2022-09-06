@@ -52,7 +52,7 @@ Object.keys(window.scratchLocales).forEach(localeCode => {
     if (localeCode === 'en') return;
     const elem = document.createElement('option');
     elem.value = localeCode;
-    elem.innerText = `${window.scratchLocales[localeCode].name} (${localeCode})`;
+    elem.textContent = `${window.scratchLocales[localeCode].name} (${localeCode})`;
     localeSelect.appendChild(elem);
 });
 
@@ -60,7 +60,6 @@ const downloadTextAsBlob = (filename, text) => {
     const blob = new Blob([text], {
         type: 'text/plain'
     });
-    if (navigator.msSaveOrOpenBlob) return navigator.msSaveOrOpenBlob(blob, filename);
     const objectURL = URL.createObjectURL(blob);
     const tempElem = document.createElement('a');
     tempElem.href = objectURL;
@@ -98,13 +97,13 @@ const loadProject = async projectId => {
         projectData = await resp.json();
     } catch (e) {
         console.error(e);
-        errorElem.innerText = 'Project failed to load.';
+        errorElem.textContent = 'Project failed to load.';
         errorElem.hidden = false;
         return;
     }
     if (projectData.objName) {
-        console.error('Project looks like sb2 format.');
-        errorElem.innerText = 'Project failed to load: the project is sb2 format.';
+        console.error('Project looks like in sb2 format.');
+        errorElem.textContent = 'Project failed to load: the project is in sb2 format.';
         errorElem.hidden = false;
         return;
     }
@@ -129,7 +128,7 @@ document.getElementById('loadBtn').addEventListener('click', e => {
     const maybeURL = urlInput.value;
     const matches = Array.from(maybeURL.matchAll(PROJECT_URL_REGEX));
     if (!matches || !matches.length) {
-        errorElem.innerText = 'URL is incorrect';
+        errorElem.textContent = 'URL is incorrect';
         errorElem.hidden = false;
         return;
     }
@@ -174,7 +173,7 @@ const generateScratchblocks = () => {
             variableStyle: 'as-needed'
         })
     ).join('\n\n');
-    scratchblocksAreaInner.innerText = scratchblocksCode;
+    scratchblocksAreaInner.textContent = scratchblocksCode;
     const renderOpts = {
         style: 'scratch3',
         languages: localeSetting === 'en' ? ['en'] : [localeSetting.replace('-', '_'), 'en'],
