@@ -1,5 +1,5 @@
 # parse-sb3-blocks
-**parse-sb3-blocks** can parse Scratch 3.0 block formats, and convert it to [scratchblocks](https://github.com/scratchblocks/scratchblocks) format.
+**parse-sb3-blocks** parses Scratch 3.0 block formats, and convert it to [scratchblocks](https://github.com/scratchblocks/scratchblocks) format.
 
 ## Usage
 ### Example
@@ -22,7 +22,7 @@ console.log(toScratchblocks('ND,(]G?KLIy(IZrd2sl.', sb3blocks, 'en', {tabs: ' '.
 - scriptStart: The block ID to start parsing from. **This must be a block ID of Connectable** (which includes hat blocks.)
 - blocks: serialized SB3 format (project.json format) of blocks.
 - locale: Locale to use. `en` should always be available.
-- opts: Optional. It can be a object (see below)
+- opts: Optional. It can be an object (see below)
 
 #### Options
 `opts` can have these properties.
@@ -31,7 +31,7 @@ console.log(toScratchblocks('ND,(]G?KLIy(IZrd2sl.', sb3blocks, 'en', {tabs: ' '.
 - variableStyle: If set to `none` (default), variables will never have `::variables` at the end. If set to `always`, it will always have `::variables`. If set to `as-needed`, it will have `::variables` if block name conflicts.
 
 ### Internal Functions and Parsers
-It also exports several classes used internally by the parsers.
+It also exports several classes used internally by the parsers. These are not APIs and is subject to changes at any time.
 
 #### Inputtable and Connectable
 Connectable is an instance that can be connected to a stack block via next-parent, including:
@@ -55,20 +55,20 @@ Both Connectable and Inputtable implement `toScratchblocks` method. It accepts `
 Instances with class name ending with "Block" have these attributes:
 - `id` for block ID
 - `opcode` for block opcode
-- `Inputtables` for object of input key to Inputtable
+- `inputtables` for object of input key to Inputtable
 
 ### Block Mapping
-`block-enum`.js provides an enum for block types.
+`block-enum.js` provides an enum for block types.
 
 `translations.js` is an auto-generated file which includes all translations. `options.js` is also auto-generated, and contains which block needs options (because of conflicting names).
 
-**Only blocks and menu items in all-blocks.js is supported.**
+**Only blocks and menu items in all-blocks.js are supported.**
 
 #### all-blocks.js
 all-blocks.js default-exports allBlocks, which is an object with opcode as key and the object (see below) as value.
 
 The object has these keys and values:
-- noTranslation: If set to `true`, it will be ignored from translation generator.
+- noTranslation: If set to `true`, it will be ignored from the translation generator.
 - defaultMessage: Message in default language (English).
 - type: The block type. Defaults to `BlockEnum.BLOCK`.
 - defaultOptions: The block option for the block when using defaultMessage, in case duplicates exist. It can have category key and the category as a value.
@@ -76,7 +76,7 @@ The object has these keys and values:
 - boolArg: Array of arguments which must be boolean. Used to fill empty arguments with `EmptyBooleanInput`. If omitted, empty array is used.
 
 ## Building
-Node 14+ is preferred for building. Type `npm run build`, which generates locale files.
+Node 16+ is required for building. Type `npm run build`, which generates locale files.
 
 ### env
-- `mode`: Unless set to `dev`, the result is minified.
+- `mode`: Unless set to `dev`, the result is minified. Add `docs` to update the JS file used in demo.
