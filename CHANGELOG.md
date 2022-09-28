@@ -1,4 +1,9 @@
 # Changelog
+## 0.5.1 (2022-09-28)
+- (bug) fix custom block parameter over-escaping
+- (bug) remove unnecessary escaping for single colon
+- (refactor) update dependencies
+
 ## 0.5.0 (2022-09-06)
 - (feat) add support for Translate, Text-to-Speech, LEGO Boost, LEGO EV3, Vernier GoDirect, MakeyMakey, micro:bit, and WeDo2 extensions
 - (feat) update translations
