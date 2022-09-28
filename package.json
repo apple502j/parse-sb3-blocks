@@ -1,6 +1,6 @@
 {
     "name": "parse-sb3-blocks",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Parse sb3 blocks, and generate scratchblocks formatted code.",
     "main": "dist/parse-sb3-blocks.cjs",
     "browser": "dist/parse-sb3-blocks.browser.js",
