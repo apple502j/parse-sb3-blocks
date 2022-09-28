@@ -12,12 +12,17 @@ fs.readdirSync(fixturesDir)
         const filePath = path.resolve(fixturesDir, filename);
         const jsonFile = fs.readFileSync(filePath, 'utf-8');
         const config = JSON.parse(jsonFile);
-        const scratchblocks = toScratchblocks(config.scriptStart, config.blocks, config.locale, config.opts);
+        const scripts = Array.isArray(config.scriptStart) ? config.scriptStart : [config.scriptStart];
         const snapshotPath = path.resolve(dirname, 'snapshots', filename.replace('.json', '.txt'));
         const snapshotFile = fs.readFileSync(snapshotPath, 'utf-8').trim();
-        if (scratchblocks === snapshotFile) {
-            t.pass();
-        } else {
-            t.fail(`toScratchblocks and snapshots didn't match:\n${scratchblocks}`);
+        const snapshots = snapshotFile.split('\n\n');
+        if (scripts.length !== snapshots.length) throw new Error(`Test case number mismatch for ${filename}: ${scripts.length} / ${snapshots.length}`);
+        for (let i = 0; i < snapshots.length; i++) {
+            const scratchblocks = toScratchblocks(scripts[i], config.blocks, config.locale, config.opts);
+            if (scratchblocks === snapshots[i].trim()) {
+                t.pass(scripts[i]);
+            } else {
+                t.fail(`toScratchblocks and snapshots didn't match:\n${scratchblocks}`);
+            }
         }
     }));
