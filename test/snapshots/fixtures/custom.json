@@ -1,0 +1,122 @@
+{
+    "scriptStart": "hat",
+    "locale": "en",
+    "opts": {},
+    "blocks": {
+        "procDef": {
+            "opcode": "procedures_definition",
+            "next": null,
+            "parent": null,
+            "inputs": {
+                "custom_block": [
+                    1,
+                    "procPrototype"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 0,
+            "y": 0
+        },
+        "procPrototype": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "procDef",
+            "inputs": {
+                "x": [
+                    1,
+                    "xReport"
+                ],
+                "y": [
+                    1,
+                    "yReport"
+                ]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "spawn at x: %s y: %s",
+                "argumentids": "[\"x\",\"y\"]",
+                "argumentnames": "[\"x\",\"y\"]",
+                "argumentdefaults": "[\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "xReport": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "procPrototype",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "x",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "yReport": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "procPrototype",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "y",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "hat": {
+            "opcode": "event_whenflagclicked",
+            "next": "procCall",
+            "parent": null,
+            "inputs": {},
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 0,
+            "y": 5
+        },
+        "procCall": {
+            "opcode": "procedures_call",
+            "next": null,
+            "parent": "hat",
+            "inputs": {
+                "x": [
+                    1,
+                    [
+                        10,
+                        "48"
+                    ]
+                ],
+                "y": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 0,
+            "y": 10,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "spawn at x: %s y: %s",
+                "argumentids": "[\"x\",\"y\"]",
+                "warp": "true"
+            }
+        }
+    }
+}
