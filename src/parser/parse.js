@@ -21,6 +21,8 @@ import {
     REPORTER_BLOCK
 } from '../block-mapping/block-enum.js';
 
+import Sanitizer from '../sanitizer.js';
+
 const BLOCK_INSERTED_NO_DEFAULT = 2;
 const BLOCK_INSERTED_DEFAULT = 3;
 
@@ -157,12 +159,13 @@ const getDefinition = (block, blocks) => {
             args.b.push(`<${arg}>`);
         }
     });
-    return definition.mutation.proccode.replace(
-        /%([sb])/g,
-        (_, s_b) => {
-            return args[s_b][counts[s_b]++];
-        }
-    );
+    return new Definition(
+        block.id, Sanitizer.labelSanitize(definition.mutation.proccode).replace(
+            /%([sb])/g,
+            (_, s_b) => {
+                return args[s_b][counts[s_b]++];
+            }
+        ));
 };
 
 const getProcCallArgs = (block, blocks) => {
@@ -217,7 +220,7 @@ const parseScript = (scriptStart, blocks) => {
             continue;
         }
         if (opcode === 'procedures_definition') {
-            parsedBlock = new Definition(block.id, getDefinition(block, blocks));
+            parsedBlock = getDefinition(block, blocks);
         } else if (opcode === 'procedures_call') {
             parsedBlock = new ProcedureCall(block.id, block.mutation.proccode, getProcCallArgs(block, blocks));
         } else {
