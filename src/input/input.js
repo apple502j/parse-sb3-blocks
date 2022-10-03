@@ -34,7 +34,6 @@ class BroadcastMenuInput extends Input {
     }
 }
 
-
 class EmptyBooleanInput extends Input {
     toScratchblocks() {
         return '<>';
@@ -47,5 +46,5 @@ export {
     StringInput,
     ColorPickerInput,
     BroadcastMenuInput,
-    EmptyBooleanInput
+    EmptyBooleanInput,
 };

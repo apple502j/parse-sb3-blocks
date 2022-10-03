@@ -2,7 +2,11 @@ import path from 'path';
 import { writeFile } from 'fs/promises';
 import localeObject from 'scratch-l10n';
 import extLocales from 'scratch-translate-extension-languages/languages.json' assert { type: 'json' };
-import { default as allBlocks, allMenus, _unkeyedTextToSpeechLanguages as TTS_LANGUAGE_INFO } from '../src/block-mapping/all-blocks.js';
+import {
+    default as allBlocks,
+    allMenus,
+    _unkeyedTextToSpeechLanguages as TTS_LANGUAGE_INFO,
+} from '../src/block-mapping/all-blocks.js';
 
 const localeNames = Object.keys(localeObject.default);
 
@@ -49,7 +53,9 @@ const getExtMessages = (locale, extMessages) => {
     if (!Object.prototype.hasOwnProperty.call(extLocales.menuMap, locale)) {
         locale = 'en';
     }
-    const translate = Object.fromEntries(extLocales.menuMap[locale].map(entry => [`special.translate.${entry.code}`, entry.name]));
+    const translate = Object.fromEntries(
+        extLocales.menuMap[locale].map(entry => [`special.translate.${entry.code}`, entry.name])
+    );
     const localizedNameMap = {};
     let nameArray = extLocales.menuMap[locale];
     if (nameArray) {
@@ -63,16 +69,18 @@ const getExtMessages = (locale, extMessages) => {
         });
     }
 
-    const tts = Object.fromEntries(Object.keys(TTS_LANGUAGE_INFO).map(key => {
-        let name = TTS_LANGUAGE_INFO[key].defaultMessage;
-        const localizedName = localizedNameMap[key];
-        if (localizedName) {
-            name = localizedName;
-        }
-        // Uppercase the first character of the name
-        name = name.charAt(0).toUpperCase() + name.slice(1);
-        return [`special.tts.${key}`, name];
-    }));
+    const tts = Object.fromEntries(
+        Object.keys(TTS_LANGUAGE_INFO).map(key => {
+            let name = TTS_LANGUAGE_INFO[key].defaultMessage;
+            const localizedName = localizedNameMap[key];
+            if (localizedName) {
+                name = localizedName;
+            }
+            // Uppercase the first character of the name
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            return [`special.tts.${key}`, name];
+        })
+    );
 
     const makeyKeys = {
         space: extMessages['makeymakey.spaceKey'],
@@ -82,10 +90,12 @@ const getExtMessages = (locale, extMessages) => {
         down: extMessages['makeymakey.downArrowShort'],
     };
 
-    const makeymakey = Object.fromEntries(Object.values(allMenus.makeymakey_whenCodePressed).map(v => {
-        const keys = v.translationKey.replace('special.makeymakey.', '').split('.');
-        return [v.translationKey, keys.map(k => makeyKeys[k] || k).join(' ')];
-    }));
+    const makeymakey = Object.fromEntries(
+        Object.values(allMenus.makeymakey_whenCodePressed).map(v => {
+            const keys = v.translationKey.replace('special.makeymakey.', '').split('.');
+            return [v.translationKey, keys.map(k => makeyKeys[k] || k).join(' ')];
+        })
+    );
     return Object.assign({}, translate, tts, makeymakey);
 };
 
@@ -96,18 +106,23 @@ const asyncFuncy = async () => {
     const blocksPromise = [];
     const extensionsPromise = [];
     localeNames.forEach(name => {
-        blocksPromise.push(import(`scratch-l10n/editor/blocks/${name}.json`, { assert: { type: 'json' } }));
-        extensionsPromise.push(import(`scratch-l10n/editor/extensions/${name}.json`, { assert: { type: 'json' } }));
+        blocksPromise.push(
+            import(`scratch-l10n/editor/blocks/${name}.json`, { assert: { type: 'json' } })
+        );
+        extensionsPromise.push(
+            import(`scratch-l10n/editor/extensions/${name}.json`, { assert: { type: 'json' } })
+        );
     });
     const blocksPromiseReturned = await Promise.all(blocksPromise);
     const extensionsPromiseReturned = await Promise.all(extensionsPromise);
     localeNames.forEach(
-        (name, i) => rawTranslations[name] = Object.assign(
-            {},
-            extensionsPromiseReturned[i].default,
-            blocksPromiseReturned[i].default,
-            getExtMessages(name, extensionsPromiseReturned[i].default)
-        )
+        (name, i) =>
+            (rawTranslations[name] = Object.assign(
+                {},
+                extensionsPromiseReturned[i].default,
+                blocksPromiseReturned[i].default,
+                getExtMessages(name, extensionsPromiseReturned[i].default)
+            ))
     );
 
     const keys = new Set();
@@ -118,16 +133,20 @@ const asyncFuncy = async () => {
         const translationKey = entry.translationKey || key.toUpperCase();
         keys.add(translationKey);
         if (Object.prototype.hasOwnProperty.call(translateKeyToArgMap, translationKey)) return;
-        translateKeyToArgMap[translationKey] = Array.from(entry.defaultMessage.matchAll(
-            // This library uses react-intl-like embed value format: {FOO}
-            /\{([\w-]+)\}/g
-        )).map(item => item[1]);
+        translateKeyToArgMap[translationKey] = Array.from(
+            entry.defaultMessage.matchAll(
+                // This library uses react-intl-like embed value format: {FOO}
+                /\{([\w-]+)\}/g
+            )
+        ).map(item => item[1]);
     });
-    Object.values(allMenus).reduce(
-        // cur = {ITEM1: {translationKey: 'hi'}}
-        (acc, cur) => [...acc, ...Object.values(cur).map(value => value.translationKey)],
-        []
-    ).forEach(key => keys.add(key));
+    Object.values(allMenus)
+        .reduce(
+            // cur = {ITEM1: {translationKey: 'hi'}}
+            (acc, cur) => [...acc, ...Object.values(cur).map(value => value.translationKey)],
+            []
+        )
+        .forEach(key => keys.add(key));
 
     const result = {};
     const localeOptions = {};
@@ -138,15 +157,17 @@ const asyncFuncy = async () => {
         keys.forEach(key => {
             let translation = rawTranslations[name][key];
             if (Object.prototype.hasOwnProperty.call(translateKeyToArgMap, key)) {
-                translation = translation.replace(
-                    // scratch-blocks uses 1-indexed percent: %1, %2
-                    /%([\d]+)/g,
-                    (_, n) => `{${translateKeyToArgMap[key][Number(n) - 1]}}`
-                ).replace(
-                    // scratch-vm uses [FOO] instead of {FOO}
-                    /\[([\w]+)\]/g,
-                    (_, v) => `{${v}}`
-                );
+                translation = translation
+                    .replace(
+                        // scratch-blocks uses 1-indexed percent: %1, %2
+                        /%([\d]+)/g,
+                        (_, n) => `{${translateKeyToArgMap[key][Number(n) - 1]}}`
+                    )
+                    .replace(
+                        // scratch-vm uses [FOO] instead of {FOO}
+                        /\[([\w]+)\]/g,
+                        (_, v) => `{${v}}`
+                    );
                 // scratchblocks does not care about params.
                 const translationWithoutParam = translation.replace(/\{[\w]+\}/g, '').trim();
                 if (localeUsedName.has(translationWithoutParam)) {
@@ -159,10 +180,11 @@ const asyncFuncy = async () => {
         });
         Array.from(localeUsedName.values()).forEach(arrayKeys => {
             if (arrayKeys.length < 2) return;
-            arrayKeys.forEach(dupeKey => localeOptions[name][dupeKey] = translateKeyToCategory(dupeKey));
+            arrayKeys.forEach(
+                dupeKey => (localeOptions[name][dupeKey] = translateKeyToCategory(dupeKey))
+            );
         });
     });
-
 
     // This is a hacky solution, and depends on JSON objects being parseable as JS.
     // It works so don't care.

@@ -18,24 +18,24 @@ export default [
             {
                 name: 'parseSB3Blocks',
                 file: pkg.browser,
-                format: 'umd'
+                format: 'umd',
             },
             {
                 file: pkg.module,
                 format: 'esm',
-                sourcemap: !isDev
+                sourcemap: !isDev,
             },
             {
                 file: pkg.main,
                 format: 'cjs',
-                sourcemap: !isDev
-            }
+                sourcemap: !isDev,
+            },
         ],
         plugins: [
             babel({
-                babelHelpers: 'bundled'
+                babelHelpers: 'bundled',
             }),
-            !isDev && terser()
-        ]
-    }
+            !isDev && terser(),
+        ],
+    },
 ];

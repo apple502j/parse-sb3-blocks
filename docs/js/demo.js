@@ -1,5 +1,6 @@
 const { toScratchblocks } = window.parseSB3Blocks;
-const PROJECT_URL_REGEX = /^https?:\/\/scratch\.mit\.edu\/projects\/([\d]+)(?:\/(?:(?:fullscreen|editor)\/?)?)?$/g;
+const PROJECT_URL_REGEX =
+    /^https?:\/\/scratch\.mit\.edu\/projects\/([\d]+)(?:\/(?:(?:fullscreen|editor)\/?)?)?$/g;
 const HAT_BLOCKS = [
     'event_whenflagclicked',
     'event_whenkeypressed',
@@ -25,7 +26,7 @@ const HAT_BLOCKS = [
     'microbit_whenTilted',
     'microbit_whenPinConnected',
     'wedo2_whenDistance',
-    'wedo2_whenTilted'
+    'wedo2_whenTilted',
 ];
 
 new ClipboardJS('.sbCopyBtn');
@@ -58,7 +59,7 @@ Object.keys(window.scratchLocales).forEach(localeCode => {
 
 const downloadTextAsBlob = (filename, text) => {
     const blob = new Blob([text], {
-        type: 'text/plain'
+        type: 'text/plain',
     });
     const objectURL = URL.createObjectURL(blob);
     const tempElem = document.createElement('a');
@@ -75,7 +76,9 @@ const downloadTextAsBlob = (filename, text) => {
 
 const canDownload = Object.prototype.hasOwnProperty.call(HTMLAnchorElement.prototype, 'download');
 if (canDownload) {
-    sbDownloadBtn.addEventListener('click', () => downloadTextAsBlob('scratchblocks.txt', scratchblocksCode));
+    sbDownloadBtn.addEventListener('click', () =>
+        downloadTextAsBlob('scratchblocks.txt', scratchblocksCode)
+    );
 } else {
     sbDownloadBtn.hidden = true;
     sbCopyBtn.classList.add('forceOnly');
@@ -84,7 +87,9 @@ if (canDownload) {
 const loadProject = async projectId => {
     let token = '';
     try {
-        const tokenResp = await fetch(`https://trampoline.turbowarp.org/proxy/projects/${projectId}`);
+        const tokenResp = await fetch(
+            `https://trampoline.turbowarp.org/proxy/projects/${projectId}`
+        );
         if (tokenResp.ok) {
             const tokenData = await tokenResp.json();
             token = `&token=${tokenData.project_token}`;
@@ -93,7 +98,9 @@ const loadProject = async projectId => {
         console.error(e);
     }
     try {
-        const resp = await fetch(`https://projects.scratch.mit.edu/${projectId}/?${Date.now()}${token}`);
+        const resp = await fetch(
+            `https://projects.scratch.mit.edu/${projectId}/?${Date.now()}${token}`
+        );
         projectData = await resp.json();
     } catch (e) {
         console.error(e);
@@ -109,14 +116,18 @@ const loadProject = async projectId => {
     }
     usedOpts.pid = encodeURIComponent(projectId);
     spriteChooser.hidden = false;
-    Array.from(spriteChooserSelect.children).filter(e => e.value !== '_stage_').forEach(elem => {
-        spriteChooserSelect.removeChild(elem);
-    });
-    projectData.targets.filter(t => !t.isStage).forEach(target => {
-        const option = document.createElement('option');
-        option.value = option.innerText = target.name;
-        spriteChooserSelect.appendChild(option);
-    });
+    Array.from(spriteChooserSelect.children)
+        .filter(e => e.value !== '_stage_')
+        .forEach(elem => {
+            spriteChooserSelect.removeChild(elem);
+        });
+    projectData.targets
+        .filter(t => !t.isStage)
+        .forEach(target => {
+            const option = document.createElement('option');
+            option.value = option.innerText = target.name;
+            spriteChooserSelect.appendChild(option);
+        });
 };
 
 document.getElementById('loadBtn').addEventListener('click', e => {
@@ -153,7 +164,9 @@ const generateScratchblocks = () => {
         localeSetting = 'en';
     }
     const spriteName = spriteChooserSelect.value;
-    let target = projectData.targets.find(t => spriteName === '_stage_' ? t.isStage : t.name === spriteName);
+    let target = projectData.targets.find(t =>
+        spriteName === '_stage_' ? t.isStage : t.name === spriteName
+    );
     if (!target) {
         target = projectData.find(t => t.isStage);
     }
@@ -167,17 +180,19 @@ const generateScratchblocks = () => {
     }
     usedOpts.locale = encodeURIComponent(localeSetting);
     usedOpts.sprite = target.isStage ? '_stage_' : encodeURIComponent(target.name);
-    scratchblocksCode = hatBlocks.map(
-        hatKey => toScratchblocks(hatKey, target.blocks, localeSetting, {
-            tab: ' '.repeat(4),
-            variableStyle: 'as-needed'
-        })
-    ).join('\n\n');
+    scratchblocksCode = hatBlocks
+        .map(hatKey =>
+            toScratchblocks(hatKey, target.blocks, localeSetting, {
+                tab: ' '.repeat(4),
+                variableStyle: 'as-needed',
+            })
+        )
+        .join('\n\n');
     scratchblocksAreaInner.textContent = scratchblocksCode;
     const renderOpts = {
         style: 'scratch3',
         languages: localeSetting === 'en' ? ['en'] : [localeSetting.replace('-', '_'), 'en'],
-        scale: 0.8
+        scale: 0.8,
     };
     const parsedObj = scratchblocks.parse(scratchblocksCode, renderOpts);
     flexContainer.hidden = false;
@@ -206,7 +221,9 @@ if (searchPID && /^[\d]+$/g.test(searchPID)) {
         });
         if (!hasSelected) {
             spriteName = '_stage_';
-            Array.from(spriteChooserSelect.children).find(e => e.value === '_stage_').selected = true;
+            Array.from(spriteChooserSelect.children).find(
+                e => e.value === '_stage_'
+            ).selected = true;
         }
         spriteChooserSelect.value = spriteName;
         generateScratchblocks();

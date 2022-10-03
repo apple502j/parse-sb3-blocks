@@ -12,9 +12,8 @@ export default class Block {
         if (this.opcode === 'control_stop') {
             return `${syntax} ${this.inputtables.STOP_OPTION.toScratchblocks(locale, opts)}`;
         }
-        return syntax.replace(
-            /\{([\w-]+)\}/g,
-            (_, key) => this.inputtables[key].toScratchblocks(locale, opts)
+        return syntax.replace(/\{([\w-]+)\}/g, (_, key) =>
+            this.inputtables[key].toScratchblocks(locale, opts)
         );
     }
 

@@ -120,7 +120,7 @@ h1,
 h2,
 h3,
 code,
-input[type=url],
+input[type='url'],
 #num-chosen-scripts,
 .description {
     font-family: Noto Sans, sans-serif;
@@ -131,17 +131,17 @@ h1 {
     font-size: 2.5rem;
 }
 
-h1>span {
+h1 > span {
     font-weight: 400;
     font-size: 1.125rem;
     letter-spacing: 0;
 }
 
-h1>span a {
+h1 > span a {
     margin-right: 0.5em;
 }
 
-h1>span a b {
+h1 > span a b {
     font-weight: 600;
 }
 
@@ -319,7 +319,6 @@ header {
     padding: 2em;
 }
 
-
 /* Intro pane */
 
 #intro {
@@ -331,7 +330,6 @@ header {
 .hidden {
     display: none;
 }
-
 
 /* Header stuff */
 
@@ -346,7 +344,6 @@ header {
 main {
     padding: 0 2em;
 }
-
 
 #project-url {
     font-size: 1.25em;
@@ -374,12 +371,10 @@ main {
     font-size: 0.9em;
 }
 
-
 #wrap {
     top: 11em;
     bottom: 0;
 }
-
 
 /* Left pane */
 
@@ -407,17 +402,17 @@ main {
     min-height: 100%;
 }
 
-#sprites-list>li {
+#sprites-list > li {
     padding: 0.125em 0.5em;
     border-bottom: 1px solid #eee;
 }
 
-#sprites-list>li.selected {
+#sprites-list > li.selected {
     background: #4ca6fb;
 }
 
-
-#chosen-scripts-info {}
+#chosen-scripts-info {
+}
 
 #num-chosen-scripts {
     font-size: 2em;
@@ -431,7 +426,6 @@ main {
     clear: both;
 }
 
-
 /* Right pane */
 
 #sprite-detail {
@@ -443,7 +437,6 @@ main {
     overflow: hidden;
     /* clearfix */
 }
-
 
 #sprite-name {
     float: left;

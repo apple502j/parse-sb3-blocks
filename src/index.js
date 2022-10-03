@@ -18,7 +18,7 @@ import {
     StringInput,
     ColorPickerInput,
     BroadcastMenuInput,
-    EmptyBooleanInput
+    EmptyBooleanInput,
 } from './input/input.js';
 import Stack from './input/stack.js';
 
@@ -28,13 +28,12 @@ import {
     BOOLEAN_BLOCK,
     C_BLOCK,
     E_BLOCK,
-    REPORTER_BLOCK
+    REPORTER_BLOCK,
 } from './block-mapping/block-enum.js';
 
 export {
     toScratchblocks,
     parseScript,
-
     Block,
     BooleanBlock,
     CBlock,
@@ -43,7 +42,6 @@ export {
     ProcedureCall,
     ReporterBlock,
     Variable,
-
     Icon,
     Input,
     NumberInput,
@@ -53,13 +51,11 @@ export {
     EmptyBooleanInput,
     Menu,
     Stack,
-
     allBlocks,
     allMenus,
-
     BLOCK,
     BOOLEAN_BLOCK,
     C_BLOCK,
     E_BLOCK,
-    REPORTER_BLOCK
+    REPORTER_BLOCK,
 };

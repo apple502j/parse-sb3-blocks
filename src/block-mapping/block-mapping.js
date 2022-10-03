@@ -38,9 +38,9 @@ const getOptsForLocale = (locale, opcode) => {
     const translationKey = allBlocks[opcode].translationKey || opcode.toUpperCase();
     if (translations[locale] && translations[locale][translationKey]) {
         if (localeOptions[locale] && localeOptions[locale][translationKey]) {
-            return ({
-                category: localeOptions[locale][translationKey]
-            });
+            return {
+                category: localeOptions[locale][translationKey],
+            };
         }
         return {};
     }
@@ -48,10 +48,12 @@ const getOptsForLocale = (locale, opcode) => {
 };
 
 const getSpecialMessage = (locale, key) => {
-    if (Object.prototype.hasOwnProperty.call(specialMessageMap, key)) return getMessageForLocale(locale, specialMessageMap[key]);
+    if (Object.prototype.hasOwnProperty.call(specialMessageMap, key))
+        return getMessageForLocale(locale, specialMessageMap[key]);
 };
 
-const isSpecialMenuValue = (opcode, value) => Object.prototype.hasOwnProperty.call(allMenus[opcode] || {}, value);
+const isSpecialMenuValue = (opcode, value) =>
+    Object.prototype.hasOwnProperty.call(allMenus[opcode] || {}, value);
 
 const getMenuItemForLocale = (locale, opcode, value) => {
     const translationKey = allMenus[opcode][value].translationKey;
@@ -68,5 +70,5 @@ export {
     isSpecialMenuValue,
     getMenuItemForLocale,
     getOpcodeFromTranslationKey,
-    getTranslationKeyFromValue
+    getTranslationKeyFromValue,
 };

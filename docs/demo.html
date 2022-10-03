@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://scratchblocks.github.io/js/scratchblocks-v3.6.0-min.js" defer></script>
+        <script src="https://scratchblocks.github.io/js/translations-all-v3.6.0.js" defer></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"
+            defer
+        ></script>
+        <script src="./js/parse-sb3-blocks.browser.js" defer></script>
+        <script src="./js/scratch-locales.js" defer></script>
+        <script src="./js/demo.js" defer></script>
+        <link rel="stylesheet" href="./style.css" />
+        <title>parse-sb3-blocks demo</title>
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <script src="https://scratchblocks.github.io/js/scratchblocks-v3.6.0-min.js" defer></script>
-    <script src="https://scratchblocks.github.io/js/translations-all-v3.6.0.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" defer></script>
-    <script src="./js/parse-sb3-blocks.browser.js" defer></script>
-    <script src="./js/scratch-locales.js" defer></script>
-    <script src="./js/demo.js" defer></script>
-    <link rel="stylesheet" href="./style.css">
-    <title>parse-sb3-blocks demo</title>
-</head>
-
-<body class="useFull">
-    <header>
-        <h1><a href="./index.html">parse-sb3-blocks</a> demo</h1>
-        <h2>
-            Generate scratchblocks from a Scratch 3.0 project.
-            <a href="" id="bookmark" hidden>URL for bookmarks</a>
-        </h2>
-    </header>
-    <div>
-        <input type="text" placeholder="Project URL" id="urlInput" name="urlInput" class="generalInput longInput"
-            pattern="https?:\/\/scratch\.mit\.edu\/projects\/[\d]+(\/((fullscreen|editor)\/?)?)?"><select id="locale"
-            name="locale" class="locale">
-            <option value="en" selected>English (en)</option>
-        </select><button class="generalBtn" id="loadBtn">Load</button>
-    </div>
-    <div id="spriteChooser" hidden>
-        <select id="sprite" name="sprite" class="spriteChooserSelect">
-            <option value="_stage_" selected>Stage</option>
-        </select><button class="generalBtn" id="generateBtn">Generate</button>
-    </div>
-    <div class="error" id="error" hidden></div>
-    <div class="flexContainer" id="flexContainer" hidden>
-        <div class="scratchblocksAreaOuter">
-            <div class="scratchblocksArea" id="scratchblocksArea">
-                <pre id="scratchblocksAreaInner"></pre>
-            </div>
-            <button data-clipboard-target="#scratchblocksAreaInner" class="sbBtn sbCopyBtn" id="sbCopyBtn">Copy
-                Scratchblocks</button><button id="downloadText" class="sbBtn">Download</button>
+    <body class="useFull">
+        <header>
+            <h1><a href="./index.html">parse-sb3-blocks</a> demo</h1>
+            <h2>
+                Generate scratchblocks from a Scratch 3.0 project.
+                <a href="" id="bookmark" hidden>URL for bookmarks</a>
+            </h2>
+        </header>
+        <div>
+            <input
+                type="text"
+                placeholder="Project URL"
+                id="urlInput"
+                name="urlInput"
+                class="generalInput longInput"
+                pattern="https?:\/\/scratch\.mit\.edu\/projects\/[\d]+(\/((fullscreen|editor)\/?)?)?"
+            /><select id="locale" name="locale" class="locale">
+                <option value="en" selected>English (en)</option></select
+            ><button class="generalBtn" id="loadBtn">Load</button>
         </div>
-        <div class="svgArea" id="svgArea"></div>
-    </div>
-</body>
-
+        <div id="spriteChooser" hidden>
+            <select id="sprite" name="sprite" class="spriteChooserSelect">
+                <option value="_stage_" selected>Stage</option></select
+            ><button class="generalBtn" id="generateBtn">Generate</button>
+        </div>
+        <div class="error" id="error" hidden></div>
+        <div class="flexContainer" id="flexContainer" hidden>
+            <div class="scratchblocksAreaOuter">
+                <div class="scratchblocksArea" id="scratchblocksArea">
+                    <pre id="scratchblocksAreaInner"></pre>
+                </div>
+                <button
+                    data-clipboard-target="#scratchblocksAreaInner"
+                    class="sbBtn sbCopyBtn"
+                    id="sbCopyBtn"
+                >
+                    Copy Scratchblocks</button
+                ><button id="downloadText" class="sbBtn">Download</button>
+            </div>
+            <div class="svgArea" id="svgArea"></div>
+        </div>
+    </body>
 </html>

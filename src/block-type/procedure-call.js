@@ -8,9 +8,8 @@ export default class ProcedureCall {
 
     toScratchblocks(locale, opts) {
         let i = 0;
-        const procCode = Sanitizer.labelSanitize(this.proc).replace(
-            /%([sb])/g,
-            () => this.argObj[i++].toScratchblocks(locale, opts)
+        const procCode = Sanitizer.labelSanitize(this.proc).replace(/%([sb])/g, () =>
+            this.argObj[i++].toScratchblocks(locale, opts)
         );
         return `${procCode}::custom`;
     }
