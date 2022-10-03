@@ -1,0 +1,10 @@
+.github/*
+*.md
+dist/*
+package-lock.json
+
+test/snapshots/*
+src/block-mapping/options.js
+src/block-mapping/translations.js
+docs/js/parse-sb3-blocks.browser.js
+docs/js/scratch-locales.js
