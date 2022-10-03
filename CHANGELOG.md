@@ -1,4 +1,9 @@
 # Changelog
+## 0.5.2 (2022-10-03)
+- (bug) fix escaping of double slashes
+- (refactor) update dependencies
+- (refactor) run prettier
+
 ## 0.5.1 (2022-09-28)
 - (bug) fix custom block parameter over-escaping
 - (bug) remove unnecessary escaping for single colon
