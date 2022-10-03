@@ -5,6 +5,6 @@ export default class Sanitizer {
     }
 
     static labelSanitize(content) {
-        return Sanitizer.sanitize(content).replace(/[<([]/g, '\\$&').replace(/::/g, '\\:\\:');
+        return Sanitizer.sanitize(content).replace(/[<([]/g, '\\$&').replace(/::|\/\//g, '\\$&');
     }
 }
