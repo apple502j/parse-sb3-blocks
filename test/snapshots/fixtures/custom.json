@@ -42,7 +42,7 @@
             "mutation": {
                 "tagName": "mutation",
                 "children": [],
-                "proccode": "<spawn> at x: %s y: %s",
+                "proccode": "<spawn> // at x: %s y: %s",
                 "argumentids": "[\"x\",\"y\"]",
                 "argumentnames": "[\"x\",\"y\"]",
                 "argumentdefaults": "[\"\",\"\"]",
@@ -116,7 +116,7 @@
             "mutation": {
                 "tagName": "mutation",
                 "children": [],
-                "proccode": "<spawn> at x: %s y: %s",
+                "proccode": "<spawn> // at x: %s y: %s",
                 "argumentids": "[\"x\",\"y\"]",
                 "warp": "true"
             }

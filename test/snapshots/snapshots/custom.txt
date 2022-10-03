@@ -1,4 +1,4 @@
 when @greenFlag clicked
-\<spawn\> at x: [48] y: [0]::custom
+\<spawn\> \// at x: [48] y: [0]::custom
 
-define \<spawn\> at x: (x) y: (y)
+define \<spawn\> \// at x: (x) y: (y)
