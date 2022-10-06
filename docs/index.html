@@ -1,202 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8" />
-        <title>parse-sb3-blocks</title>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"
-            defer
-        ></script>
-        <link
-            rel="stylesheet"
-            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
-        />
-        <script
-            src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"
-            defer
-        ></script>
-        <script src="./js/load-index.js" defer></script>
-        <link rel="stylesheet" href="./style.css" />
-    </head>
 
-    <body>
-        <header>
-            <h1>parse-sb3-blocks</h1>
-            <div class="description">
-                Parse sb3 blocks, and generate
-                <a href="https://scratchblocks.github.io/" rel="noreferrer noopener" target="_blank"
-                    >scratchblocks</a
-                >
-                formatted code.
-            </div>
-            <div class="links">
-                <span class="author">
-                    Created by
-                    <a href="https://github.com/apple502j" rel="noreferrer noopener" target="_blank"
-                        >apple502j</a
-                    >
-                </span>
-                <span class="license">
-                    Published on
-                    <a
-                        href="https://www.npmjs.com/package/parse-sb3-blocks"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        >npm</a
-                    >
-                </span>
-                <span>
-                    Source on
-                    <a
-                        href="https://github.com/apple502j/parse-sb3-blocks"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        >GitHub</a
-                    >
-                </span>
-                <span>
-                    Try the
-                    <a href="./demo.html" rel="noreferrer noopener" target="_blank">Generator</a>
-                </span>
-            </div>
-        </header>
-        <main>
-            <h2>What is parse-sb3-blocks?</h2>
+<head>
+    <meta charset="utf-8" />
+    <title>parse-sb3-blocks</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" defer></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" defer></script>
+    <script src="./js/load-index.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>parse-sb3-blocks</h1>
+        <div class="description">
+            Parse sb3 blocks, and generate
+            <a href="https://scratchblocks.github.io/" rel="noreferrer noopener" target="_blank">scratchblocks</a>
+            formatted code.
+        </div>
+        <div class="links">
+            <span class="author">
+                Created by
+                <a href="https://github.com/apple502j" rel="noreferrer noopener" target="_blank">apple502j</a>
+            </span>
+            <span class="license">
+                Published on
+                <a href="https://www.npmjs.com/package/parse-sb3-blocks" rel="noreferrer noopener"
+                    target="_blank">npm</a>
+            </span>
+            <span>
+                Source on
+                <a href="https://github.com/apple502j/parse-sb3-blocks" rel="noreferrer noopener"
+                    target="_blank">GitHub</a>
+            </span>
+            <span>
+                Try the
+                <a href="./demo.html" rel="noreferrer noopener" target="_blank">Generator</a>
+            </span>
+        </div>
+    </header>
+    <main>
+        <h2>What is parse-sb3-blocks?</h2>
+        <p>
+            Parsing Scratch 3.0 file was a nightmare. Things are compressed and we needed to
+            handle constants or special cases (variables inserted on input, empty slots, custom
+            blocks...) ourselves - until parse-sb3-blocks comes. This library comes with an
+            easy-to-use parser, and as a by-product (?), a
+            <a href="https://scratchblocks.github.io/" rel="noreferrer noopener" target="_blank">scratchblocks</a>
+            generator.
+        </p>
+        <p>
+            parse-sb3-blocks parses one script of your choice from the blocks object serialized
+            in sb3 format. A simple mechanism called "inputtable" handles anything that looks
+            like an argument.
+        </p>
+        <p>
+            It also provides scratchblocks code generator - which supports all languages
+            supported by Scratch. The generator also handles indenting, menu items and variable
+            name conflicts.
+        </p>
+
+        <h2>Get parse-sb3-blocks</h2>
+        <div class="install">
+            <h3>Install via npm</h3>
+            <input id="npmcommand" class="copyInput" value="npm i parse-sb3-blocks" /><button id="npmcommandBtn"
+                class="copyBtn" data-clipboard-target="#npmcommand">
+                Copy
+            </button>
+        </div>
+        <div class="install">
+            <h3>Install via CDN</h3>
+            <input id="cdnscript" class="copyInput"
+                value="<script src='https://cdn.jsdelivr.net/npm/parse-sb3-blocks@0.5.0/dist/parse-sb3-blocks.browser.js' defer></script>" /><button
+                id="cdnscriptBtn" class="copyBtn" data-clipboard-target="#cdnscript">
+                Copy
+            </button>
             <p>
-                Parsing Scratch 3.0 file was a nightmare. Things are compressed and we needed to
-                handle constants or special cases (variables inserted on input, empty slots, custom
-                blocks...) ourselves - until parse-sb3-blocks comes. This library comes with an
-                easy-to-use parser, and as a by-product (?), a
-                <a href="https://scratchblocks.github.io/" rel="noreferrer noopener" target="_blank"
-                    >scratchblocks</a
-                >
-                generator.
+                Or, you can
+                <a href="./js/parse-sb3-blocks.browser.js" download="parse-sb3-blocks.browser.js"
+                    rel="noreferrer noopener" target="_blank">download</a>
+                the file.
             </p>
+        </div>
+
+        <h2>Usage</h2>
+        <div class="usage">
+            <p>To use toScratchblocks function:</p>
+            <pre><code class="lang-javascript">import {toScratchblocks} from 'parse-sb3-blocks';</code></pre>
+
+            <p>Or, with CommonJS:</p>
+            <pre><code class="lang-javascript">const {toScratchblocks} = require('parse-sb3-blocks');</code></pre>
+
+            <p>If you are using CDN/download version:</p>
+            <pre><code class="lang-javascript">const {toScratchblocks} = parseSB3Blocks;</code></pre>
+
             <p>
-                parse-sb3-blocks parses one script of your choice from the blocks object serialized
-                in sb3 format. A simple mechanism called "inputtable" handles anything that looks
-                like an argument.
+                After that you can parse serialized blocks and generate scratchblocks. Here is
+                one example:
             </p>
-            <p>
-                It also provides scratchblocks code generator - which supports all languages
-                supported by Scratch. The generator also handles indenting, menu items and variable
-                name conflicts.
-            </p>
-
-            <h2>Get parse-sb3-blocks</h2>
-            <div class="install">
-                <h3>Install via npm</h3>
-                <input id="npmcommand" class="copyInput" value="npm i parse-sb3-blocks" /><button
-                    id="npmcommandBtn"
-                    class="copyBtn"
-                    data-clipboard-target="#npmcommand"
-                >
-                    Copy
-                </button>
-            </div>
-            <div class="install">
-                <h3>Install via CDN</h3>
-                <input
-                    id="cdnscript"
-                    class="copyInput"
-                    value="<script src='https://cdn.jsdelivr.net/npm/parse-sb3-blocks@0.5.0/dist/parse-sb3-blocks.browser.js' defer></script>"
-                /><button id="cdnscriptBtn" class="copyBtn" data-clipboard-target="#cdnscript">
-                    Copy
-                </button>
-                <p>
-                    Or, you can
-                    <a
-                        href="./js/parse-sb3-blocks.browser.js"
-                        download="parse-sb3-blocks.browser.js"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        >download</a
-                    >
-                    the file.
-                </p>
-            </div>
-
-            <h2>Usage</h2>
-            <div class="usage">
-                <p>To use toScratchblocks function:</p>
-                <pre><code class="lang-javascript">import {toScratchblocks} from 'parse-sb3-blocks';</code></pre>
-
-                <p>Or, with CommonJS:</p>
-                <pre><code class="lang-javascript">const {toScratchblocks} = require('parse-sb3-blocks');</code></pre>
-
-                <p>If you are using CDN/download version:</p>
-                <pre><code class="lang-javascript">const {toScratchblocks} = parseSB3Blocks;</code></pre>
-
-                <p>
-                    After that you can parse serialized blocks and generate scratchblocks. Here is
-                    one example:
-                </p>
-                <pre><code class="lang-javascript">const stage = projectJSON.targets.filter(t => t.isStage)[0];
+            <pre><code class="lang-javascript">const stage = projectJSON.targets.filter(t => t.isStage)[0];
 const whenGreenflag = Object.keys(stage.blocks).filter(key => stage.blocks[key].opcode === 'event_whenflagclicked')[0];
 console.log(toScratchblocks(whenGreenflag, stage.blocks, "en", {tab: "  "}));
 </code></pre>
-                <p>toScratchblocks takes three to four arguments:</p>
-                <ul>
-                    <li>scriptStart - the block ID of the beginning of the script.</li>
-                    <li>blocks - the blocks, serialized in sb3 format</li>
-                    <li>
-                        locale - the locale code (check <a href="./demo.html">demo</a> for the list)
-                    </li>
-                    <li>opts - the options for generator</li>
-                </ul>
+            <p>toScratchblocks takes three to four arguments:</p>
+            <ul>
+                <li>scriptStart - the block ID of the beginning of the script.</li>
+                <li>blocks - the blocks, serialized in sb3 format</li>
+                <li>
+                    locale - the locale code (check <a href="./demo.html">demo</a> for the list)
+                </li>
+                <li>opts - the options for generator</li>
+            </ul>
 
-                <p>opts is an object, and can have these properties:</p>
-                <ul>
-                    <li>
-                        tab - characters used for indenting C blocks. defaults to four spaces. Note,
-                        scratchblocks will not render C blocks unless the tab is space/tab.
-                    </li>
-                    <li>
-                        variableStyle - whether to add ::variables or not. defaults to "none" (never
-                        add), and can be set to "always" (always add) or "as-needed" (add if there's
-                        a name conflict).
-                    </li>
-                </ul>
-            </div>
-
-            <h2>Building</h2>
-            <p>If you want to build, clone the GitHub repository and run:</p>
-            <pre><code class="plaintext">npm i
-npm run build</code></pre>
-            <p>Note that Node.js 16+ is required for building.</p>
-
-            <h2>Credits</h2>
-            <p>
-                Huge thanks to Tim Radvan (
-                <a href="https://github.com/tjvr" rel="noreferrer noopener" target="_blank">tjvr</a>
-                ) for making scratchblocks and the
-                <a
-                    href="https://scratchblocks.github.io/generator/"
-                    rel="noreferrer noopener"
-                    target="_blank"
-                    >original version of the generator</a
-                >.
-                <a
-                    href="https://github.com/scratchblocks/scratchblocks.github.io/blob/master/style.css"
-                    rel="noreferrer noopener"
-                    target="_blank"
-                    >Some CSS styles</a
-                >
-                created by tjvr and the contributors from the website is used under MIT License.
-            </p>
-            <p>This website uses some libraries:</p>
+            <p>opts is an object, and can have these properties:</p>
             <ul>
                 <li>
-                    <a href="https://clipboardjs.com" rel="noreferrer noopener" target="_blank"
-                        >clipboard.js</a
-                    >
+                    tab - characters used for indenting C blocks. defaults to four spaces. Note,
+                    scratchblocks will not render C blocks unless the tab is space/tab.
                 </li>
                 <li>
-                    <a href="https://highlightjs.org" rel="noreferrer noopener" target="_blank"
-                        >highlight.js</a
-                    >
+                    variableStyle - whether to add ::variables or not. defaults to "none" (never
+                    add), and can be set to "always" (always add) or "as-needed" (add if there's
+                    a name conflict).
                 </li>
             </ul>
-        </main>
-    </body>
+        </div>
+
+        <h2>Building</h2>
+        <p>If you want to build, clone the GitHub repository and run:</p>
+        <pre><code class="plaintext">npm i
+npm run build</code></pre>
+        <p>Note that Node.js 16+ is required for building.</p>
+
+        <h2>Credits</h2>
+        <p>
+            Huge thanks to Tim Radvan (
+            <a href="https://github.com/tjvr" rel="noreferrer noopener" target="_blank">tjvr</a>
+            ) for making scratchblocks and the
+            <a href="https://scratchblocks.github.io/generator/" rel="noreferrer noopener" target="_blank">original
+                version of the generator</a>.
+            <a href="https://github.com/scratchblocks/scratchblocks.github.io/blob/master/style.css"
+                rel="noreferrer noopener" target="_blank">Some CSS styles</a>
+            created by tjvr and the contributors from the website is used under MIT License.
+        </p>
+        <p>This website uses some libraries:</p>
+        <ul>
+            <li>
+                <a href="https://clipboardjs.com" rel="noreferrer noopener" target="_blank">clipboard.js</a>
+            </li>
+            <li>
+                <a href="https://highlightjs.org" rel="noreferrer noopener" target="_blank">highlight.js</a>
+            </li>
+        </ul>
+    </main>
+</body>
+
 </html>

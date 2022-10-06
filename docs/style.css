@@ -131,17 +131,17 @@ h1 {
     font-size: 2.5rem;
 }
 
-h1 > span {
+h1>span {
     font-weight: 400;
     font-size: 1.125rem;
     letter-spacing: 0;
 }
 
-h1 > span a {
+h1>span a {
     margin-right: 0.5em;
 }
 
-h1 > span a b {
+h1>span a b {
     font-weight: 600;
 }
 
@@ -402,17 +402,16 @@ main {
     min-height: 100%;
 }
 
-#sprites-list > li {
+#sprites-list>li {
     padding: 0.125em 0.5em;
     border-bottom: 1px solid #eee;
 }
 
-#sprites-list > li.selected {
+#sprites-list>li.selected {
     background: #4ca6fb;
 }
 
-#chosen-scripts-info {
-}
+#chosen-scripts-info {}
 
 #num-chosen-scripts {
     font-size: 2em;
