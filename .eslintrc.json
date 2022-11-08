@@ -10,19 +10,14 @@
         "requireConfigFile": false,
         "sourceType": "module",
         "babelOptions": {
-            "plugins": [
-                "@babel/plugin-syntax-import-assertions"
-            ]
+            "plugins": ["@babel/plugin-syntax-import-assertions"]
         }
     },
     "rules": {
         "no-promise-executor-return": "error",
         "no-template-curly-in-string": "error",
         "default-case-last": "error",
-        "dot-location": [
-            "error",
-            "property"
-        ],
+        "dot-location": ["error", "property"],
         "dot-notation": "error",
         "eqeqeq": "error",
         "no-else-return": "error",
@@ -30,10 +25,7 @@
         "no-proto": "error",
         "no-warning-comments": "warn",
         "no-lonely-if": "error",
-        "semi-style": [
-            "error",
-            "last"
-        ],
+        "semi-style": ["error", "last"],
         "no-var": "error",
         "prefer-arrow-callback": "error",
         "prefer-const": "error",
