@@ -1,6 +1,6 @@
 import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-import pkg from './package.json';
+import terser from '@rollup/plugin-terser';
+import pkg from './package.json' assert { type: 'json' };
 
 const isDev = String(process.env.mode).includes('dev');
 if (isDev) {
